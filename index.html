@@ -997,12 +997,10 @@
                                             class="w-full bg-[#0A0D18]/90 border border-slate-850 rounded-xl p-3 text-[10px] text-slate-200 placeholder-slate-600 focus:outline-none focus:border-purple-500/50 resize-none"></textarea>
                                     </div>
                                     <div class="flex justify-end gap-3">
-                                        <button onclick="cancelIaRoute()" 
-                                            class="px-5 py-2 bg-slate-800 hover:bg-slate-750 text-white rounded-xl text-[10px] font-semibold transition border border-slate-700/50">
+                                        <button class="px-5 py-2 bg-slate-800 hover:bg-slate-750 text-white rounded-xl text-[10px] font-semibold transition border border-slate-700/50">
                                             Cancelar
                                         </button>
-                                        <button onclick="startIaRouteGeneration()" 
-                                            class="px-5 py-2 bg-purple-700 hover:bg-purple-600 text-white rounded-xl text-[10px] font-semibold transition flex items-center gap-1.5 shadow-lg shadow-purple-600/20">
+                                        <button class="px-5 py-2 bg-purple-700 hover:bg-purple-600 text-white rounded-xl text-[10px] font-semibold transition flex items-center gap-1.5 shadow-lg shadow-purple-600/20 cursor-default">
                                             Continuar →
                                         </button>
                                     </div>
@@ -1411,8 +1409,8 @@
     <!-- ==========================================
          SLIDE 6: COSTOS Y ESCALABILIDAD
          ========================================== -->
-    <div class="slide flex-col justify-center px-20 relative bg-slate-900">
-        <div class="max-w-5xl mx-auto w-full text-center space-y-10">
+    <div class="slide flex-col justify-start px-20 py-20 relative bg-slate-900 overflow-y-auto">
+        <div class="max-w-5xl mx-auto w-full text-center space-y-10 my-auto">
             <div>
                 <span class="text-orange-500 font-bold tracking-wider text-sm uppercase">Viabilidad Institucional</span>
                 <h2 class="font-heading text-5xl font-bold mt-2">Costos y Escalabilidad</h2>
@@ -1420,7 +1418,14 @@
                     el presupuesto de la universidad.</p>
             </div>
 
-            <div class="grid grid-cols-3 gap-6 text-left">
+            <div class="mt-8 mb-10 glass-panel p-6 rounded-2xl border-slate-700 bg-slate-800/50 relative overflow-hidden w-full max-w-4xl mx-auto h-[320px]">
+                <h4 class="font-bold text-lg text-white mb-2 text-center">Proyección de Costos Mensuales vs. Alumnos (Escalabilidad)</h4>
+                <div class="w-full h-[240px] flex justify-center">
+                    <canvas id="scalabilityChart"></canvas>
+                </div>
+            </div>
+
+            <div id="pricing-grid" class="grid grid-cols-3 gap-6 text-left pb-10">
                 <div class="glass-panel p-6 rounded-2xl border-slate-700 relative overflow-hidden">
                     <div class="flex justify-between items-start mb-4">
                         <div class="p-3 bg-slate-800 rounded-xl border border-slate-600"><i data-lucide="server"
@@ -1448,18 +1453,11 @@
                     <div class="flex justify-between items-start mb-4">
                         <div class="p-3 bg-orange-500 rounded-xl shadow-lg shadow-orange-500/30"><i
                                 data-lucide="git-fork" class="text-white w-6 h-6"></i></div>
-                        <span class="text-2xl font-bold font-heading text-orange-400">$0<span
-                                class="text-sm text-orange-500/80 font-normal"> en Dev</span></span>
+                        <span class="text-2xl font-bold font-heading text-orange-400">+$100<span
+                                class="text-sm text-orange-500/80 font-normal"> fijo</span></span>
                     </div>
-                    <h4 class="font-bold text-lg text-orange-400 mb-2">Escalabilidad (DAG)</h4>
-                    <p class="text-sm text-slate-300">Arquitectura de Grafos Acíclicos Dirigidos (DAG). Escalar a facultades como Medicina requiere $0 en desarrollo; solo basta subir un JSON con la nueva malla.</p>
-                </div>
-            </div>
-
-            <div class="mt-8 glass-panel p-6 rounded-2xl border-slate-700 bg-slate-800/50 relative overflow-hidden w-full max-w-4xl mx-auto h-[280px]">
-                <h4 class="font-bold text-lg text-white mb-2 text-center">Proyección de Costos Mensuales vs. Alumnos (Escalabilidad)</h4>
-                <div class="w-full h-[200px] flex justify-center">
-                    <canvas id="scalabilityChart"></canvas>
+                    <h4 class="font-bold text-lg text-orange-400 mb-2">Mantenimiento de Software</h4>
+                    <p class="text-sm text-slate-300">Costo fijo mensual estimado para mantenimiento del sistema. Arquitectura DAG permite $0 en desarrollo para escalar a nuevas facultades.</p>
                 </div>
             </div>
 
@@ -1493,7 +1491,7 @@
 
             `"¿Cómo logramos que el estudiante realmente use VillaNEXT día a día? No con medallas de plástico virtuales, sino con tres pilares. Primero, Gamificación con Utilidad Real: mantener la racha activa multiplicadores de EXP, y esa EXP se convierte en una moneda de cambio social para canjear mentorías uno a uno con alumnos de ciclos superiores. Segundo, Alivio de Carga Cognitiva: en lugar de abrumarse con diez materias, la app ofrece tres misiones diarias de cinco minutos ideales para optimizar su tiempo entre clases o trabajos por presentar, junto a una calculadora de promedios para saber exactamente qué nota necesitan. Y tercero, Estatus y Pertenencia: validamos a los mentores con badges brillantes y centralizamos los grupos caóticos de WhatsApp en foros ordenados. Transformamos el estrés en progreso tangible."`,
 
-            `"A nivel técnico y financiero, VillaNEXT es altamente viable. Operar un piloto para 4,000 alumnos en una facultad cuesta apenas 125 dólares al mes. ¿Cómo? Unos 60 dólares en una base de datos gestionada en DigitalOcean con pgvector y 65 dólares optimizando inferencia con Chunking Dinámico y Gemini 1.5 Flash. Y como muestra el gráfico de proyección basado en los precios reales actuales, escalar a nivel masivo a 10 mil, 20 mil o 40 mil alumnos mantiene un costo operativo lineal y extremadamente bajo, de apenas 3 centavos de dólar por alumno al mes. Todo esto con cero dólares en costos de desarrollo gracias a nuestra arquitectura DAG que abstrae la malla curricular."`
+            `"A nivel técnico y financiero, VillaNEXT es altamente viable. Operar un piloto para 4,000 alumnos en una facultad cuesta apenas 225 dólares al mes. ¿Cómo? Unos 60 dólares en una base de datos gestionada en DigitalOcean con pgvector, 65 dólares optimizando inferencia con Chunking Dinámico y Gemini 1.5 Flash, y 100 dólares fijos para mantenimiento del software. Como muestra el gráfico de proyección, si presionan la flecha hacia abajo podrán observar que escalar a nivel masivo a 10 mil, 20 mil o 40 mil alumnos mantiene un costo operativo lineal y extremadamente bajo, de apenas 3 centavos de dólar por alumno al mes. Todo esto con cero dólares en nuevos desarrollos gracias a nuestra arquitectura DAG que abstrae la malla curricular."`
         ];
 
         function updateSlide() {
@@ -1529,6 +1527,12 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
             if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowDown' && currentSlide === 5) {
+                const chart = document.getElementById('scalabilityChart');
+                if (chart) {
+                    chart.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
         });
 
         // SIMULACIÓN DE SOLICITUD DE ASESORÍA
@@ -1822,24 +1826,7 @@
             lucide.createIcons();
         }
 
-        function cancelIaRoute() {
-            toggleRouteType('oficial');
-        }
 
-        function startIaRouteGeneration() {
-            const iaGenerator = document.getElementById('route-nodes-ia-generator');
-            const iaLoading = document.getElementById('route-nodes-ia-loading');
-            
-            if (iaGenerator) iaGenerator.classList.add('hidden');
-            if (iaLoading) iaLoading.classList.remove('hidden');
-            
-            lucide.createIcons();
-            
-            setTimeout(() => {
-                isIaRouteGenerated = true;
-                toggleRouteType('ia');
-            }, 1500);
-        }
 
         function selectRouteNode(nodeNum, title, status, description) {
             const panel = document.getElementById('route-node-detail-panel');
@@ -2005,8 +1992,17 @@
                         tension: 0.4
                     },
                     {
+                        label: 'Mantenimiento de Software (Fijo)',
+                        data: [100, 100, 100, 100],
+                        borderColor: '#a855f7', // purple-500
+                        backgroundColor: 'rgba(168, 85, 247, 0.2)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
                         label: 'Costo Total Operativo',
-                        data: [125, 282, 564, 1128],
+                        data: [225, 382, 664, 1228],
                         borderColor: '#f97316', // orange-500
                         backgroundColor: 'rgba(249, 115, 22, 0.1)',
                         borderWidth: 3,
