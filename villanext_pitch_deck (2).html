@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VILLANEXT - Pitch Deck</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            overflow: hidden;
+            background-color: #0F172A;
+            color: white;
+        }
+
+        h1,
+        h2,
+        h3,
+        .font-heading {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .slide {
+            position: absolute !important;
+            inset: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: scale(0.97) translateY(8px);
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1) translateY(0);
+            z-index: 10;
+        }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Custom Scrollbar for notes */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body class="h-screen w-screen relative selection:bg-orange-500 selection:text-white">
+
+    <!-- CONTROLES DE NAVEGACIÓN -->
+    <div class="fixed bottom-6 right-6 z-50 flex gap-4">
+        <button onclick="prevSlide()"
+            class="p-3 rounded-full bg-slate-800 border border-slate-700 hover:bg-slate-700 transition shadow-lg">
+            <i data-lucide="chevron-left" class="w-6 h-6 text-white"></i>
+        </button>
+        <button onclick="nextSlide()"
+            class="p-3 rounded-full bg-orange-500 hover:bg-orange-600 transition shadow-lg shadow-orange-500/30">
+            <i data-lucide="chevron-right" class="w-6 h-6 text-white"></i>
+        </button>
+    </div>
+
+    <!-- BOTÓN DE GUION (SPEECH) -->
+    <div class="fixed bottom-6 left-6 z-50">
+        <button onclick="toggleNotes()"
+            class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/80 backdrop-blur border border-slate-700 hover:bg-slate-700 transition text-sm text-slate-300">
+            <i data-lucide="mic" class="w-4 h-4 text-orange-500"></i> Ver Guion
+        </button>
+    </div>
+
+    <!-- PANEL DE NOTAS (OCULTO POR DEFECTO) -->
+    <div id="notesPanel"
+        class="fixed bottom-20 left-6 z-50 w-96 p-6 glass-panel rounded-2xl hidden shadow-2xl shadow-black/50 border-orange-500/30">
+        <h4 class="font-heading font-bold text-orange-500 mb-2 flex items-center gap-2">
+            <i data-lucide="message-square" class="w-4 h-4"></i> Speech sugerido (45 seg):
+        </h4>
+        <p id="notesContent" class="text-slate-300 text-sm leading-relaxed"></p>
+    </div>
+
+    <!-- INDICADOR DE PÁGINA -->
+    <div class="fixed top-6 right-6 z-50 text-slate-500 font-bold font-mono">
+        <span id="currentSlideNum">1</span> / 6
+    </div>
+
+    <!-- ==========================================
+         SLIDE 1: EL DOLOR (IMÁGENES DE LA REALIDAD)
+         ========================================== -->
+    <div
+        class="slide active flex-col justify-center px-20 bg-gradient-to-br from-slate-900 via-[#0F172A] to-blue-950 relative">
+        <div class="max-w-6xl mx-auto w-full">
+            <div class="bg-white rounded-xl p-4 inline-block mb-8 shadow-xl">
+                <h2 class="text-slate-900 font-heading font-bold text-2xl tracking-tight">VRIN <span
+                        class="text-slate-400 font-normal text-lg">| UNFV</span></h2>
+            </div>
+
+            <h1 class="font-heading font-bold text-5xl text-white mb-2">VILLANEXT</h1>
+            <p class="text-xl text-orange-400 font-medium tracking-wide mb-10">La realidad del estudiante no cabe en una
+                plataforma estática.</p>
+
+            <!-- Grid de Imágenes del Problema -->
+            <div class="grid grid-cols-3 gap-6">
+                <!-- Card 1: Falta de Seguimiento -->
+                <div onclick="toggleCard(this)"
+                    class="glass-panel p-4 rounded-3xl border-slate-700/50 relative overflow-hidden group cursor-pointer h-[320px]">
+                    <span
+                        class="btn-toggle-hint absolute top-3 right-3 text-[9px] bg-slate-800/80 text-orange-400 px-2 py-0.5 rounded-full border border-orange-500/30 transition duration-300 z-20">Ver
+                        Solución</span>
+
+                    <!-- Vista Problema -->
+                    <div class="problem-view flex flex-col justify-between h-full transition-all duration-500 z-10">
+                        <div
+                            class="w-full h-44 bg-slate-950 rounded-2xl flex flex-col items-center justify-center border border-slate-800 relative">
+                            <div
+                                class="absolute top-3 left-3 flex items-center gap-1.5 bg-red-500/10 text-red-400 px-2 py-0.5 rounded-md border border-red-500/20 text-[9px] font-mono">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-ping"></span> ALERTA DE RIESGO
+                            </div>
+                            <i data-lucide="user-x" class="w-14 h-14 text-orange-500 mb-2"></i>
+                            <span class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Deserción
+                                Académica</span>
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="font-bold text-lg text-white flex items-center gap-2"><i
+                                    data-lucide="alert-octagon" class="text-orange-500 w-5 h-5"></i> Falta de
+                                Seguimiento</h3>
+                            <p class="text-sm text-slate-400 mt-1">La nula supervisión continua eleva la carga cognitiva
+                                y el riesgo de abandono.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vista Solución (Oculta por defecto) -->
+                    <div
+                        class="solution-view absolute inset-0 bg-gradient-to-b from-orange-950/95 via-[#0F172A]/98 to-slate-950 p-6 flex flex-col justify-between opacity-0 pointer-events-none transition-all duration-500 translate-y-4 z-10">
+                        <div class="flex flex-col items-center text-center mt-4">
+                            <div
+                                class="w-14 h-14 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center mb-3 ring-8 ring-orange-500/10 animate-pulse">
+                                <i data-lucide="activity" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-heading font-bold text-xl text-white">Monitoreo Predictivo</h3>
+                            <p class="text-xs text-orange-400 font-semibold tracking-wider uppercase mt-1">Prevención IA
+                            </p>
+                        </div>
+                        <p class="text-sm text-slate-300 text-center leading-relaxed mb-4">
+                            La IA analiza el historial de chats y el monitoreo de horas de estudio y horarios para
+                            identificar riesgos de bajo rendimiento a tiempo.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Trabajar y Estudiar -->
+                <div onclick="toggleCard(this)"
+                    class="glass-panel p-4 rounded-3xl border-slate-700/50 relative overflow-hidden group cursor-pointer h-[320px]">
+                    <span
+                        class="btn-toggle-hint absolute top-3 right-3 text-[9px] bg-slate-800/80 text-blue-400 px-2 py-0.5 rounded-full border border-blue-500/30 transition duration-300 z-20">Ver
+                        Solución</span>
+
+                    <!-- Vista Problema -->
+                    <div class="problem-view flex flex-col justify-between h-full transition-all duration-500 z-10">
+                        <img src="https://elperuano.pe/fotografia/thumbnail/2024/05/21/000297087M.jpg"
+                            alt="Estudiante cansado"
+                            class="w-full h-44 object-cover rounded-2xl opacity-60 group-hover:opacity-100 transition duration-500">
+                        <div class="mt-4">
+                            <h3 class="font-bold text-lg text-white flex items-center gap-2"><i data-lucide="briefcase"
+                                    class="text-blue-500 w-5 h-5"></i> Trabajar y Estudiar</h3>
+                            <p class="text-sm text-slate-400 mt-1">Fatiga extrema. Plataformas que asumen disponibilidad
+                                de 24/7.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vista Solución (Oculta por defecto) -->
+                    <div
+                        class="solution-view absolute inset-0 bg-gradient-to-b from-blue-950/95 via-[#0F172A]/98 to-slate-950 p-6 flex flex-col justify-between opacity-0 pointer-events-none transition-all duration-500 translate-y-4 z-10">
+                        <div class="flex flex-col items-center text-center mt-4">
+                            <div
+                                class="w-14 h-14 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center mb-3 ring-8 ring-blue-500/10 animate-pulse">
+                                <i data-lucide="bot" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-heading font-bold text-xl text-white">IA Socrática & Estrés</h3>
+                            <p class="text-xs text-blue-400 font-semibold tracking-wider uppercase mt-1">Gestión
+                                Biopsicosocial</p>
+                        </div>
+                        <p class="text-sm text-slate-300 text-center leading-relaxed mb-4">
+                            Fede adapta las misiones a tu energía diaria y activa pausas obligatorias para evitar el
+                            colapso mental del estudiante trabajador.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3: IAs Genéricas vs Contexto Local -->
+                <div onclick="toggleCard(this)"
+                    class="glass-panel p-4 rounded-3xl border-slate-700/50 relative overflow-hidden group cursor-pointer h-[320px] shadow-[0_0_20px_rgba(239,68,68,0.05)]">
+                    <span
+                        class="btn-toggle-hint absolute top-3 right-3 text-[9px] bg-slate-800/80 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30 transition duration-300 z-20">Ver
+                        Solución</span>
+
+                    <!-- Vista Problema -->
+                    <div class="problem-view flex flex-col justify-between h-full transition-all duration-500 z-10">
+                        <div
+                            class="w-full h-44 bg-slate-950 rounded-2xl flex flex-col justify-between p-3 border border-slate-800 text-left font-sans select-none">
+                            <div class="flex items-center justify-between border-b border-white/5 pb-2">
+                                <span class="text-[10px] text-slate-500 font-mono flex items-center gap-1"><i
+                                        data-lucide="bot-off" class="w-3.5 h-3.5 text-red-400"></i> LLM Genérico
+                                    (ChatGPT/Claude)</span>
+                                <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                            </div>
+                            <div class="space-y-2 py-1 flex-1 flex flex-col justify-center">
+                                <p
+                                    class="text-[10px] bg-slate-800 text-slate-300 p-1.5 rounded-lg max-w-[90%] leading-normal">
+                                    "¿Cómo estructuro el informe de Física según el profesor Magallanes?"
+                                </p>
+                                <p
+                                    class="text-[10px] bg-slate-900/60 text-red-400/80 p-1.5 rounded-lg max-w-[90%] self-start leading-normal border border-red-500/10">
+                                    "Lo siento, no tengo acceso a las rúbricas del profesor Magallanes de la UNFV..."
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="font-bold text-lg text-white flex items-center gap-2"><i
+                                    data-lucide="alert-triangle" class="text-red-500 w-5 h-5"></i> IAs Genéricas</h3>
+                            <p class="text-sm text-slate-400 mt-1">No conocen al prof. Petrlik, la estructura de
+                                Magallanes ni los exámenes de la FIIS.</p>
+                        </div>
+                    </div>
+
+                    <!-- Vista Solución (Oculta por defecto) -->
+                    <div
+                        class="solution-view absolute inset-0 bg-gradient-to-b from-emerald-950/95 via-[#0F172A]/98 to-slate-950 p-6 flex flex-col justify-between opacity-0 pointer-events-none transition-all duration-500 translate-y-4 z-10">
+                        <div class="flex flex-col items-center text-center mt-4">
+                            <div
+                                class="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-3 ring-8 ring-emerald-500/10 animate-pulse">
+                                <i data-lucide="database" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-heading font-bold text-xl text-white">Inyección de Contexto</h3>
+                            <p class="text-xs text-emerald-400 font-semibold tracking-wider uppercase mt-1">Respuestas
+                                contextualizadas</p>
+                        </div>
+                        <p class="text-sm text-slate-300 text-center leading-relaxed mb-4">
+                            Indexamos códigos aprobados, rúbricas y exámenes pasados. Fede responde usando este
+                            contexto, adaptándose al criterio exacto del docente.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 2: LA SOLUCIÓN (VISUAL)
+         ========================================== -->
+    <div class="slide flex-col justify-center px-20 relative bg-slate-900">
+        <div class="max-w-6xl mx-auto w-full flex gap-16 items-center">
+            <div class="flex-1 space-y-8">
+                <span class="text-emerald-500 font-bold tracking-wider text-sm uppercase">La Solución</span>
+                <h2 class="font-heading text-5xl font-bold leading-tight">Tu universidad en el bolsillo</h2>
+
+                <div class="space-y-6 mt-8">
+                    <div class="flex gap-4 items-center glass-panel p-4 rounded-2xl">
+                        <div class="p-3 rounded-xl bg-orange-500/20 text-orange-500"><i data-lucide="smartphone"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold font-heading">Multi-Dispositivo</h3>
+                            <p class="text-slate-400 text-sm mt-1">Diseñado para optimizar tu tiempo y productividad en
+                                móvil y PC.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-center glass-panel p-4 rounded-2xl border-orange-500/30">
+                        <div class="p-3 rounded-xl bg-orange-500 text-white shadow-lg shadow-orange-500/30"><i
+                                data-lucide="bot"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold font-heading">IA Socrática (Fede)</h3>
+                            <p class="text-slate-400 text-sm mt-1">Te guía paso a paso, no fomenta el "copiar y pegar".
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-center glass-panel p-4 rounded-2xl">
+                        <div class="p-3 rounded-xl bg-emerald-500/20 text-emerald-400"><i
+                                data-lucide="layout-dashboard"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold font-heading">Micro-Aprendizaje</h3>
+                            <p class="text-slate-400 text-sm mt-1">Sílabos gigantes divididos en misiones diarias.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mockup UI Celular -->
+            <div onclick="toggleDeviceMockup()"
+                class="w-[340px] h-[680px] bg-slate-950 rounded-[3rem] border-8 border-slate-800 relative overflow-hidden shadow-2xl shadow-orange-500/20 flex flex-col scale-95 cursor-pointer hover:scale-[0.98] active:scale-95 transition-all duration-300 group z-10">
+                <span
+                    class="absolute top-8 right-4 text-[9px] bg-orange-500/90 text-white font-bold px-2.5 py-0.5 rounded-full border border-orange-400/30 transition duration-300 z-20 group-hover:scale-105">Ver
+                    en PC</span>
+                <div class="w-32 h-6 bg-slate-800 absolute top-0 left-1/2 -translate-x-1/2 rounded-b-xl z-20"></div>
+                <div class="p-6 pt-12 flex-1 space-y-4">
+                    <h4 class="font-heading font-bold text-xl mb-4">¡Hola, Arturo! 👋</h4>
+                    <!-- Fede Widget -->
+                    <div class="glass-panel p-4 rounded-2xl border-orange-500/30">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center"><i
+                                    data-lucide="bot" class="text-white w-5 h-5"></i></div>
+                            <div>
+                                <p class="text-sm font-bold">Fede AI</p>
+                                <p class="text-xs text-emerald-400">En línea</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-300">¿Cómo está la energía hoy? Tienes 2 misiones pendientes.</p>
+                    </div>
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="glass-panel p-4 rounded-2xl text-center">
+                            <i data-lucide="flame" class="w-8 h-8 text-orange-500 mx-auto mb-2"></i>
+                            <p class="text-2xl font-bold">12</p>
+                            <p class="text-xs text-slate-400">Días seguidos</p>
+                        </div>
+                        <div class="glass-panel p-4 rounded-2xl text-center">
+                            <i data-lucide="battery-medium" class="w-8 h-8 text-emerald-500 mx-auto mb-2"></i>
+                            <p class="text-2xl font-bold">65%</p>
+                            <p class="text-xs text-slate-400">Energía</p>
+                        </div>
+                    </div>
+                    <!-- Skill Tree Preview -->
+                    <div class="glass-panel p-4 rounded-2xl border-emerald-500/30">
+                        <h5 class="text-xs font-bold text-slate-400 mb-2">RUTA: SISTEMAS OPERATIVOS</h5>
+                        <div class="flex items-center gap-2">
+                            <div class="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center"><i
+                                    data-lucide="check" class="w-3 h-3 text-slate-900"></i></div>
+                            <div class="h-1 w-8 bg-emerald-500"></div>
+                            <div
+                                class="w-6 h-6 rounded-full bg-orange-500 flex items-center justify-center ring-4 ring-orange-500/20">
+                                <i data-lucide="lock-open" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <div class="h-1 w-8 bg-slate-700"></div>
+                            <div class="w-6 h-6 rounded-full bg-slate-700"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mockup UI Desktop (Oculto por defecto) -->
+            <div id="desktopMockup"
+                class="absolute inset-0 bg-[#0A0D18]/98 z-40 flex items-center justify-center p-8 opacity-0 pointer-events-none transition-all duration-500 scale-95 overflow-hidden">
+                <!-- Botón de retorno -->
+                <button onclick="toggleDeviceMockup()"
+                    class="absolute top-6 right-6 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-xl text-xs font-bold shadow-lg flex items-center gap-2 transition z-50">
+                    <i data-lucide="smartphone" class="w-4 h-4"></i> Vista Móvil
+                </button>
+
+                <!-- Marco de Ventana de Navegador -->
+                <div
+                    class="w-full max-w-5xl h-[520px] bg-[#0B0F19] rounded-2xl border border-slate-800 shadow-2xl flex overflow-hidden flex-row text-[11px] text-slate-300">
+                    <!-- Sidebar Izquierda -->
+                    <div class="w-44 bg-[#0F1322] border-r border-slate-900 p-4 flex flex-col justify-between shrink-0">
+                        <div class="space-y-5">
+                            <!-- Logo -->
+                            <div class="flex items-center gap-2 border-b border-white/5 pb-2.5">
+                                <div
+                                    class="w-7 h-7 rounded-lg bg-orange-500 flex items-center justify-center text-white shrink-0">
+                                    <i data-lucide="bot" class="w-4 h-4"></i>
+                                </div>
+                                <div class="overflow-hidden">
+                                    <h4 class="font-heading font-bold text-white text-xs leading-none">VillaNEXT</h4>
+                                    <span class="text-[8px] text-slate-500">UNFV Hub</span>
+                                </div>
+                            </div>
+                            <!-- Menú principal -->
+                            <div class="space-y-1">
+                                <span
+                                    class="text-[8px] text-slate-500 font-bold uppercase tracking-wider block mb-0.5">Principal</span>
+                                <a href="#" onclick="event.preventDefault()"
+                                    class="flex items-center gap-2 px-2.5 py-1.5 bg-orange-500/10 text-orange-400 rounded-lg font-semibold"><i
+                                        data-lucide="home" class="w-3.5 h-3.5"></i> Inicio</a>
+                                <a href="#" onclick="event.preventDefault()"
+                                    class="flex justify-between items-center px-2.5 py-1.5 hover:bg-white/5 rounded-lg text-slate-400 hover:text-white transition"><span
+                                        class="flex items-center gap-2"><i data-lucide="message-square"
+                                            class="w-3.5 h-3.5"></i> Mensajes</span> <span
+                                        class="bg-emerald-500/20 text-emerald-400 px-1.5 py-0.2 rounded-full text-[8px] font-bold">2</span></a>
+                            </div>
+                            <!-- Académico -->
+                            <div class="space-y-0.5">
+                                <span
+                                    class="text-[8px] text-slate-500 font-bold uppercase tracking-wider block mb-0.5">Académico</span>
+                                <a href="#" onclick="event.preventDefault()"
+                                    class="flex items-center gap-2 px-2.5 py-1 hover:bg-white/5 rounded-lg text-slate-400 hover:text-white transition"><i
+                                        data-lucide="book-open" class="w-3.5 h-3.5"></i> Cursos</a>
+                                <a href="#" onclick="event.preventDefault()"
+                                    class="flex items-center gap-2 px-2.5 py-1 hover:bg-white/5 rounded-lg text-slate-400 hover:text-white transition"><i
+                                        data-lucide="git-fork" class="w-3.5 h-3.5"></i> Malla</a>
+                                <a href="#" onclick="event.preventDefault()"
+                                    class="flex items-center gap-2 px-2.5 py-1 hover:bg-white/5 rounded-lg text-slate-400 hover:text-white transition"><i
+                                        data-lucide="calendar" class="w-3.5 h-3.5"></i> Horario</a>
+                                <a href="#" onclick="event.preventDefault()"
+                                    class="flex items-center gap-2 px-2.5 py-1 hover:bg-white/5 rounded-lg text-slate-400 hover:text-white transition"><i
+                                        data-lucide="file-check" class="w-3.5 h-3.5"></i> Evaluaciones</a>
+                                <a href="#" onclick="event.preventDefault()"
+                                    class="flex items-center gap-2 px-2.5 py-1 hover:bg-white/5 rounded-lg text-slate-400 hover:text-white transition"><i
+                                        data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Calificaciones</a>
+                                <a href="#" onclick="event.preventDefault()"
+                                    class="flex items-center gap-2 px-2.5 py-1 hover:bg-white/5 rounded-lg text-slate-400 hover:text-white transition"><i
+                                        data-lucide="library" class="w-3.5 h-3.5"></i> Biblioteca</a>
+                            </div>
+                        </div>
+                        <!-- Facultad Info -->
+                        <div class="border-t border-white/5 pt-2.5">
+                            <span class="text-[8px] text-slate-500 font-bold uppercase block">Facultad</span>
+                            <p class="text-[8px] text-slate-400 mt-0.5 font-semibold">FIIS - Sistemas</p>
+                        </div>
+                    </div>
+
+                    <!-- Panel Principal -->
+                    <div class="flex-1 flex flex-col overflow-hidden bg-[#0A0D18]">
+                        <!-- Topbar -->
+                        <div class="h-12 border-b border-slate-900 px-6 flex items-center justify-between shrink-0">
+                            <!-- Search -->
+                            <div class="relative w-56">
+                                <i data-lucide="search"
+                                    class="w-3 h-3 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                                <input type="text" placeholder="Buscar en UNFV Hub..."
+                                    class="w-full bg-[#111625] border border-slate-800 rounded-lg pl-8 pr-4 py-1 text-[10px] text-slate-300 placeholder-slate-500 focus:outline-none focus:border-slate-700">
+                            </div>
+                            <!-- Right profile & stats -->
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="flex items-center gap-1 text-[9px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20 font-bold">
+                                    <i data-lucide="flame" class="w-3 h-3"></i> 0 días
+                                </div>
+                                <button
+                                    class="p-1 text-slate-400 hover:text-white rounded-lg hover:bg-white/5 relative">
+                                    <i data-lucide="bell" class="w-3.5 h-3.5"></i>
+                                    <span class="w-1.5 h-1.5 bg-orange-500 rounded-full absolute top-1 right-1"></span>
+                                </button>
+                                <!-- Avatar -->
+                                <div class="flex items-center gap-2 border-l border-white/5 pl-3">
+                                    <div
+                                        class="w-7 h-7 rounded-full bg-orange-500 flex items-center justify-center text-slate-950 font-bold text-xs">
+                                        S</div>
+                                    <div>
+                                        <p class="font-bold text-white leading-none text-[10px]">sotech</p>
+                                        <span class="text-[8px] text-slate-500 font-medium">Estudiante UNFV</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Content Grid -->
+                        <div class="flex-1 p-5 overflow-y-auto space-y-4">
+                            <!-- Header welcome -->
+                            <div class="flex justify-between items-end border-b border-white/5 pb-2">
+                                <div>
+                                    <h3 class="font-heading text-lg font-bold text-white">¡Hola, sotech! 👋</h3>
+                                    <p class="text-[9px] text-slate-500 mt-0.5">22 de junio de 2026</p>
+                                </div>
+                                <!-- Stats Cards -->
+                                <div class="flex gap-2">
+                                    <div
+                                        class="bg-[#111625] border border-slate-800 rounded-xl px-2.5 py-1 flex items-center gap-1.5">
+                                        <div class="p-1 bg-orange-500/10 text-orange-400 rounded-lg shrink-0"><i
+                                                data-lucide="zap" class="w-3 h-3"></i></div>
+                                        <div>
+                                            <p class="text-[7px] text-slate-500 uppercase leading-none font-bold">XP HOY
+                                            </p>
+                                            <p class="text-[10px] font-bold text-white mt-0.5 leading-none">0 pts</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-[#111625] border border-slate-800 rounded-xl px-2.5 py-1 flex items-center gap-1.5">
+                                        <div class="p-1 bg-emerald-500/10 text-emerald-400 rounded-lg shrink-0"><i
+                                                data-lucide="check-square" class="w-3 h-3"></i></div>
+                                        <div>
+                                            <p class="text-[7px] text-slate-500 uppercase leading-none font-bold">
+                                                Misiones</p>
+                                            <p class="text-[10px] font-bold text-white mt-0.5 leading-none">0/3</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-[#111625] border border-slate-800 rounded-xl px-2.5 py-1 flex items-center gap-1.5">
+                                        <div class="p-1 bg-blue-500/10 text-blue-400 rounded-lg shrink-0"><i
+                                                data-lucide="calendar" class="w-3 h-3"></i></div>
+                                        <div>
+                                            <p class="text-[7px] text-slate-500 uppercase leading-none font-bold">
+                                                Próxima Clase</p>
+                                            <p class="text-[9px] font-bold text-white mt-0.5 leading-none">Cálculo Dif.
+                                                <span class="text-[8px] text-slate-500 font-normal">10:00 AM</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Dashboard columns -->
+                            <div class="grid grid-cols-5 gap-4">
+                                <!-- Chat AI (3 cols) -->
+                                <div
+                                    class="col-span-3 bg-[#111625]/60 border border-slate-800 rounded-2xl p-3 flex flex-col h-[280px] justify-between">
+                                    <div
+                                        class="flex items-center justify-between border-b border-white/5 pb-1.5 shrink-0">
+                                        <div class="flex items-center gap-1.5">
+                                            <div
+                                                class="w-5 h-5 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center shrink-0">
+                                                <i data-lucide="bot" class="w-3.5 h-3.5"></i></div>
+                                            <span class="font-bold text-white text-[10px]">FedeAI</span>
+                                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                            <span class="text-[8px] text-emerald-400 font-semibold uppercase">En
+                                                línea</span>
+                                        </div>
+                                        <div class="flex gap-1.5 text-slate-500">
+                                            <i data-lucide="rotate-ccw"
+                                                class="w-3 h-3 hover:text-white cursor-pointer transition"></i>
+                                            <i data-lucide="more-vertical"
+                                                class="w-3 h-3 hover:text-white cursor-pointer transition"></i>
+                                        </div>
+                                    </div>
+
+                                    <!-- Messages area -->
+                                    <div class="flex-1 py-2 space-y-2 overflow-y-auto min-h-0">
+                                        <div class="flex items-start gap-1.5 max-w-[90%]">
+                                            <div
+                                                class="w-5 h-5 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 mt-0.5">
+                                                <i data-lucide="bot" class="w-3.5 h-3.5"></i></div>
+                                            <div
+                                                class="bg-slate-900 border border-slate-800 text-slate-200 px-2.5 py-1.5 rounded-xl rounded-tl-none leading-relaxed text-[10px]">
+                                                ¡Hola, sotech! 👋 Soy FedeAI, tu asistente de VillaNEXT. Estoy aquí para
+                                                ayudarte con tus estudios, consultas académicas, trámites y más. ¿En qué
+                                                puedo ayudarte hoy?
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Quick Options & Input -->
+                                    <div class="space-y-1.5 shrink-0">
+                                        <div class="flex flex-wrap gap-1">
+                                            <button
+                                                class="px-2 py-0.5 bg-slate-900 hover:bg-slate-800 text-[9px] text-slate-400 rounded-full border border-slate-800 transition">¿Cuál
+                                                es mi horario?</button>
+                                            <button
+                                                class="px-2 py-0.5 bg-slate-900 hover:bg-slate-800 text-[9px] text-slate-400 rounded-full border border-slate-800 transition">Consultar
+                                                trámites</button>
+                                        </div>
+                                        <div class="relative flex gap-1.5">
+                                            <input type="text" placeholder="Escribe tu mensaje..."
+                                                class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-[10px] placeholder-slate-500 focus:outline-none focus:border-slate-700 text-slate-300">
+                                            <button
+                                                class="p-1.5 bg-orange-500 text-slate-950 rounded-xl hover:bg-orange-600 transition flex items-center justify-center shrink-0">
+                                                <i data-lucide="send" class="w-3 h-3"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tasks & Accesos (2 cols) -->
+                                <div class="col-span-2 space-y-3">
+                                    <!-- Misiones -->
+                                    <div
+                                        class="bg-[#111625]/60 border border-slate-800 rounded-2xl p-3 space-y-2 h-[175px] overflow-y-auto">
+                                        <div class="flex justify-between items-center border-b border-white/5 pb-1.5">
+                                            <span class="font-bold text-white text-[10px] flex items-center gap-1"><i
+                                                    data-lucide="target" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                                Misiones Diarias</span>
+                                            <a href="#" onclick="event.preventDefault()"
+                                                class="text-[9px] text-emerald-400 hover:underline">Ver todas</a>
+                                        </div>
+                                        <div class="space-y-1.5">
+                                            <div
+                                                class="flex items-center justify-between bg-slate-900 border border-slate-850 px-2 py-1 rounded-lg">
+                                                <span class="text-[9px] text-slate-350 flex items-center gap-1.5"><i
+                                                        data-lucide="circle" class="w-3 h-3 text-slate-600"></i>
+                                                    Trámites del comedor</span>
+                                                <span
+                                                    class="text-[8px] text-orange-400 bg-orange-500/10 px-1 py-0.2 rounded font-bold font-mono">25
+                                                    XP</span>
+                                            </div>
+                                            <div
+                                                class="flex items-center justify-between bg-slate-900 border border-slate-850 px-2 py-1 rounded-lg">
+                                                <span class="text-[9px] text-slate-355 flex items-center gap-1.5"><i
+                                                        data-lucide="circle" class="w-3 h-3 text-slate-600"></i>
+                                                    Consultar malla FIIS</span>
+                                                <span
+                                                    class="text-[8px] text-orange-400 bg-orange-500/10 px-1 py-0.2 rounded font-bold font-mono">50
+                                                    XP</span>
+                                            </div>
+                                            <div
+                                                class="flex items-center justify-between bg-slate-900 border border-slate-850 px-2 py-1 rounded-lg">
+                                                <span class="text-[9px] text-slate-355 flex items-center gap-1.5"><i
+                                                        data-lucide="circle" class="w-3 h-3 text-slate-600"></i> Quiz
+                                                    socrático del día</span>
+                                                <span
+                                                    class="text-[8px] text-orange-400 bg-orange-500/10 px-1 py-0.2 rounded font-bold font-mono">25
+                                                    XP</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Accesos rápidos -->
+                                    <div class="bg-[#111625]/60 border border-slate-800 rounded-2xl p-3 space-y-1.5">
+                                        <span
+                                            class="text-[8px] text-slate-500 font-bold uppercase tracking-wider block">Accesos
+                                            Rápidos</span>
+                                        <div class="grid grid-cols-5 gap-1.5">
+                                            <div
+                                                class="bg-slate-900 hover:bg-slate-850 border border-slate-850 p-1 rounded-xl text-center cursor-pointer transition flex flex-col items-center">
+                                                <i data-lucide="monitor" class="w-3.5 h-3.5 text-orange-400"></i>
+                                                <span class="text-[7px] text-slate-450 mt-0.5 block leading-none">Aula
+                                                    V.</span>
+                                            </div>
+                                            <div
+                                                class="bg-slate-900 hover:bg-slate-850 border border-slate-850 p-1 rounded-xl text-center cursor-pointer transition flex flex-col items-center">
+                                                <i data-lucide="library" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                                <span
+                                                    class="text-[7px] text-slate-450 mt-0.5 block leading-none">Bibliot.</span>
+                                            </div>
+                                            <div
+                                                class="bg-slate-900 hover:bg-slate-850 border border-slate-850 p-1 rounded-xl text-center cursor-pointer transition flex flex-col items-center">
+                                                <i data-lucide="file-text" class="w-3.5 h-3.5 text-blue-400"></i>
+                                                <span
+                                                    class="text-[7px] text-slate-450 mt-0.5 block leading-none">Trámit.</span>
+                                            </div>
+                                            <div
+                                                class="bg-slate-900 hover:bg-slate-850 border border-slate-850 p-1 rounded-xl text-center cursor-pointer transition flex flex-col items-center">
+                                                <i data-lucide="briefcase" class="w-3.5 h-3.5 text-purple-400"></i>
+                                                <span
+                                                    class="text-[7px] text-slate-450 mt-0.5 block leading-none">Bolsa</span>
+                                            </div>
+                                            <div
+                                                class="bg-slate-900 hover:bg-slate-850 border border-slate-850 p-1 rounded-xl text-center cursor-pointer transition flex flex-col items-center">
+                                                <i data-lucide="headphones" class="w-3.5 h-3.5 text-cyan-400"></i>
+                                                <span
+                                                    class="text-[7px] text-slate-450 mt-0.5 block leading-none">Soport.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 3: TABLA COMPARATIVA
+         ========================================== -->
+    <div class="slide flex-col justify-center px-20 relative bg-slate-900">
+        <div class="max-w-5xl mx-auto w-full">
+            <span class="text-orange-500 font-bold tracking-wider text-sm uppercase mb-2 block text-center">Análisis de
+                Mercado</span>
+            <h2 class="font-heading text-4xl font-bold text-center mb-10">¿Por qué somos la mejor alternativa?</h2>
+
+            <div class="glass-panel rounded-3xl overflow-hidden border border-slate-700 shadow-2xl">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-800/80 border-b border-slate-700">
+                            <th class="p-6 font-heading text-lg text-slate-300 font-normal">Características</th>
+                            <th
+                                class="p-6 font-heading text-xl font-bold text-orange-500 bg-orange-500/10 text-center w-1/4">
+                                VILLANEXT</th>
+                            <th class="p-6 font-heading text-lg font-bold text-slate-400 text-center w-1/4">Plataformas
+                                Clásicas<br><span class="text-xs font-normal">(Moodle / SVA)</span></th>
+                            <th class="p-6 font-heading text-lg font-bold text-blue-400 text-center w-1/4">IAs
+                                Genéricas<br><span class="text-xs font-normal">(ChatGPT)</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700/50">
+                        <tr class="hover:bg-white/5 transition">
+                            <td class="p-5 text-slate-300 flex items-center gap-3"><i data-lucide="smartphone"
+                                    class="w-5 h-5 text-slate-500"></i> Diseño 100% Mobile-First</td>
+                            <td class="p-5 text-center bg-orange-500/5"><i data-lucide="check-circle-2"
+                                    class="w-6 h-6 text-emerald-500 mx-auto"></i></td>
+                            <td class="p-5 text-center"><i data-lucide="x-circle"
+                                    class="w-6 h-6 text-red-500/50 mx-auto"></i></td>
+                            <td class="p-5 text-center"><i data-lucide="check-circle-2"
+                                    class="w-6 h-6 text-emerald-500/50 mx-auto"></i></td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition">
+                            <td class="p-5 text-slate-300 flex items-center gap-3"><i data-lucide="activity"
+                                    class="w-5 h-5 text-slate-500"></i> Gestión Biopsicosocial (Estrés)</td>
+                            <td class="p-5 text-center bg-orange-500/5"><i data-lucide="check-circle-2"
+                                    class="w-6 h-6 text-emerald-500 mx-auto"></i></td>
+                            <td class="p-5 text-center"><i data-lucide="x-circle"
+                                    class="w-6 h-6 text-red-500/50 mx-auto"></i></td>
+                            <td class="p-5 text-center"><i data-lucide="x-circle"
+                                    class="w-6 h-6 text-red-500/50 mx-auto"></i></td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition">
+                            <td class="p-5 text-slate-300 flex items-center gap-3"><i data-lucide="users"
+                                    class="w-5 h-5 text-slate-500"></i> Matchmaking con Mentores Reales</td>
+                            <td class="p-5 text-center bg-orange-500/5"><i data-lucide="check-circle-2"
+                                    class="w-6 h-6 text-emerald-500 mx-auto"></i></td>
+                            <td class="p-5 text-center"><i data-lucide="x-circle"
+                                    class="w-6 h-6 text-red-500/50 mx-auto"></i></td>
+                            <td class="p-5 text-center"><i data-lucide="x-circle"
+                                    class="w-6 h-6 text-red-500/50 mx-auto"></i></td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition">
+                            <td class="p-5 text-slate-300 flex items-center gap-3"><i data-lucide="brain-circuit"
+                                    class="w-5 h-5 text-slate-500"></i> Conocimiento Contextual UNFV</td>
+                            <td class="p-5 text-center bg-orange-500/5"><i data-lucide="check-circle-2"
+                                    class="w-6 h-6 text-emerald-500 mx-auto"></i></td>
+                            <td class="p-5 text-center"><i data-lucide="check-circle-2"
+                                    class="w-6 h-6 text-emerald-500/50 mx-auto"></i></td>
+                            <td class="p-5 text-center"><i data-lucide="x-circle"
+                                    class="w-6 h-6 text-red-500/50 mx-auto"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 4: COMUNIDAD
+         ========================================== -->
+    <div class="slide flex-col justify-center px-20 relative bg-slate-900">
+        <div class="max-w-6xl mx-auto w-full flex gap-16 items-center">
+
+            <div class="w-1/2 relative">
+                <div class="absolute inset-0 bg-emerald-500/20 blur-[100px] rounded-full"></div>
+                <div class="glass-panel p-8 rounded-3xl border border-slate-700 relative z-10">
+                    <div class="flex items-center gap-4 mb-6 pb-6 border-b border-white/10">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-emerald-400 to-cyan-500 p-1">
+                            <div
+                                class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center border-2 border-slate-900">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Avatar"
+                                    class="w-12 h-12 rounded-full bg-slate-800">
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xl flex items-center gap-2">Arturo Mendoza <i
+                                    data-lucide="badge-check" class="text-emerald-500 w-5 h-5"></i></h4>
+                            <p class="text-emerald-400 text-sm font-medium">Mentor Verificado • 8vo Ciclo FIIS</p>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <p class="text-sm text-slate-400 mb-2">Especialidad para tutoría:</p>
+                        <span
+                            class="inline-block px-3 py-1 bg-slate-800 rounded-lg text-sm border border-slate-700 mr-2">Cálculo
+                            Diferencial</span>
+                        <span
+                            class="inline-block px-3 py-1 bg-slate-800 rounded-lg text-sm border border-slate-700">Punteros
+                            C++</span>
+                    </div>
+                    <button id="btnSolicitar" onclick="startRequestSimulation()"
+                        class="w-full py-4 rounded-xl bg-orange-500 hover:bg-orange-600 font-bold flex items-center justify-center gap-2 transition shadow-lg shadow-orange-500/20">
+                        <span id="btnText" class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-5 h-5"></i> Solicitar asesoría (Coste: 500 EXP)
+                        </span>
+                    </button>
+                </div>
+
+                <!-- Buzón del Mentor (Simulación) -->
+                <div id="mentorInboxNotification"
+                    class="absolute bottom-4 left-4 right-4 glass-panel p-4 rounded-2xl border-emerald-500/50 bg-slate-900/95 shadow-2xl z-20 translate-y-12 opacity-0 pointer-events-none transition-all duration-500 ease-out">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 animate-bounce">
+                            <i data-lucide="bell" class="w-5 h-5"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-emerald-400 font-semibold tracking-wider uppercase">Buzón de
+                                    Arturo (Mentor)</span>
+                                <span class="text-[10px] text-slate-500 font-mono">Ahora</span>
+                            </div>
+                            <h5 class="text-sm font-bold text-white mt-0.5">¡Nueva solicitud recibida!</h5>
+                            <p class="text-xs text-slate-400 mt-1">Un alumno de 1er ciclo solicita asesoría de <strong
+                                    class="text-slate-200">Cálculo Diferencial</strong>.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 mt-3 pt-3 border-t border-white/5">
+                        <button onclick="acceptRequest()"
+                            class="flex-1 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-xs font-bold text-slate-900 transition flex items-center justify-center gap-1">
+                            <i data-lucide="check" class="w-3.5 h-3.5"></i> Aceptar (+500 EXP)
+                        </button>
+                        <button onclick="resetRequest()"
+                            class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-400 transition">
+                            Rechazar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Match y Canal de Chat (Paso 2) -->
+                <div id="meetLinkNotification"
+                    class="absolute inset-0 glass-panel p-5 rounded-3xl border-emerald-500 bg-slate-950/98 flex flex-col justify-between z-30 opacity-0 pointer-events-none transition-all duration-500 overflow-hidden">
+                    <!-- Botón Cerrar en esquina superior derecha -->
+                    <button onclick="resetRequest()"
+                        class="absolute top-4 right-4 text-slate-500 hover:text-white transition">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+
+                    <div class="flex flex-col items-center text-center mt-1">
+                        <div
+                            class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-1.5 ring-4 ring-emerald-500/10">
+                            <i data-lucide="message-square" class="w-5 h-5 animate-pulse"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-lg text-white">¡Canal de Chat Habilitado!</h4>
+                        <p class="text-[10px] text-slate-400 mt-0.5 max-w-xs">Arturo aceptó tu solicitud. Chat abierto
+                            para coordinar.</p>
+                    </div>
+
+                    <!-- Simulación de Chat Privado (Más compacto) -->
+                    <div
+                        class="bg-slate-900 border border-slate-800 rounded-xl p-3 my-1.5 space-y-2.5 text-left flex-1 flex flex-col justify-center">
+                        <div class="flex flex-col items-end">
+                            <div
+                                class="bg-orange-500 text-white text-[11px] px-3 py-1.5 rounded-xl rounded-tr-none max-w-[90%] leading-snug">
+                                Hola Arturo, ¿cómo coordinamos la asesoría de Cálculo?
+                            </div>
+                            <span class="text-[8px] text-slate-500 mt-0.5">Enviado</span>
+                        </div>
+                        <div class="flex flex-col items-start">
+                            <div
+                                class="bg-slate-800 text-slate-200 text-[11px] px-3 py-1.5 rounded-xl rounded-tl-none max-w-[90%] border border-slate-700 leading-snug">
+                                ¡Hola! Escríbeme por aquí para coordinar el horario y aula.
+                            </div>
+                            <span class="text-[8px] text-slate-500 mt-0.5">Arturo • En línea</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-1/2 space-y-6">
+                <span class="text-emerald-500 font-bold tracking-wider text-sm uppercase">Comunidad Peer-to-Peer</span>
+                <h2 class="font-heading text-5xl font-bold leading-tight">El Villarrealino ayuda al Villarrealino</h2>
+
+                <div class="space-y-4 mt-8">
+                    <div class="glass-panel p-4 rounded-2xl border-l-4 border-l-orange-500">
+                        <h4 class="font-bold text-lg flex items-center gap-2"><i data-lucide="coins"
+                                class="text-orange-500 w-5 h-5"></i> Puntos EXP = Ayuda Real</h4>
+                        <p class="text-slate-400 text-sm">Estudia para ganar EXP. Usa esos puntos para "canjear"
+                            asesorías con alumnos mayores cuando la IA no baste.</p>
+                    </div>
+                    <div class="glass-panel p-4 rounded-2xl border-l-4 border-l-emerald-500">
+                        <h4 class="font-bold text-lg flex items-center gap-2"><i data-lucide="shield-check"
+                                class="text-emerald-500 w-5 h-5"></i> Mentores Verificados</h4>
+                        <p class="text-slate-400 text-sm">Alumnos de base con alto promedio ganan horas de proyección
+                            social resolviendo dudas de los cachimbos.</p>
+                    </div>
+                    <div class="glass-panel p-4 rounded-2xl border-l-4 border-l-blue-500">
+                        <h4 class="font-bold text-lg flex items-center gap-2"><i data-lucide="video"
+                                class="text-blue-500 w-5 h-5"></i> Asesorías Personalizadas</h4>
+                        <p class="text-slate-400 text-sm">El sistema detecta alumnos estancados en el mismo tema y les
+                            recomienda un asesor.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 5: MOTIVACIÓN AL ESTUDIANTE
+         ========================================== -->
+    <div class="slide flex-col justify-center px-20 relative bg-slate-900">
+        <div class="max-w-6xl mx-auto w-full space-y-8">
+            <div class="text-center">
+                <span class="text-orange-500 font-bold tracking-wider text-sm uppercase">Adopción y Retención</span>
+                <h2 class="font-heading text-4xl font-bold mt-2">¿Cómo motivamos al estudiante a usar VILLANEXT?</h2>
+            </div>
+
+            <!-- Grid de los 3 Pilares -->
+            <div class="grid grid-cols-3 gap-6">
+                <!-- Pilar 1: Gamificación Útil -->
+                <div
+                    class="glass-panel p-6 rounded-3xl border-slate-700 relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-3 bg-orange-500/20 text-orange-400 rounded-xl">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-heading font-bold text-lg text-white">Gamificación Real</h3>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-4 font-semibold uppercase tracking-wider">Motivación
+                            Intrínseca y Extrínseca</p>
+
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2 text-sm text-slate-300">
+                                <span class="p-1 rounded bg-orange-500/10 text-orange-400 mt-0.5"><i data-lucide="flame"
+                                        class="w-3.5 h-3.5"></i></span>
+                                <div>
+                                    <strong class="text-white">La Racha como Escudo:</strong>
+                                    Días seguidos activos multiplican EXP. Aversión psicológica a la pérdida.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-slate-300">
+                                <span class="p-1 rounded bg-orange-500/10 text-orange-400 mt-0.5"><i data-lucide="coins"
+                                        class="w-3.5 h-3.5"></i></span>
+                                <div>
+                                    <strong class="text-white">Moneda de Cambio:</strong>
+                                    Canjea tu EXP acumulada por mentorías 1-a-1 antes de exámenes difíciles.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pilar 2: Alivio Cognitivo -->
+                <div
+                    class="glass-panel p-6 rounded-3xl border-slate-700 relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-3 bg-blue-500/20 text-blue-400 rounded-xl">
+                                <i data-lucide="brain" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-heading font-bold text-lg text-white">Alivio Cognitivo</h3>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-4 font-semibold uppercase tracking-wider">Cero Ansiedad y
+                            Procrastinación</p>
+
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2 text-sm text-slate-300">
+                                <span class="p-1 rounded bg-blue-500/10 text-blue-400 mt-0.5"><i data-lucide="compass"
+                                        class="w-3.5 h-3.5"></i></span>
+                                <div>
+                                    <strong class="text-white">Cero Ansiedad de Plan:</strong>
+                                    3 misiones ultra-fragmentadas de 5 min en el bus, adaptadas a tu energía.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-slate-300">
+                                <span class="p-1 rounded bg-blue-500/10 text-blue-400 mt-0.5"><i
+                                        data-lucide="calculator" class="w-3.5 h-3.5"></i></span>
+                                <div>
+                                    <strong class="text-white">Predicción de Éxito:</strong>
+                                    Calculadora interactiva que dice exactamente cuánto necesitas en el final.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pilar 3: Sentido de Pertenencia -->
+                <div
+                    class="glass-panel p-6 rounded-3xl border-slate-700 relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-3 bg-emerald-500/20 text-emerald-400 rounded-xl">
+                                <i data-lucide="users-2" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-heading font-bold text-lg text-white">Pertenencia y Apoyo</h3>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-4 font-semibold uppercase tracking-wider">Validación e
+                            Integración</p>
+
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2 text-sm text-slate-300">
+                                <span class="p-1 rounded bg-emerald-500/10 text-emerald-400 mt-0.5"><i
+                                        data-lucide="award" class="w-3.5 h-3.5"></i></span>
+                                <div>
+                                    <strong class="text-white">Estatus Visible:</strong>
+                                    Badges brillantes (ej: Emerald 500) para destacar a mentores de ciclos avanzados.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-slate-300">
+                                <span class="p-1 rounded bg-emerald-500/10 text-emerald-400 mt-0.5"><i
+                                        data-lucide="message-square-plus" class="w-3.5 h-3.5"></i></span>
+                                <div>
+                                    <strong class="text-white">Centralización del Caos:</strong>
+                                    Adiós a los grupos ruidosos de WhatsApp. Foros y canales liderados por delegados.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cierre / Quote Fuerte -->
+            <div
+                class="glass-panel p-5 rounded-2xl border-orange-500/20 bg-orange-500/5 relative overflow-hidden flex items-center gap-4 max-w-4xl mx-auto shadow-[0_0_20px_rgba(249,115,22,0.05)]">
+                <div class="p-3 bg-orange-500/10 text-orange-400 rounded-xl shrink-0">
+                    <i data-lucide="quote" class="w-6 h-6"></i>
+                </div>
+                <p class="text-sm text-slate-300 italic leading-relaxed">
+                    "No motivamos al estudiante con medallas de plástico virtuales. Lo motivamos convirtiendo su
+                    consistencia académica en una moneda real de soporte humano, y reduciendo su frustración al
+                    fragmentar sílabos complejos en misiones de 5 minutos que le ayudan a administrar su tiempo y
+                    cumplir con sus trabajos por presentar, transformando el estrés en progreso tangible."
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 6: COSTOS Y ESCALABILIDAD
+         ========================================== -->
+    <div class="slide flex-col justify-center px-20 relative bg-slate-900">
+        <div class="max-w-5xl mx-auto w-full text-center space-y-10">
+            <div>
+                <span class="text-orange-500 font-bold tracking-wider text-sm uppercase">Viabilidad Institucional</span>
+                <h2 class="font-heading text-5xl font-bold mt-2">Costos y Escalabilidad</h2>
+                <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Diseñado para ser implementado mañana mismo sin quebrar
+                    el presupuesto de la universidad.</p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6 text-left">
+                <div class="glass-panel p-6 rounded-2xl border-slate-700 relative overflow-hidden">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-slate-800 rounded-xl border border-slate-600"><i data-lucide="server"
+                                class="text-blue-400 w-6 h-6"></i></div>
+                        <span class="text-2xl font-bold font-heading text-white">~$15<span
+                                class="text-sm text-slate-500 font-normal">/mes</span></span>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Hosting y BD Vectorial</h4>
+                    <p class="text-sm text-slate-400">Despliegue en VPS económico. Base de datos PostgreSQL con
+                        extensión pgvector (Open Source, sin licencias caras).</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border-slate-700 relative overflow-hidden">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-slate-800 rounded-xl border border-slate-600"><i data-lucide="cpu"
+                                class="text-emerald-400 w-6 h-6"></i></div>
+                        <span class="text-2xl font-bold font-heading text-white">Flexible</span>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Motor de Inteligencia Artificial</h4>
+                    <p class="text-sm text-slate-400">Integración con APIs optimizadas. Inyección de contexto
+                        dinámico para reducir costos de tokens al mínimo.</p>
+                </div>
+
+                <div
+                    class="glass-panel p-6 rounded-2xl border-orange-500/50 bg-orange-500/5 shadow-[0_0_20px_rgba(249,115,22,0.1)]">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-orange-500 rounded-xl shadow-lg shadow-orange-500/30"><i
+                                data-lucide="copy-plus" class="text-white w-6 h-6"></i></div>
+                        <span class="text-2xl font-bold font-heading text-orange-400">Costo mínimo</span>
+                    </div>
+                    <h4 class="font-bold text-lg text-orange-400 mb-2">Escalar a otras Facultades</h4>
+                    <p class="text-sm text-slate-300">¿Llevarlo de la FIIS a Medicina o Arquitectura? No se reprograma
+                        nada. El sistema lee un simple archivo JSON con la nueva malla curricular.</p>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-800 mt-8">
+                <h3 class="text-3xl font-bold font-heading text-white">VILLANEXT <span
+                        class="text-slate-500 font-light">| Supervivencia Universitaria</span></h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE NAVEGACIÓN Y SPEECH -->
+    <script>
+        lucide.createIcons();
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const numDisplay = document.getElementById('currentSlideNum');
+        const notesPanel = document.getElementById('notesPanel');
+        const notesContent = document.getElementById('notesContent');
+
+        // GUION ACTUALIZADO (CONTEXTO UNFV REAL)
+        const speeches = [
+            `"Buenas tardes, jurado. Hablemos de la realidad del estudiante villarrealino. El mayor peligro en nuestra universidad es la falta de seguimiento y el abandono silencioso. La inmensa carga cognitiva de llevar hasta 10 materias sin un acompañamiento constante eleva drásticamente las tasas de deserción y el bajo rendimiento académico. Las plataformas actuales como el SVA o Moodle son estáticas; no detectan cuándo un alumno está a punto de tirar la toalla. Por eso creamos VILLANEXT."`,
+
+            `"La solución no es hacer otra página web pesada. Presentamos VILLANEXT: una aplicación diseñada tanto para PC como para móviles, optimizando tu tiempo y productividad en cualquier dispositivo. El corazón es Fede, nuestra IA socrática. Fede no te hace la tarea ni fomenta el copy-paste; te guía. Transforma un sílabo denso de la FIIS en 'micro-misiones' diarias para que el aprendizaje sea manejable y no te sature visualmente."`,
+
+            `"¿Por qué no usar simplemente Moodle o ChatGPT? Esta tabla lo resume. Moodle es pasivo, y ChatGPT genérico distrae o permite hacer trampa. VILLANEXT es la única plataforma que integra manejo de estrés biopsicosocial. Si Fede detecta que llevas 2 horas estudiando frustrado, te bloquea la pantalla y te receta pausas activas. Además, usamos la Curva de Ebbinghaus para inyectarte micro-repasos días antes de tu examen parcial. Nosotros organizamos tu mente, tú solo estudias."`,
+
+            `"Pero sabemos que la IA no lo es todo; el villarrealino es solidario. Si la IA no basta, entra nuestra Comunidad Peer-to-Peer. En la app ganas puntos 'EXP' por estudiar. Si un cachimbo no entiende un tema de algoritmos, invierte sus EXP para pedir ayuda. El sistema hace un 'matchmaking' automático con un 'Mentor Verificado' (un alumno de ciclos superiores con buenas notas) y les abre un canal de chat privado para que puedan coordinar la asesoría. Aprendizaje colaborativo y real."`,
+
+            `"¿Cómo logramos que el estudiante realmente use VILLANEXT día a día? No con medallas de plástico virtuales, sino con tres pilares. Primero, Gamificación con Utilidad Real: mantener la racha activa multiplicadores de EXP, y esa EXP se convierte en una moneda de cambio social para canjear mentorías uno a uno con alumnos de ciclos superiores. Segundo, Alivio de Carga Cognitiva: en lugar de abrumarse con diez materias, la app ofrece tres misiones diarias de cinco minutos ideales para optimizar su tiempo entre clases o trabajos por presentar, junto a una calculadora de promedios para saber exactamente qué nota necesitan. Y tercero, Estatus y Pertenencia: validamos a los mentores con badges brillantes y centralizamos los grupos caóticos de WhatsApp en foros ordenados. Transformamos el estrés en progreso tangible."`,
+
+            `"A nivel técnico, no gastamos recursos en entrenar modelos desde cero. Consumimos modelos comerciales mediante APIs eficientes utilizando el Vercel AI SDK. La inteligencia local radica en nuestra base vectorial, donde indexamos los proyectos y códigos de ciclos pasados de la facultad. Al hacer una consulta, extraemos ese contexto y se lo enviamos a la API. Así logramos que un modelo estándar nos responda con el nivel técnico exacto de la UNFV, manteniendo un costo operativo de centavos."`
+        ];
+
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+            numDisplay.innerText = currentSlide + 1;
+            notesContent.innerText = speeches[currentSlide];
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        function toggleNotes() {
+            notesPanel.classList.toggle('hidden');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // SIMULACIÓN DE SOLICITUD DE ASESORÍA
+        function startRequestSimulation() {
+            const btn = document.getElementById('btnSolicitar');
+            const btnText = document.getElementById('btnText');
+
+            btn.disabled = true;
+            btn.classList.add('opacity-75', 'cursor-not-allowed');
+            btnText.innerHTML = `<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> Enviando solicitud...`;
+            lucide.createIcons();
+
+            setTimeout(() => {
+                const inbox = document.getElementById('mentorInboxNotification');
+                inbox.classList.remove('opacity-0', 'translate-y-12', 'pointer-events-none');
+                inbox.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            }, 800);
+        }
+
+        function acceptRequest() {
+            const inbox = document.getElementById('mentorInboxNotification');
+            inbox.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            inbox.classList.add('opacity-0', 'translate-y-12', 'pointer-events-none');
+
+            setTimeout(() => {
+                const match = document.getElementById('meetLinkNotification');
+                match.classList.remove('opacity-0', 'pointer-events-none');
+                match.classList.add('opacity-100', 'pointer-events-auto');
+            }, 300);
+        }
+
+        function resetRequest() {
+            const match = document.getElementById('meetLinkNotification');
+            match.classList.remove('opacity-100', 'pointer-events-auto');
+            match.classList.add('opacity-0', 'pointer-events-none');
+
+            const inbox = document.getElementById('mentorInboxNotification');
+            inbox.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            inbox.classList.add('opacity-0', 'translate-y-12', 'pointer-events-none');
+
+            const btn = document.getElementById('btnSolicitar');
+            const btnText = document.getElementById('btnText');
+            btn.disabled = false;
+            btn.classList.remove('opacity-75', 'cursor-not-allowed');
+            btnText.innerHTML = `<i data-lucide="mail" class="w-5 h-5"></i> Solicitar asesoría (Coste: 500 EXP)`;
+            lucide.createIcons();
+        }
+
+        // CONTROL DE TARJETAS DE PROBLEMA/SOLUCIÓN
+        function toggleCard(card) {
+            const problem = card.querySelector('.problem-view');
+            const solution = card.querySelector('.solution-view');
+            const hint = card.querySelector('.btn-toggle-hint');
+
+            const isSolutionVisible = solution.classList.contains('opacity-100');
+
+            if (isSolutionVisible) {
+                // Cambiar a vista problema
+                solution.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                solution.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+
+                problem.classList.remove('opacity-0', 'scale-95');
+                problem.classList.add('opacity-100', 'scale-100');
+
+                hint.innerText = "Ver Solución";
+                hint.classList.remove('bg-slate-900', 'text-slate-400');
+            } else {
+                // Cambiar a vista solución
+                problem.classList.remove('opacity-100', 'scale-100');
+                problem.classList.add('opacity-0', 'scale-95');
+
+                solution.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+                solution.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+
+                hint.innerText = "Ver Problema";
+                hint.classList.add('bg-slate-900', 'text-slate-400');
+            }
+            lucide.createIcons();
+        }
+
+        // CONTROL DE VISTA COMPATIBILIDAD DISPOSITIVOS (MÓVIL / PC)
+        function toggleDeviceMockup() {
+            const desktop = document.getElementById('desktopMockup');
+            const isHidden = desktop.classList.contains('opacity-0');
+
+            if (isHidden) {
+                desktop.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
+                desktop.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
+            } else {
+                desktop.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
+                desktop.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+            }
+            lucide.createIcons();
+        }
+
+        updateSlide();
+    </script>
+</body>
+
+</html>
