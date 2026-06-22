@@ -63,6 +63,15 @@
             background: #475569;
             border-radius: 4px;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
     </style>
 </head>
 
@@ -385,11 +394,14 @@
                             <div class="space-y-1">
                                 <span
                                     class="text-[8px] text-slate-500 font-bold uppercase tracking-wider block mb-0.5">Principal</span>
-                                <a href="#" onclick="event.preventDefault()"
-                                    class="flex items-center gap-2 px-2.5 py-1.5 bg-orange-500/10 text-orange-400 rounded-lg font-semibold"><i
+                                <a href="#" id="desktop-nav-inicio" onclick="switchDesktopTab('inicio', event)"
+                                    class="flex items-center gap-2 px-2.5 py-1.5 bg-orange-500/10 text-orange-400 rounded-lg font-semibold transition"><i
                                         data-lucide="home" class="w-3.5 h-3.5"></i> Inicio</a>
-                                <a href="#" onclick="event.preventDefault()"
-                                    class="flex justify-between items-center px-2.5 py-1.5 hover:bg-white/5 rounded-lg text-slate-400 hover:text-white transition"><span
+                                <a href="#" id="desktop-nav-dashboard" onclick="switchDesktopTab('dashboard', event)"
+                                    class="flex items-center gap-2 px-2.5 py-1.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition"><i
+                                        data-lucide="layout-dashboard" class="w-3.5 h-3.5"></i> Dashboard</a>
+                                <a href="#" id="desktop-nav-mensajes" onclick="switchDesktopTab('mensajes', event)"
+                                    class="flex justify-between items-center px-2.5 py-1.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition"><span
                                         class="flex items-center gap-2"><i data-lucide="message-square"
                                             class="w-3.5 h-3.5"></i> Mensajes</span> <span
                                         class="bg-emerald-500/20 text-emerald-400 px-1.5 py-0.2 rounded-full text-[8px] font-bold">2</span></a>
@@ -398,24 +410,21 @@
                             <div class="space-y-0.5">
                                 <span
                                     class="text-[8px] text-slate-500 font-bold uppercase tracking-wider block mb-0.5">Académico</span>
+                                <a href="#" id="desktop-nav-rutas" onclick="switchDesktopTab('rutas', event)"
+                                    class="flex items-center gap-2 px-2.5 py-1.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition"><i
+                                        data-lucide="route" class="w-3.5 h-3.5"></i> Rutas</a>
                                 <a href="#" onclick="event.preventDefault()"
-                                    class="flex items-center gap-2 px-2.5 py-1 hover:bg-white/5 rounded-lg text-slate-400 hover:text-white transition"><i
-                                        data-lucide="book-open" class="w-3.5 h-3.5"></i> Cursos</a>
+                                    class="flex items-center gap-2 px-2.5 py-1 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition"><i
+                                        data-lucide="git-fork" class="w-3.5 h-3.5"></i> Malla Curricular</a>
                                 <a href="#" onclick="event.preventDefault()"
-                                    class="flex items-center gap-2 px-2.5 py-1 hover:bg-white/5 rounded-lg text-slate-400 hover:text-white transition"><i
-                                        data-lucide="git-fork" class="w-3.5 h-3.5"></i> Malla</a>
-                                <a href="#" onclick="event.preventDefault()"
-                                    class="flex items-center gap-2 px-2.5 py-1 hover:bg-white/5 rounded-lg text-slate-400 hover:text-white transition"><i
-                                        data-lucide="calendar" class="w-3.5 h-3.5"></i> Horario</a>
-                                <a href="#" onclick="event.preventDefault()"
-                                    class="flex items-center gap-2 px-2.5 py-1 hover:bg-white/5 rounded-lg text-slate-400 hover:text-white transition"><i
+                                    class="flex items-center gap-2 px-2.5 py-1 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition"><i
                                         data-lucide="file-check" class="w-3.5 h-3.5"></i> Evaluaciones</a>
                                 <a href="#" onclick="event.preventDefault()"
-                                    class="flex items-center gap-2 px-2.5 py-1 hover:bg-white/5 rounded-lg text-slate-400 hover:text-white transition"><i
+                                    class="flex items-center gap-2 px-2.5 py-1 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition"><i
                                         data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Calificaciones</a>
                                 <a href="#" onclick="event.preventDefault()"
-                                    class="flex items-center gap-2 px-2.5 py-1 hover:bg-white/5 rounded-lg text-slate-400 hover:text-white transition"><i
-                                        data-lucide="library" class="w-3.5 h-3.5"></i> Biblioteca</a>
+                                    class="flex items-center gap-2 px-2.5 py-1 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition"><i
+                                        data-lucide="bar-chart-2" class="w-3.5 h-3.5"></i> Estadísticas</a>
                             </div>
                         </div>
                         <!-- Facultad Info -->
@@ -460,8 +469,87 @@
                             </div>
                         </div>
 
-                        <!-- Content Grid -->
-                        <div class="flex-1 p-5 overflow-y-auto space-y-4">
+                        <!-- VISTA 1: INICIO (FEDE SOCRÁTICO CHAT) - ACTIVO POR DEFECTO -->
+                        <div id="desktop-content-inicio" class="desktop-tab-content flex-1 p-4 flex flex-col justify-between overflow-hidden relative">
+                            <!-- Brain badge indicating Fede learns from you -->
+                            <div class="absolute bottom-16 right-6 z-30 group">
+                                <div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center shadow-lg shadow-orange-500/30 hover:bg-orange-600 active:scale-95 transition-all duration-300 cursor-pointer animate-bounce" style="animation-duration: 3s">
+                                    <i data-lucide="brain" class="text-white w-5 h-5"></i>
+                                </div>
+                                <div class="absolute bottom-12 right-0 bg-[#0F1322] border border-orange-500/30 text-[9px] text-slate-200 p-2.5 rounded-xl w-48 shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 leading-normal z-50">
+                                    <strong class="text-orange-400 block mb-0.5"><i data-lucide="sparkles" class="inline w-3 h-3 mb-0.5"></i> El chat aprende de ti:</strong>
+                                    Fede recuerda tus dudas, estilo de estudio y nivel actual para adaptar su tono pedagógico y personalizar tu ruta de aprendizaje de manera predictiva.
+                                </div>
+                            </div>
+
+                            <!-- Chat Card Container -->
+                            <div class="flex-1 bg-[#111625]/60 border border-slate-800 rounded-2xl flex flex-col h-full justify-between overflow-hidden">
+                                <!-- Chat Header -->
+                                <div class="flex items-center justify-between border-b border-white/5 p-3 shrink-0 bg-[#0F1322]/80">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-7 h-7 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
+                                            <i data-lucide="bot" class="text-slate-950 w-4 h-4"></i>
+                                        </div>
+                                        <div>
+                                            <span class="font-heading font-bold text-white text-[10px] flex items-center gap-1">
+                                                Fede <i data-lucide="sparkles" class="text-orange-400 w-3 h-3 animate-pulse"></i>
+                                            </span>
+                                            <span class="text-[7px] text-slate-400 font-medium">Tutor Socrático • IA Activada</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-2 scale-90">
+                                        <span class="flex items-center gap-1 text-[8px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20 font-semibold uppercase">
+                                            <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span> Online
+                                        </span>
+                                        <button class="px-2 py-1 bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white rounded-lg transition text-[8px] font-semibold flex items-center gap-0.5">
+                                            <i data-lucide="plus" class="w-2.5 h-2.5"></i> Nuevo Chat
+                                        </button>
+                                        <button class="p-1 bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-400 hover:text-white rounded-lg transition">
+                                            <i data-lucide="eye-off" class="w-3 h-3"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Messages Area -->
+                                <div id="desktop-fede-messages" class="flex-1 p-3.5 space-y-3 overflow-y-auto min-h-0 bg-slate-950/20">
+                                    <!-- Fede Message -->
+                                    <div class="flex items-start gap-2.5 max-w-[85%]">
+                                        <div class="w-7 h-7 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 mt-0.5">
+                                            <i data-lucide="bot" class="w-3.5 h-3.5"></i>
+                                        </div>
+                                        <div class="bg-slate-900/90 border border-slate-800 text-slate-200 px-3 py-2.5 rounded-2xl rounded-tl-none leading-relaxed text-[10px] relative group">
+                                            <button class="absolute top-2 right-2 text-slate-500 hover:text-white transition opacity-0 group-hover:opacity-100">
+                                                <i data-lucide="volume-2" class="w-3 h-3"></i>
+                                            </button>
+                                            <p class="mb-1.5">¡Hola! Vamos por partes, que el tiempo en la FIIS es oro. ⏳</p>
+                                            <p class="mb-1.5">Primero, sobre el cuestionario: ¿de qué periodo o tema específico de <strong class="text-orange-400 font-medium">Historia</strong> quieres que te ponga a prueba? (Recuerda que no te daré las respuestas, ¡tienes que razonarlas!).</p>
+                                            <p class="mb-1.5">Sobre <strong class="text-orange-400 font-medium">Matemáticas</strong>, si quieres un reto que realmente te sirva para la carrera, te recomiendo empezar por <strong class="text-white">Cálculo de Varias Variables</strong> o <strong class="text-white">Ecuaciones Diferenciales</strong>. Son la base de muchos cursos de ingeniería. ¿Cuál de esos te suena más o cuál te toca pronto?</p>
+                                            <p>Y claro, dime: <strong class="text-orange-300 font-medium">¿en qué necesitas ayuda exactamente?</strong> Suéltalo, ¿qué es lo que te tiene trabado? 🤪</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Input Bar Area -->
+                                <div class="p-2 border-t border-white/5 bg-[#0F1322]/80 shrink-0">
+                                    <div class="flex gap-1.5">
+                                        <button class="p-1.5 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition flex items-center justify-center shrink-0">
+                                            <i data-lucide="mic" class="w-3.5 h-3.5"></i>
+                                        </button>
+                                        <div class="relative flex-1">
+                                            <input type="text" id="desktop-fede-input" onkeydown="handleFedeChatKey(event)" placeholder="Escríbele a Fede..."
+                                                class="w-full bg-slate-900 border border-slate-800 rounded-xl pl-3 pr-8 py-1.5 text-[9px] text-slate-200 placeholder-slate-500 focus:outline-none focus:border-slate-700 text-slate-300">
+                                            <button onclick="sendFedeChatMessage()"
+                                                class="absolute right-1 top-1/2 -translate-y-1/2 w-6 h-6 bg-orange-500 hover:bg-orange-600 text-slate-950 rounded-lg transition flex items-center justify-center shadow-md">
+                                                <i data-lucide="send" class="w-3 h-3"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- VISTA 2: DASHBOARD ORIGINAL (HISTORIAL, MISIONES, ACCESOS) -->
+                        <div id="desktop-content-dashboard" class="desktop-tab-content flex-1 p-5 overflow-y-auto space-y-4 hidden">
                             <!-- Header welcome -->
                             <div class="flex justify-between items-end border-b border-white/5 pb-2">
                                 <div>
@@ -558,7 +646,7 @@
                                         </div>
                                         <div class="relative flex gap-1.5">
                                             <input type="text" placeholder="Escribe tu mensaje..."
-                                                class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-[10px] placeholder-slate-500 focus:outline-none focus:border-slate-700 text-slate-300">
+                                                class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-[10px] placeholder-slate-500 focus:outline-none focus:border-slate-700 text-slate-305">
                                             <button
                                                 class="p-1.5 bg-orange-500 text-slate-950 rounded-xl hover:bg-orange-600 transition flex items-center justify-center shrink-0">
                                                 <i data-lucide="send" class="w-3 h-3"></i>
@@ -650,6 +738,288 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- VISTA 3: RUTAS DE ESTUDIO (MAPA INTERACTIVO Y DETALLES DE CURSO) -->
+                        <div id="desktop-content-rutas" class="desktop-tab-content flex-1 p-4 overflow-y-auto space-y-3.5 hidden text-[10px]">
+                            <!-- Selector de curso activo -->
+                            <div class="flex flex-col items-center justify-center shrink-0 mb-1">
+                                <span class="text-[8px] text-slate-500 font-bold uppercase tracking-wider mb-1">Seleccionar Curso Activo</span>
+                                <div class="w-64 bg-[#111625] border border-slate-800 rounded-xl px-3 py-1.5 flex items-center justify-between cursor-pointer hover:border-slate-700 transition">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-6 h-6 rounded-lg bg-orange-500/20 text-orange-400 flex items-center justify-center shrink-0">
+                                            <i data-lucide="book" class="w-3.5 h-3.5"></i>
+                                        </div>
+                                        <div class="text-left">
+                                            <p class="font-heading font-bold text-white leading-none text-[9px]">LENGUAJE Y COMUNICACIÓN</p>
+                                            <span class="text-[7px] text-slate-500 font-medium">02</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="font-bold text-orange-400 text-[9px]">36%</span>
+                                        <i data-lucide="chevron-down" class="w-3 h-3 text-slate-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Progreso General Banner -->
+                            <div class="glass-panel p-3 rounded-xl border-slate-800 flex items-center justify-between shrink-0">
+                                <div class="flex-1">
+                                    <h3 class="font-heading font-bold text-[11px] text-white uppercase tracking-wider">LENGUAJE Y COMUNICACIÓN</h3>
+                                    <div class="flex items-center gap-2 mt-1.5">
+                                        <div class="flex-1 bg-slate-950 h-2 rounded-full overflow-hidden border border-white/5 relative">
+                                            <div id="route-progress-bar" class="bg-emerald-500 h-full rounded-full transition-all duration-1000" style="width: 36%"></div>
+                                        </div>
+                                        <span class="font-bold text-emerald-400 shrink-0 text-[10px]">36%</span>
+                                    </div>
+                                    <p class="text-[7px] text-slate-500 mt-0.5 font-medium">Tu progreso general</p>
+                                </div>
+                            </div>
+
+                            <!-- Tabs: Ruta Oficial vs Ruta IA -->
+                            <div class="flex border-b border-slate-800 shrink-0 text-[9px]">
+                                <button onclick="toggleRouteType('oficial')" id="btn-route-oficial"
+                                    class="px-3 py-1.5 border-b-2 border-orange-500 text-white font-bold transition flex items-center gap-1">
+                                    RUTA OFICIAL (SÍLABO)
+                                </button>
+                                <button onclick="toggleRouteType('ia')" id="btn-route-ia"
+                                    class="px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1">
+                                    <i data-lucide="sparkles" class="text-orange-400 w-3 h-3 animate-pulse"></i> RUTA IA PERSONALIZADA
+                                </button>
+                            </div>
+
+                            <!-- Contenido del Mapa de Ruta -->
+                            <div class="relative bg-[#111625]/30 border border-slate-800/80 rounded-xl p-4 min-h-[400px] overflow-hidden">
+                                <!-- Legend (top right) -->
+                                <div class="absolute top-3 right-3 flex items-center gap-2 bg-[#0F1322]/90 border border-slate-800 px-2 py-1 rounded-lg text-[7px] font-bold z-10">
+                                    <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Completado</span>
+                                    <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> Actual</span>
+                                    <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span> Bloqueado</span>
+                                </div>
+
+                                <!-- Título de Ruta -->
+                                <div id="route-title-header" class="flex items-center gap-1.5 mb-5 relative z-10">
+                                    <i data-lucide="git-commit" class="text-orange-500 w-4 h-4"></i>
+                                    <div>
+                                        <h4 class="font-heading font-bold text-white text-[10px]">Ruta de Habilidades</h4>
+                                        <p class="text-[7px] text-slate-500">Completa el sílabo semana a semana</p>
+                                    </div>
+                                </div>
+
+                                <!-- Winding Map Nodes -->
+                                <div id="route-nodes-container" class="relative max-w-sm mx-auto py-2">
+                                    <!-- Dynamic Wave Lines background -->
+                                    <div class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-44 pointer-events-none z-0">
+                                        <svg class="w-full h-full" viewBox="0 0 100 480" preserveAspectRatio="none">
+                                            <!-- Dotted connecting line -->
+                                            <path id="svg-wave-base" d="M 50,15 C 20,70 80,105 50,160 C 20,215 80,250 50,305 C 20,360 80,395 50,450" 
+                                                  fill="none" stroke="#334155" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 5" />
+                                            <!-- Completed connector line (green) -->
+                                            <path id="svg-wave-completed" d="M 50,15 C 20,70 80,105 50,160" 
+                                                  fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 5" />
+                                            <!-- In-progress connector line (orange) -->
+                                            <path id="svg-wave-progress" d="M 50,160 C 20,215 80,250 50,305" 
+                                                  fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 5" />
+                                        </svg>
+                                    </div>
+
+                                    <!-- Node list (Official Route) -->
+                                    <div id="route-nodes-official-list" class="space-y-7 relative z-10">
+                                        <!-- Node 1 (Completado) -->
+                                        <div onclick="selectRouteNode(1, '1. Introducción general', 'Completado', 'Conceptos fundamentales del lenguaje, el proceso de comunicación y barreras básicas.')"
+                                             class="flex items-center justify-center translate-x-0 transition transform hover:scale-105 cursor-pointer">
+                                            <div class="flex items-center gap-2.5 bg-[#0F1322] border border-slate-800 p-2 rounded-xl w-60 shadow-md hover:border-slate-700 transition">
+                                                <div class="w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500 text-emerald-500 flex items-center justify-center shrink-0 shadow-lg shadow-emerald-500/10">
+                                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                                </div>
+                                                <div class="text-left flex-1 min-w-0">
+                                                    <h5 class="font-bold text-white text-[9px] truncate">1. Introducción general</h5>
+                                                    <span class="text-[7px] text-emerald-400 font-bold uppercase mt-0.5 block">Completado</span>
+                                                </div>
+                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-650"></i>
+                                            </div>
+                                        </div>
+
+                                        <!-- Node 2 (Completado) -->
+                                        <div onclick="selectRouteNode(2, '2. Principios y leyes básicas', 'Completado', 'Estructuras gramaticales, sintaxis básica y reglas de coherencia textual en informes universitarios.')"
+                                             class="flex items-center justify-center translate-x-[-24px] transition transform hover:scale-105 cursor-pointer">
+                                            <div class="flex items-center gap-2.5 bg-[#0F1322] border border-slate-800 p-2 rounded-xl w-60 shadow-md hover:border-slate-700 transition">
+                                                <div class="w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500 text-emerald-500 flex items-center justify-center shrink-0 shadow-lg shadow-emerald-500/10">
+                                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                                </div>
+                                                <div class="text-left flex-1 min-w-0">
+                                                    <h5 class="font-bold text-white text-[9px] truncate">2. Principios y leyes básicas</h5>
+                                                    <span class="text-[7px] text-emerald-400 font-bold uppercase mt-0.5 block">Completado</span>
+                                                </div>
+                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-650"></i>
+                                            </div>
+                                        </div>
+
+                                        <!-- Node 3 (Actual) -->
+                                        <div onclick="selectRouteNode(3, '3. Métodos avanzados y desarrollo', 'En progreso', 'Elaboración de textos científicos y argumentativos. Fede ha segmentado este módulo en 3 misiones de 5 minutos al notar dificultades en tu perfil.')"
+                                             class="flex items-center justify-center translate-x-[24px] transition transform hover:scale-105 cursor-pointer">
+                                            <div class="flex items-center gap-2.5 bg-[#0F1322] border-2 border-orange-500 p-2 rounded-xl w-60 shadow-lg shadow-orange-500/10 hover:border-orange-400 transition ring-4 ring-orange-500/5">
+                                                <div class="w-8 h-8 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center shrink-0 shadow-inner">
+                                                    <i data-lucide="bar-chart-2" class="w-4 h-4 animate-pulse"></i>
+                                                </div>
+                                                <div class="text-left flex-1 min-w-0">
+                                                    <h5 class="font-bold text-white text-[9px] truncate">3. Métodos avanzados y desarrollo</h5>
+                                                    <span class="text-[7px] text-orange-400 font-bold uppercase mt-0.5 block">En progreso (18%)</span>
+                                                </div>
+                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-orange-500"></i>
+                                            </div>
+                                        </div>
+
+                                        <!-- Node 4 (Bloqueado) -->
+                                        <div onclick="selectRouteNode(4, '4. Estudios de caso y diseño', 'Bloqueado', 'Comprensión lectora avanzada y análisis crítico de textos científicos de ingeniería.')"
+                                             class="flex items-center justify-center translate-x-[-24px] transition transform hover:scale-105 cursor-pointer">
+                                            <div class="flex items-center gap-2.5 bg-[#0F1322]/40 border border-slate-900 p-2 rounded-xl w-60 opacity-60 hover:opacity-80 transition">
+                                                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-500 flex items-center justify-center shrink-0">
+                                                    <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                                                </div>
+                                                <div class="text-left flex-1 min-w-0">
+                                                    <h5 class="font-bold text-slate-400 text-[9px] truncate">4. Estudios de caso y diseño</h5>
+                                                    <span class="text-[7px] text-slate-500 font-bold uppercase mt-0.5 block">Bloqueado</span>
+                                                </div>
+                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-800"></i>
+                                            </div>
+                                        </div>
+
+                                        <!-- Node 5 (Bloqueado) -->
+                                        <div onclick="selectRouteNode(5, '5. Simulaciones y testing', 'Bloqueado', 'Técnicas de redacción formal aplicadas a documentación técnica y solicitudes administrativas.')"
+                                             class="flex items-center justify-center translate-x-[24px] transition transform hover:scale-105 cursor-pointer">
+                                            <div class="flex items-center gap-2.5 bg-[#0F1322]/40 border border-slate-900 p-2 rounded-xl w-60 opacity-60 hover:opacity-80 transition">
+                                                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-500 flex items-center justify-center shrink-0">
+                                                    <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                                                </div>
+                                                <div class="text-left flex-1 min-w-0">
+                                                    <h5 class="font-bold text-slate-400 text-[9px] truncate">5. Simulaciones y testing</h5>
+                                                    <span class="text-[7px] text-slate-500 font-bold uppercase mt-0.5 block">Bloqueado</span>
+                                                </div>
+                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-800"></i>
+                                            </div>
+                                        </div>
+
+                                        <!-- Node 6 (Bloqueado) -->
+                                        <div onclick="selectRouteNode(6, '6. Evaluación final de competencias', 'Bloqueado', 'Examen final integrador de redacción técnica y comprensión de textos en sistemas.')"
+                                             class="flex items-center justify-center translate-x-0 transition transform hover:scale-105 cursor-pointer">
+                                            <div class="flex items-center gap-2.5 bg-[#0F1322]/40 border border-slate-900 p-2 rounded-xl w-60 opacity-60 hover:opacity-80 transition">
+                                                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-500 flex items-center justify-center shrink-0">
+                                                    <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                                                </div>
+                                                <div class="text-left flex-1 min-w-0">
+                                                    <h5 class="font-bold text-slate-400 text-[9px] truncate">6. Evaluación final de competencias</h5>
+                                                    <span class="text-[7px] text-slate-500 font-bold uppercase mt-0.5 block">Bloqueado</span>
+                                                </div>
+                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-800"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Node list (AI Personalized Route) -->
+                                    <div id="route-nodes-ia-list" class="space-y-7 relative z-10 hidden">
+                                        <!-- Node 1 (Completado) -->
+                                        <div onclick="selectRouteNode(1, '1. Comprensión lectora básica', 'Completado', 'Lectura comprensiva, análisis sintáctico y extracción de ideas clave.')"
+                                             class="flex items-center justify-center translate-x-0 transition transform hover:scale-105 cursor-pointer">
+                                            <div class="flex items-center gap-2.5 bg-[#0F1322] border border-slate-800 p-2 rounded-xl w-60 shadow-md hover:border-slate-700 transition">
+                                                <div class="w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500 text-emerald-500 flex items-center justify-center shrink-0 shadow-lg shadow-emerald-500/10">
+                                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                                </div>
+                                                <div class="text-left flex-1 min-w-0">
+                                                    <h5 class="font-bold text-white text-[9px] truncate">1. Comprensión lectora básica</h5>
+                                                    <span class="text-[7px] text-emerald-400 font-bold uppercase mt-0.5 block">Completado</span>
+                                                </div>
+                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-650"></i>
+                                            </div>
+                                        </div>
+
+                                        <!-- Node 2 (AI REFORZAMIENTO - Actual) -->
+                                        <div onclick="selectRouteNode(2, '2. Reforzamiento: Redacción y Puntuación', 'Módulo IA • En progreso', 'Fede detectó dudas frecuentes en el uso del punto y coma y la coma enumerativa en tus tareas. Este módulo adaptativo te reforzará antes de avanzar.')"
+                                             class="flex items-center justify-center translate-x-[-24px] transition transform hover:scale-105 cursor-pointer">
+                                            <div class="flex items-center gap-2.5 bg-[#0F1322] border-2 border-orange-500 p-2 rounded-xl w-60 shadow-lg shadow-orange-500/10 hover:border-orange-400 transition ring-4 ring-orange-500/5">
+                                                <div class="w-8 h-8 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center shrink-0 shadow-inner">
+                                                    <i data-lucide="sparkles" class="w-4 h-4 text-orange-400 animate-pulse"></i>
+                                                </div>
+                                                <div class="text-left flex-1 min-w-0">
+                                                    <h5 class="font-bold text-white text-[9px] truncate">2. Reforzamiento: Redacción</h5>
+                                                    <span class="text-[7px] text-orange-400 font-bold uppercase mt-0.5 block">Módulo IA • En progreso</span>
+                                                </div>
+                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-orange-500"></i>
+                                            </div>
+                                        </div>
+
+                                        <!-- Node 3 (Bloqueado) -->
+                                        <div onclick="selectRouteNode(3, '3. Estructura del Informe Científico', 'Bloqueado', 'Rúbricas del profesor Magallanes para informes de laboratorio y redacción científica en sistemas.')"
+                                             class="flex items-center justify-center translate-x-[24px] transition transform hover:scale-105 cursor-pointer">
+                                            <div class="flex items-center gap-2.5 bg-[#0F1322]/40 border border-slate-900 p-2 rounded-xl w-60 opacity-60 hover:opacity-80 transition">
+                                                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-500 flex items-center justify-center shrink-0">
+                                                    <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                                                </div>
+                                                <div class="text-left flex-1 min-w-0">
+                                                    <h5 class="font-bold text-slate-400 text-[9px] truncate">3. Estructura de Informe</h5>
+                                                    <span class="text-[7px] text-slate-500 font-bold uppercase mt-0.5 block">Bloqueado</span>
+                                                </div>
+                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-800"></i>
+                                            </div>
+                                        </div>
+
+                                        <!-- Node 4 (Bloqueado) -->
+                                        <div onclick="selectRouteNode(4, '4. Sustentación de Proyectos', 'Bloqueado', 'Oratoria técnica, diseño de diapositivas académicas y presentación formal ante el jurado.')"
+                                             class="flex items-center justify-center translate-x-[-24px] transition transform hover:scale-105 cursor-pointer">
+                                            <div class="flex items-center gap-2.5 bg-[#0F1322]/40 border border-slate-900 p-2 rounded-xl w-60 opacity-60 hover:opacity-80 transition">
+                                                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-500 flex items-center justify-center shrink-0">
+                                                    <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                                                </div>
+                                                <div class="text-left flex-1 min-w-0">
+                                                    <h5 class="font-bold text-slate-400 text-[9px] truncate">4. Sustentación de Proy...</h5>
+                                                    <span class="text-[7px] text-slate-500 font-bold uppercase mt-0.5 block">Bloqueado</span>
+                                                </div>
+                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-800"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Node Detail Modal/Drawer inside Route -->
+                                <div id="route-node-detail-panel" 
+                                     class="absolute bottom-3 left-3 right-3 bg-[#0F1322]/98 border border-orange-500/30 p-3 rounded-xl shadow-2xl z-20 translate-y-12 opacity-0 pointer-events-none transition-all duration-300">
+                                    <div class="flex justify-between items-start border-b border-white/5 pb-1.5 mb-1.5">
+                                        <div>
+                                            <span id="route-detail-status" class="text-[6.5px] px-1.5 py-0.5 rounded font-bold uppercase bg-orange-500/10 text-orange-400">Actual</span>
+                                            <h4 id="route-detail-title" class="font-heading font-bold text-white text-[10px] mt-1">Nombre del Módulo</h4>
+                                        </div>
+                                        <button onclick="closeRouteModal()" class="text-slate-500 hover:text-white transition">
+                                            <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                                        </button>
+                                    </div>
+                                    <p id="route-detail-desc" class="text-[8px] text-slate-400 leading-normal mb-2.5">Descripción...</p>
+                                    
+                                    <!-- Dynamic Action Button depending on status -->
+                                    <div id="route-detail-action-container">
+                                        <button onclick="closeRouteModal()" 
+                                                class="w-full py-1.5 bg-orange-500 hover:bg-orange-600 text-slate-950 font-bold rounded-lg transition text-[9px] flex items-center justify-center gap-1 shadow-md shadow-orange-500/15">
+                                            <i data-lucide="play" class="w-3 h-3"></i> Empezar Misión (5 min)
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- VISTA 4: MENSAJES (SOPORTE DE MATCH/CHAT PEER TO PEER) -->
+                        <div id="desktop-content-mensajes" class="desktop-tab-content flex-1 p-5 overflow-y-auto space-y-4 hidden">
+                            <div class="glass-panel p-6 rounded-2xl border-slate-800 text-center max-w-md mx-auto space-y-3 mt-10">
+                                <div class="w-12 h-12 rounded-full bg-orange-500/10 text-orange-500 flex items-center justify-center mx-auto ring-8 ring-orange-500/5 animate-pulse">
+                                    <i data-lucide="mail-question" class="w-6 h-6"></i>
+                                </div>
+                                <h3 class="font-heading font-bold text-base text-white">Mensajería y Tutoría</h3>
+                                <p class="text-slate-400 text-xs leading-relaxed">
+                                    Esta sección centraliza tus chats de mentorías Peer-to-Peer. Puedes solicitar una tutoría en la diapositiva 4 (sección de Comunidad) para simular el chat interactivo de coordinación con un mentor real.
+                                </p>
+                                <button onclick="switchDesktopTab('inicio')" class="px-4 py-2 bg-[#0F1322] border border-slate-800 hover:bg-slate-850 text-slate-300 rounded-xl transition text-xs font-semibold">
+                                    Ir al Chat con Fede
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -1020,32 +1390,29 @@
                         <span class="text-2xl font-bold font-heading text-white">~$15<span
                                 class="text-sm text-slate-500 font-normal">/mes</span></span>
                     </div>
-                    <h4 class="font-bold text-lg mb-2">Hosting y BD Vectorial</h4>
-                    <p class="text-sm text-slate-400">Despliegue en VPS económico. Base de datos PostgreSQL con
-                        extensión pgvector (Open Source, sin licencias caras).</p>
+                    <h4 class="font-bold text-lg mb-2">Persistencia Semántica</h4>
+                    <p class="text-sm text-slate-400">Instancia PostgreSQL con extensión pgvector. Almacenamiento unificado de datos relacionales y embeddings vectoriales, sin sobrecostos de licencias.</p>
                 </div>
 
                 <div class="glass-panel p-6 rounded-2xl border-slate-700 relative overflow-hidden">
                     <div class="flex justify-between items-start mb-4">
                         <div class="p-3 bg-slate-800 rounded-xl border border-slate-600"><i data-lucide="cpu"
                                 class="text-emerald-400 w-6 h-6"></i></div>
-                        <span class="text-2xl font-bold font-heading text-white">Flexible</span>
+                        <span class="text-2xl font-bold font-heading text-white">Eficiente</span>
                     </div>
-                    <h4 class="font-bold text-lg mb-2">Motor de Inteligencia Artificial</h4>
-                    <p class="text-sm text-slate-400">Integración con APIs optimizadas. Inyección de contexto
-                        dinámico para reducir costos de tokens al mínimo.</p>
+                    <h4 class="font-bold text-lg mb-2">Optimización de Inferencia</h4>
+                    <p class="text-sm text-slate-400">Indexación semántica avanzada mediante algoritmos HNSW. Estrategias de chunking dinámico para reducir el consumo de tokens y optimizar costos de API.</p>
                 </div>
 
                 <div
                     class="glass-panel p-6 rounded-2xl border-orange-500/50 bg-orange-500/5 shadow-[0_0_20px_rgba(249,115,22,0.1)]">
                     <div class="flex justify-between items-start mb-4">
                         <div class="p-3 bg-orange-500 rounded-xl shadow-lg shadow-orange-500/30"><i
-                                data-lucide="copy-plus" class="text-white w-6 h-6"></i></div>
-                        <span class="text-2xl font-bold font-heading text-orange-400">Costo mínimo</span>
+                                data-lucide="git-fork" class="text-white w-6 h-6"></i></div>
+                        <span class="text-2xl font-bold font-heading text-orange-400">Desacoplado</span>
                     </div>
-                    <h4 class="font-bold text-lg text-orange-400 mb-2">Escalar a otras Facultades</h4>
-                    <p class="text-sm text-slate-300">¿Llevarlo de la FIIS a Medicina o Arquitectura? No se reprograma
-                        nada. El sistema lee un simple archivo JSON con la nueva malla curricular.</p>
+                    <h4 class="font-bold text-lg text-orange-400 mb-2">Abstracción Curricular (DAG)</h4>
+                    <p class="text-sm text-slate-300">La estructura del sílabo se modela como un Grafo Acíclico Dirigido (DAG). Escalar a Medicina o Derecho solo requiere migrar el grafo curricular en la BD sin modificar código.</p>
                 </div>
             </div>
 
@@ -1078,7 +1445,7 @@
 
             `"¿Cómo logramos que el estudiante realmente use VILLANEXT día a día? No con medallas de plástico virtuales, sino con tres pilares. Primero, Gamificación con Utilidad Real: mantener la racha activa multiplicadores de EXP, y esa EXP se convierte en una moneda de cambio social para canjear mentorías uno a uno con alumnos de ciclos superiores. Segundo, Alivio de Carga Cognitiva: en lugar de abrumarse con diez materias, la app ofrece tres misiones diarias de cinco minutos ideales para optimizar su tiempo entre clases o trabajos por presentar, junto a una calculadora de promedios para saber exactamente qué nota necesitan. Y tercero, Estatus y Pertenencia: validamos a los mentores con badges brillantes y centralizamos los grupos caóticos de WhatsApp en foros ordenados. Transformamos el estrés en progreso tangible."`,
 
-            `"A nivel técnico, no gastamos recursos en entrenar modelos desde cero. Consumimos modelos comerciales mediante APIs eficientes utilizando el Vercel AI SDK. La inteligencia local radica en nuestra base vectorial, donde indexamos los proyectos y códigos de ciclos pasados de la facultad. Al hacer una consulta, extraemos ese contexto y se lo enviamos a la API. Así logramos que un modelo estándar nos responda con el nivel técnico exacto de la UNFV, manteniendo un costo operativo de centavos."`
+            `"A nivel de arquitectura técnica, nuestro diseño es serverless y desacoplado, reduciendo costos operativos. En lugar de entrenar modelos costosos, consumimos modelos fundacionales vía APIs con persistencia de contexto local. Nuestra base de datos unifica el modelo relacional del alumno con una extensión pgvector, indexando rúbricas e históricos mediante algoritmos HNSW para búsquedas semánticas de baja latencia. Además, modelamos la malla de cursos como un Grafo Acíclico Dirigido (DAG); así, la transición hacia otras facultades como Medicina o Derecho es inmediata, requiriendo únicamente la ingesta de un nuevo esquema curricular sin modificar una sola línea de código."`
         ];
 
         function updateSlide() {
@@ -1202,11 +1569,324 @@
             if (isHidden) {
                 desktop.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
                 desktop.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
+                // Switch to default active tab (inicio/fede) and render icons
+                switchDesktopTab('inicio');
             } else {
                 desktop.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
                 desktop.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
             }
             lucide.createIcons();
+        }
+
+        // CONTROL DE NAVEGACIÓN DENTRO DEL DASHBOARD PC
+        function switchDesktopTab(tabName, event) {
+            if (event) event.preventDefault();
+            
+            // Hide all tabs
+            const tabContents = document.querySelectorAll('.desktop-tab-content');
+            tabContents.forEach(content => content.classList.add('hidden'));
+            
+            // Show requested tab
+            const targetContent = document.getElementById(`desktop-content-${tabName}`);
+            if (targetContent) targetContent.classList.remove('hidden');
+            
+            // Deactivate all nav links
+            const navLinks = [
+                { id: 'desktop-nav-inicio', tab: 'inicio' },
+                { id: 'desktop-nav-dashboard', tab: 'dashboard' },
+                { id: 'desktop-nav-mensajes', tab: 'mensajes' },
+                { id: 'desktop-nav-rutas', tab: 'rutas' }
+            ];
+            
+            navLinks.forEach(link => {
+                const element = document.getElementById(link.id);
+                if (element) {
+                    if (link.tab === tabName) {
+                        element.className = "flex items-center gap-2 px-2.5 py-1.5 bg-orange-500/10 text-orange-400 rounded-lg font-semibold transition";
+                    } else {
+                        element.className = "flex items-center gap-2 px-2.5 py-1.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition";
+                    }
+                }
+            });
+            
+            lucide.createIcons();
+        }
+
+        // CHAT INTERACTIVO CON FEDE
+        function handleFedeChatKey(event) {
+            if (event.key === 'Enter') {
+                sendFedeChatMessage();
+            }
+        }
+
+        function sendFedeChatMessage() {
+            const input = document.getElementById('desktop-fede-input');
+            const query = input.value.trim();
+            if (!query) return;
+            
+            // Limpiar input
+            input.value = '';
+            
+            // Agregar mensaje de usuario
+            const container = document.getElementById('desktop-fede-messages');
+            const userMsgHtml = `
+                <div class="flex flex-col items-end max-w-[85%] self-end ml-auto animate-fade-in mb-2">
+                    <div class="bg-orange-500 text-slate-950 font-medium text-[9px] px-3 py-1.5 rounded-2xl rounded-tr-none leading-relaxed">
+                        ${query}
+                    </div>
+                    <span class="text-[6px] text-slate-500 mt-0.5 font-sans">Tú • Ahora</span>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', userMsgHtml);
+            container.scrollTop = container.scrollHeight;
+            
+            // Agregar indicador de escritura
+            const typingId = 'fede-typing-' + Date.now();
+            const typingHtml = `
+                <div id="${typingId}" class="flex items-start gap-2.5 max-w-[85%] animate-fade-in">
+                    <div class="w-7 h-7 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 mt-0.5">
+                        <i data-lucide="bot" class="w-3.5 h-3.5"></i>
+                    </div>
+                    <div class="bg-slate-900/90 border border-slate-800 text-slate-400 px-3 py-2 rounded-2xl rounded-tl-none text-[9px] flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 bg-orange-400 rounded-full animate-bounce" style="animation-delay: 0ms"></span>
+                        <span class="w-1.5 h-1.5 bg-orange-400 rounded-full animate-bounce" style="animation-delay: 150ms"></span>
+                        <span class="w-1.5 h-1.5 bg-orange-400 rounded-full animate-bounce" style="animation-delay: 300ms"></span>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', typingHtml);
+            container.scrollTop = container.scrollHeight;
+            lucide.createIcons();
+            
+            // Simular respuesta de Fede
+            setTimeout(() => {
+                const typingElem = document.getElementById(typingId);
+                if (typingElem) typingElem.remove();
+                
+                let answer = "";
+                const normalizedQuery = query.toLowerCase();
+                
+                if (normalizedQuery.includes('calculo') || normalizedQuery.includes('matematica') || normalizedQuery.includes('diferencial') || normalizedQuery.includes('integral')) {
+                    answer = `¡Excelente! Cálculo Diferencial es clave en la FIIS. 🧮 En lugar de darte la derivada o integral directamente, cuéntame: ¿estás intentando optimizar una función o hallar un área bajo la curva? ¿Qué variables o fórmulas tienes anotadas en tu cuaderno ahora mismo? Cuéntame y lo estructuramos juntos.`;
+                } else if (normalizedQuery.includes('historia') || normalizedQuery.includes('villarreal')) {
+                    answer = `¡La historia de la UNFV es sumamente rica! 🏛️ ¿Sabías que nuestra universidad lleva el nombre del sabio Federico Villarreal, quien destacó en matemáticas, física e ingeniería? A ver, te propongo un reto rápido: ¿conoces el aporte más famoso de Villarreal a la matemática (el polinomio de Villarreal)? Cuéntame qué sabes de él y te explico cómo simplifica potencias.`;
+                } else if (normalizedQuery.includes('hola') || normalizedQuery.includes('buenos') || normalizedQuery.includes('tardes')) {
+                    answer = `¡Hola de nuevo! Listos para aprender. Dime, ¿en qué curso de la FIIS nos enfocamos hoy? ¿O prefieres que hagamos un quiz socrático rápido para medir tu nivel actual en alguna materia? ¡Tú decides!`;
+                } else {
+                    answer = `Me gusta tu pregunta, demuestra curiosidad villarrealina. 💡 Para guiarte mejor sin darte la respuesta de forma directa: ¿qué es lo primero que se te viene a la mente al analizar este concepto? ¿Hay alguna regla o fórmula del sílabo que crees que se aplique aquí? Explícame tu razonamiento inicial y construimos desde ahí.`;
+                }
+                
+                const fedeMsgHtml = `
+                    <div class="flex items-start gap-2.5 max-w-[85%] animate-fade-in mb-2">
+                        <div class="w-7 h-7 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 mt-0.5">
+                            <i data-lucide="bot" class="w-3.5 h-3.5"></i>
+                        </div>
+                        <div class="bg-slate-900/90 border border-slate-800 text-slate-200 px-3 py-2.5 rounded-2xl rounded-tl-none leading-relaxed text-[10px] relative group text-left">
+                            <button class="absolute top-2 right-2 text-slate-500 hover:text-white transition opacity-0 group-hover:opacity-100">
+                                <i data-lucide="volume-2" class="w-3 h-3"></i>
+                            </button>
+                            <p>${answer}</p>
+                        </div>
+                    </div>
+                `;
+                
+                container.insertAdjacentHTML('beforeend', fedeMsgHtml);
+                container.scrollTop = container.scrollHeight;
+                lucide.createIcons();
+            }, 1500);
+        }
+
+        // CONTROL DE RUTAS DE ESTUDIO INTERACTIVAS
+        function toggleRouteType(type) {
+            const btnOficial = document.getElementById('btn-route-oficial');
+            const btnIa = document.getElementById('btn-route-ia');
+            const listOficial = document.getElementById('route-nodes-official-list');
+            const listIa = document.getElementById('route-nodes-ia-list');
+            const headerTitle = document.querySelector('#route-title-header h4');
+            const headerDesc = document.querySelector('#route-title-header p');
+            const progressVal = document.getElementById('route-progress-bar');
+            const progressText = document.querySelector('#route-progress-bar + span');
+            
+            // SVG Paths
+            const svgBase = document.getElementById('svg-wave-base');
+            const svgCompleted = document.getElementById('svg-wave-completed');
+            const svgProgress = document.getElementById('svg-wave-progress');
+            
+            if (type === 'oficial') {
+                btnOficial.className = "px-3 py-1.5 border-b-2 border-orange-500 text-white font-bold transition flex items-center gap-1";
+                btnIa.className = "px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1";
+                
+                listOficial.classList.remove('hidden');
+                listIa.classList.add('hidden');
+                
+                headerTitle.innerText = "Ruta de Habilidades";
+                headerDesc.innerText = "Completa el sílabo semana a semana";
+                progressVal.style.width = "36%";
+                progressText.innerText = "36%";
+                
+                // Configurar trazo SVG para 6 nodos
+                svgBase.setAttribute('d', 'M 50,15 C 20,70 80,105 50,160 C 20,215 80,250 50,305 C 20,360 80,395 50,450');
+                svgCompleted.setAttribute('d', 'M 50,15 C 20,70 80,105 50,160');
+                svgCompleted.style.display = 'block';
+                svgProgress.setAttribute('d', 'M 50,160 C 20,215 80,250 50,305');
+                svgProgress.style.display = 'block';
+            } else {
+                btnOficial.className = "px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1";
+                btnIa.className = "px-3 py-1.5 border-b-2 border-orange-500 text-white font-bold transition flex items-center gap-1";
+                
+                listOficial.classList.add('hidden');
+                listIa.classList.remove('hidden');
+                
+                headerTitle.innerText = "Ruta IA Personalizada";
+                headerDesc.innerText = "Optimizada por Fede en base a tu rendimiento";
+                progressVal.style.width = "25%";
+                progressText.innerText = "25%";
+                
+                // Configurar trazo SVG para 4 nodos
+                svgBase.setAttribute('d', 'M 50,15 C 20,70 80,105 50,160 C 20,215 80,250 50,305');
+                svgCompleted.style.display = 'none'; // No hay tramos completados completos en la ruta IA
+                svgProgress.setAttribute('d', 'M 50,15 C 20,70 80,105 50,160');
+                svgProgress.style.display = 'block';
+            }
+            
+            closeRouteModal();
+            lucide.createIcons();
+        }
+
+        function selectRouteNode(nodeNum, title, status, description) {
+            const panel = document.getElementById('route-node-detail-panel');
+            const statusLabel = document.getElementById('route-detail-status');
+            const titleLabel = document.getElementById('route-detail-title');
+            const descLabel = document.getElementById('route-detail-desc');
+            const actionContainer = document.getElementById('route-detail-action-container');
+            
+            titleLabel.innerText = title;
+            descLabel.innerText = description;
+            statusLabel.innerText = status;
+            
+            // Estilizar la etiqueta según el estado
+            if (status === 'Completado') {
+                statusLabel.className = "text-[6.5px] px-1.5 py-0.5 rounded font-bold uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
+                actionContainer.innerHTML = `
+                    <button onclick="closeRouteModal()" 
+                            class="w-full py-1.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold rounded-lg transition text-[9px] flex items-center justify-center gap-1 shadow-md shadow-emerald-500/15">
+                        <i data-lucide="rotate-ccw" class="w-3 h-3"></i> Repasar Módulo (EXP Ganado)
+                    </button>
+                `;
+            } else if (status === 'En progreso' || status === 'Módulo IA • En progreso') {
+                statusLabel.className = "text-[6.5px] px-1.5 py-0.5 rounded font-bold uppercase bg-orange-500/10 text-orange-400 border border-orange-500/20 animate-pulse";
+                actionContainer.innerHTML = `
+                    <button onclick="startInteractiveStudyMission()" 
+                            class="w-full py-1.5 bg-orange-500 hover:bg-orange-600 text-slate-950 font-bold rounded-lg transition text-[9px] flex items-center justify-center gap-1 shadow-md shadow-orange-500/15">
+                        <i data-lucide="play" class="w-3 h-3"></i> Empezar Misión (5 min)
+                    </button>
+                `;
+            } else {
+                statusLabel.className = "text-[6.5px] px-1.5 py-0.5 rounded font-bold uppercase bg-slate-800 text-slate-400 border border-slate-700";
+                actionContainer.innerHTML = `
+                    <button disabled 
+                            class="w-full py-1.5 bg-slate-800 text-slate-500 font-bold rounded-lg cursor-not-allowed text-[9px] flex items-center justify-center gap-1 border border-slate-750">
+                        <i data-lucide="lock" class="w-3 h-3"></i> Bloqueado (Completa los módulos previos)
+                    </button>
+                `;
+            }
+            
+            panel.classList.remove('opacity-0', 'translate-y-12', 'pointer-events-none');
+            panel.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            lucide.createIcons();
+        }
+
+        function closeRouteModal() {
+            const panel = document.getElementById('route-node-detail-panel');
+            panel.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            panel.classList.add('opacity-0', 'pointer-events-none', 'translate-y-12');
+        }
+
+        function startInteractiveStudyMission() {
+            closeRouteModal();
+            // Ir al chat de Fede
+            switchDesktopTab('inicio');
+            
+            // Agregar mensaje de misión de Fede
+            setTimeout(() => {
+                const container = document.getElementById('desktop-fede-messages');
+                const introHtml = `
+                    <div class="flex items-start gap-2.5 max-w-[85%] animate-fade-in mb-2">
+                        <div class="w-7 h-7 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 mt-0.5">
+                            <i data-lucide="bot" class="w-3.5 h-3.5"></i>
+                        </div>
+                        <div class="bg-[#182035] border border-orange-500/30 text-slate-200 p-3 rounded-2xl rounded-tl-none leading-relaxed text-[10px] relative text-left">
+                            <h5 class="text-orange-400 font-heading font-bold text-[8px] mb-1 flex items-center gap-1"><i data-lucide="target" class="w-3 h-3 animate-pulse"></i> MISIÓN ADAPTATIVA INICIADA</h5>
+                            <p class="mb-1.5">¡Estupendo! Iniciamos la misión corta sobre <strong class="text-white">Redacción Científica y Académica</strong>. Te tomará solo 5 minutos.</p>
+                            <p class="mb-2">¿Cuál de las siguientes afirmaciones describe mejor el objetivo principal de la introducción en un informe técnico de la FIIS?</p>
+                            <div class="space-y-1.5">
+                                <button onclick="selectMissionAnswer(true, this)" class="w-full text-left p-2 rounded-lg bg-slate-900/60 border border-slate-800 hover:border-orange-500/50 hover:bg-slate-800 transition text-[9px]">A) Presentar de forma resumida el contexto, el problema y el propósito del estudio.</button>
+                                <button onclick="selectMissionAnswer(false, this)" class="w-full text-left p-2 rounded-lg bg-slate-900/60 border border-slate-800 hover:border-orange-500/50 hover:bg-slate-800 transition text-[9px]">B) Incluir el marco teórico completo y el detalle paso a paso del código implementado.</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', introHtml);
+                container.scrollTop = container.scrollHeight;
+                lucide.createIcons();
+            }, 600);
+        }
+
+        function selectMissionAnswer(isCorrect, btn) {
+            const parent = btn.parentElement;
+            const buttons = parent.querySelectorAll('button');
+            buttons.forEach(b => {
+                b.disabled = true;
+                b.className = "w-full text-left p-2 rounded-lg bg-slate-900/40 border border-slate-900 text-slate-500 text-[9px] cursor-not-allowed";
+            });
+            
+            if (isCorrect) {
+                btn.className = "w-full text-left p-2 rounded-lg bg-emerald-500/10 border-2 border-emerald-500 text-emerald-400 text-[9px] font-semibold";
+                setTimeout(() => {
+                    const container = document.getElementById('desktop-fede-messages');
+                    const correctHtml = `
+                        <div class="flex items-start gap-2.5 max-w-[85%] animate-fade-in mb-2">
+                            <div class="w-7 h-7 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 mt-0.5">
+                                <i data-lucide="bot" class="w-3.5 h-3.5"></i>
+                            </div>
+                            <div class="bg-slate-900/90 border border-slate-800 text-slate-200 px-3 py-2.5 rounded-2xl rounded-tl-none leading-relaxed text-[10px] text-left">
+                                <p class="text-emerald-400 font-bold mb-1 flex items-center gap-1"><i data-lucide="check-circle" class="w-3 h-3"></i> ¡Respuesta Correcta!</p>
+                                <p>¡Exacto! La introducción guía al lector sin saturarlo de código todavía. Has ganado <strong class="text-orange-400 font-semibold">+15 EXP</strong>. Tu racha se mantiene estable. ¡Buen trabajo!</p>
+                            </div>
+                        </div>
+                    `;
+                    container.insertAdjacentHTML('beforeend', correctHtml);
+                    container.scrollTop = container.scrollHeight;
+                    lucide.createIcons();
+                    
+                    // Aumentar el progreso de la ruta
+                    const progressVal = document.getElementById('route-progress-bar');
+                    const progressText = document.querySelector('#route-progress-bar + span');
+                    if (progressVal) {
+                        progressVal.style.width = "48%";
+                        progressText.innerText = "48%";
+                    }
+                }, 800);
+            } else {
+                btn.className = "w-full text-left p-2 rounded-lg bg-red-500/10 border-2 border-red-500 text-red-400 text-[9px] font-semibold";
+                setTimeout(() => {
+                    const container = document.getElementById('desktop-fede-messages');
+                    const incorrectHtml = `
+                        <div class="flex items-start gap-2.5 max-w-[85%] animate-fade-in mb-2">
+                            <div class="w-7 h-7 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 mt-0.5">
+                                <i data-lucide="bot" class="w-3.5 h-3.5"></i>
+                            </div>
+                            <div class="bg-slate-900/90 border border-slate-800 text-slate-200 px-3 py-2.5 rounded-2xl rounded-tl-none leading-relaxed text-[10px] text-left">
+                                <p class="text-orange-400 font-bold mb-1">Cerca, pero analicémoslo...</p>
+                                <p>Si pones todo el marco teórico y código en la introducción, el lector sufrirá una sobrecarga cognitiva inmediata. Intenta pensar en qué necesita saber alguien antes de ver la implementación. ¿Te gustaría volver a intentarlo?</p>
+                            </div>
+                        </div>
+                    `;
+                    container.insertAdjacentHTML('beforeend', incorrectHtml);
+                    container.scrollTop = container.scrollHeight;
+                    lucide.createIcons();
+                }, 800);
+            }
         }
 
         updateSlide();
