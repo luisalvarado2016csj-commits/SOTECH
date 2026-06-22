@@ -1424,21 +1424,22 @@
                     <div class="flex justify-between items-start mb-4">
                         <div class="p-3 bg-slate-800 rounded-xl border border-slate-600"><i data-lucide="server"
                                 class="text-blue-400 w-6 h-6"></i></div>
-                        <span class="text-2xl font-bold font-heading text-white">~$15<span
+                        <span class="text-2xl font-bold font-heading text-white">$15<span
                                 class="text-sm text-slate-500 font-normal">/mes</span></span>
                     </div>
                     <h4 class="font-bold text-lg mb-2">Persistencia Semántica</h4>
-                    <p class="text-sm text-slate-400">Instancia PostgreSQL con extensión pgvector. Almacenamiento unificado de datos relacionales y embeddings vectoriales, sin sobrecostos de licencias.</p>
+                    <p class="text-sm text-slate-400">DigitalOcean Managed Database (PostgreSQL + pgvector). Almacenamiento unificado de datos relacionales y vectores, delegando el mantenimiento al proveedor.</p>
                 </div>
 
                 <div class="glass-panel p-6 rounded-2xl border-slate-700 relative overflow-hidden">
                     <div class="flex justify-between items-start mb-4">
                         <div class="p-3 bg-slate-800 rounded-xl border border-slate-600"><i data-lucide="cpu"
                                 class="text-emerald-400 w-6 h-6"></i></div>
-                        <span class="text-2xl font-bold font-heading text-white">Eficiente</span>
+                        <span class="text-2xl font-bold font-heading text-white">~$8<span
+                                class="text-sm text-slate-500 font-normal">/mes</span></span>
                     </div>
                     <h4 class="font-bold text-lg mb-2">Optimización de Inferencia</h4>
-                    <p class="text-sm text-slate-400">Indexación semántica avanzada mediante algoritmos HNSW. Estrategias de chunking dinámico para reducir el consumo de tokens y optimizar costos de API.</p>
+                    <p class="text-sm text-slate-400">Consumo eficiente de Gemini 1.5 Flash vía AI SDK. Aplicamos Chunking Dinámico y búsqueda HNSW para minimizar tokens (Costo base para 500 alumnos).</p>
                 </div>
 
                 <div
@@ -1446,10 +1447,11 @@
                     <div class="flex justify-between items-start mb-4">
                         <div class="p-3 bg-orange-500 rounded-xl shadow-lg shadow-orange-500/30"><i
                                 data-lucide="git-fork" class="text-white w-6 h-6"></i></div>
-                        <span class="text-2xl font-bold font-heading text-orange-400">Desacoplado</span>
+                        <span class="text-2xl font-bold font-heading text-orange-400">$0<span
+                                class="text-sm text-orange-500/80 font-normal"> en Dev</span></span>
                     </div>
-                    <h4 class="font-bold text-lg text-orange-400 mb-2">Abstracción Curricular (DAG)</h4>
-                    <p class="text-sm text-slate-300">La estructura del sílabo se modela como un Grafo Acíclico Dirigido (DAG). Escalar a Medicina o Derecho solo requiere migrar el grafo curricular en la BD sin modificar código.</p>
+                    <h4 class="font-bold text-lg text-orange-400 mb-2">Escalabilidad (DAG)</h4>
+                    <p class="text-sm text-slate-300">Arquitectura de Grafos Acíclicos Dirigidos (DAG). Escalar a facultades como Medicina requiere $0 en desarrollo; solo basta subir un JSON con la nueva malla.</p>
                 </div>
             </div>
 
@@ -1483,7 +1485,7 @@
 
             `"¿Cómo logramos que el estudiante realmente use VillaNEXT día a día? No con medallas de plástico virtuales, sino con tres pilares. Primero, Gamificación con Utilidad Real: mantener la racha activa multiplicadores de EXP, y esa EXP se convierte en una moneda de cambio social para canjear mentorías uno a uno con alumnos de ciclos superiores. Segundo, Alivio de Carga Cognitiva: en lugar de abrumarse con diez materias, la app ofrece tres misiones diarias de cinco minutos ideales para optimizar su tiempo entre clases o trabajos por presentar, junto a una calculadora de promedios para saber exactamente qué nota necesitan. Y tercero, Estatus y Pertenencia: validamos a los mentores con badges brillantes y centralizamos los grupos caóticos de WhatsApp en foros ordenados. Transformamos el estrés en progreso tangible."`,
 
-            `"A nivel de arquitectura técnica, nuestro diseño es serverless y desacoplado, reduciendo costos operativos. En lugar de entrenar modelos costosos, consumimos modelos fundacionales vía APIs con persistencia de contexto local. Nuestra base de datos unifica el modelo relacional del alumno con una extensión pgvector, indexando rúbricas e históricos mediante algoritmos HNSW para búsquedas semánticas de baja latencia. Además, modelamos la malla de cursos como un Grafo Acíclico Dirigido (DAG); así, la transición hacia otras facultades como Medicina o Derecho es inmediata, requiriendo únicamente la ingesta de un nuevo esquema curricular sin modificar una sola línea de código."`
+            `"A nivel técnico y financiero, VillaNEXT es altamente viable. Operar un MVP para 500 alumnos de Ingeniería cuesta apenas 23 dólares al mes. ¿Cómo? Primero, 15 dólares en una base de datos gestionada en DigitalOcean con pgvector para nuestra memoria semántica. Segundo, optimizamos la inferencia usando Chunking Dinámico y consumiendo APIs rentables como Gemini 1.5 Flash, costando solo 8 dólares mensuales. Y lo más importante para la universidad: la escalabilidad. Modelamos los sílabos como un Grafo Acíclico Dirigido (DAG). Esto significa que llevar VillaNEXT a la facultad de Medicina cuesta cero dólares en desarrollo; el sistema recalcula rutas automáticamente con solo subir un JSON con la nueva malla curricular."`
         ];
 
         function updateSlide() {
