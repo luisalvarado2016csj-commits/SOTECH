@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VILLANEXT - Pitch Deck</title>
+    <title>VillaNEXT - Pitch Deck</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Outfit:wght@300;400;600&display=swap"
@@ -122,7 +122,7 @@
                         class="text-slate-400 font-normal text-lg">| UNFV</span></h2>
             </div>
 
-            <h1 class="font-heading font-bold text-5xl text-white mb-2">VILLANEXT</h1>
+            <h1 class="font-heading font-bold text-5xl mb-2"><span class="text-white">Villa</span><span class="text-orange-500">NEXT</span></h1>
             <p class="text-xl text-orange-400 font-medium tracking-wide mb-10">La realidad del estudiante no cabe en una
                 plataforma estática.</p>
 
@@ -386,7 +386,7 @@
                                     <i data-lucide="bot" class="w-4 h-4"></i>
                                 </div>
                                 <div class="overflow-hidden">
-                                    <h4 class="font-heading font-bold text-white text-xs leading-none">VillaNEXT</h4>
+                                    <h4 class="font-heading font-bold text-xs leading-none"><span class="text-white">Villa</span><span class="text-orange-500">NEXT</span></h4>
                                     <span class="text-[8px] text-slate-500">UNFV Hub</span>
                                 </div>
                             </div>
@@ -783,30 +783,32 @@
                                 </button>
                                 <button onclick="toggleRouteType('ia')" id="btn-route-ia"
                                     class="px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1">
-                                    <i data-lucide="sparkles" class="text-orange-400 w-3 h-3 animate-pulse"></i> RUTA IA PERSONALIZADA
+                                    <i data-lucide="sparkles" class="text-purple-400 w-3 h-3 animate-pulse"></i> RUTA IA PERSONALIZADA
                                 </button>
                             </div>
 
                             <!-- Contenido del Mapa de Ruta -->
                             <div class="relative bg-[#111625]/30 border border-slate-800/80 rounded-xl p-4 min-h-[400px] overflow-hidden">
-                                <!-- Legend (top right) -->
-                                <div class="absolute top-3 right-3 flex items-center gap-2 bg-[#0F1322]/90 border border-slate-800 px-2 py-1 rounded-lg text-[7px] font-bold z-10">
-                                    <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Completado</span>
-                                    <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> Actual</span>
-                                    <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span> Bloqueado</span>
-                                </div>
-
-                                <!-- Título de Ruta -->
-                                <div id="route-title-header" class="flex items-center gap-1.5 mb-5 relative z-10">
-                                    <i data-lucide="git-commit" class="text-orange-500 w-4 h-4"></i>
-                                    <div>
-                                        <h4 class="font-heading font-bold text-white text-[10px]">Ruta de Habilidades</h4>
-                                        <p class="text-[7px] text-slate-500">Completa el sílabo semana a semana</p>
+                                <!-- Wrapper para la vista del mapa de nodos (se oculta cuando se muestra el generador) -->
+                                <div id="route-map-view-wrapper" class="space-y-4">
+                                    <!-- Legend (top right) -->
+                                    <div class="absolute top-3 right-3 flex items-center gap-2 bg-[#0F1322]/90 border border-slate-800 px-2 py-1 rounded-lg text-[7px] font-bold z-10">
+                                        <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Completado</span>
+                                        <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> Actual</span>
+                                        <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span> Bloqueado</span>
                                     </div>
-                                </div>
 
-                                <!-- Winding Map Nodes -->
-                                <div id="route-nodes-container" class="relative max-w-sm mx-auto py-2">
+                                    <!-- Título de Ruta -->
+                                    <div id="route-title-header" class="flex items-center gap-1.5 mb-5 relative z-10">
+                                        <i data-lucide="git-commit" class="text-orange-500 w-4 h-4"></i>
+                                        <div>
+                                            <h4 class="font-heading font-bold text-white text-[10px]">Ruta de Habilidades</h4>
+                                            <p class="text-[7px] text-slate-500">Completa el sílabo semana a semana</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Winding Map Nodes -->
+                                    <div id="route-nodes-container" class="relative max-w-sm mx-auto py-2">
                                     <!-- Dynamic Wave Lines background -->
                                     <div class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-44 pointer-events-none z-0">
                                         <svg class="w-full h-full" viewBox="0 0 100 480" preserveAspectRatio="none">
@@ -977,6 +979,41 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div> <!-- Cierre de #route-map-view-wrapper -->
+
+                                <!-- Vista Generador de Ruta IA (Oculta por defecto) -->
+                                <div id="route-nodes-ia-generator" class="space-y-4 py-6 px-4 max-w-2xl mx-auto animate-fade-in hidden text-left">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i data-lucide="sparkles" class="text-purple-400 w-5 h-5 animate-pulse"></i>
+                                        <h4 class="font-heading font-bold text-white text-sm">Generar Ruta Personalizada con FedeAI</h4>
+                                    </div>
+                                    <p class="text-[9px] text-slate-400 leading-normal mb-4">
+                                        Dile a FedeAI exactamente qué tema deseas dominar en <span class="text-white font-semibold">LENGUAJE Y COMUNICACIÓN</span>. Creará una ruta interactiva con etapas secuenciales de estudio y evaluación.
+                                    </p>
+                                    <div class="relative mb-4">
+                                        <textarea id="ia-route-prompt" rows="5" 
+                                            placeholder="Ej: Quiero aprender límites laterales e indeterminaciones desde cero con ejemplos sencillos y de la vida real..."
+                                            class="w-full bg-[#0A0D18]/90 border border-slate-850 rounded-xl p-3 text-[10px] text-slate-200 placeholder-slate-600 focus:outline-none focus:border-purple-500/50 resize-none"></textarea>
+                                    </div>
+                                    <div class="flex justify-end gap-3">
+                                        <button onclick="cancelIaRoute()" 
+                                            class="px-5 py-2 bg-slate-800 hover:bg-slate-750 text-white rounded-xl text-[10px] font-semibold transition border border-slate-700/50">
+                                            Cancelar
+                                        </button>
+                                        <button onclick="startIaRouteGeneration()" 
+                                            class="px-5 py-2 bg-purple-700 hover:bg-purple-600 text-white rounded-xl text-[10px] font-semibold transition flex items-center gap-1.5 shadow-lg shadow-purple-600/20">
+                                            Continuar →
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Vista de Carga Generador IA (Oculta por defecto) -->
+                                <div id="route-nodes-ia-loading" class="space-y-4 py-16 max-w-sm mx-auto text-center animate-fade-in hidden">
+                                    <div class="w-12 h-12 rounded-full bg-purple-500/10 text-purple-400 flex items-center justify-center mx-auto mb-3 animate-spin">
+                                        <i data-lucide="loader-2" class="w-6 h-6"></i>
+                                    </div>
+                                    <h4 class="font-heading font-bold text-white text-xs">Generando tu ruta con FedeAI...</h4>
+                                    <p class="text-[8px] text-slate-500 max-w-xs mx-auto">Analizando tu historial de aprendizaje, racha y nivel de estudio para crear módulos adaptativos personalizados.</p>
                                 </div>
 
                                 <!-- Node Detail Modal/Drawer inside Route -->
@@ -1046,7 +1083,7 @@
                             <th class="p-6 font-heading text-lg text-slate-300 font-normal">Características</th>
                             <th
                                 class="p-6 font-heading text-xl font-bold text-orange-500 bg-orange-500/10 text-center w-1/4">
-                                VILLANEXT</th>
+                                <span class="text-white">Villa</span><span class="text-orange-500">NEXT</span></th>
                             <th class="p-6 font-heading text-lg font-bold text-slate-400 text-center w-1/4">Plataformas
                                 Clásicas<br><span class="text-xs font-normal">(Moodle / SVA)</span></th>
                             <th class="p-6 font-heading text-lg font-bold text-blue-400 text-center w-1/4">IAs
@@ -1417,7 +1454,7 @@
             </div>
 
             <div class="pt-8 border-t border-slate-800 mt-8">
-                <h3 class="text-3xl font-bold font-heading text-white">VILLANEXT <span
+                <h3 class="text-3xl font-bold font-heading"><span class="text-white">Villa</span><span class="text-orange-500">NEXT</span> <span
                         class="text-slate-500 font-light">| Vida Universitaria</span></h3>
             </div>
         </div>
@@ -1432,18 +1469,19 @@
         const numDisplay = document.getElementById('currentSlideNum');
         const notesPanel = document.getElementById('notesPanel');
         const notesContent = document.getElementById('notesContent');
+        let isIaRouteGenerated = false;
 
         // GUION ACTUALIZADO (CONTEXTO UNFV REAL)
         const speeches = [
-            `"Buenas tardes, jurado. Hablemos de la realidad del estudiante villarrealino. El mayor peligro en nuestra universidad es la falta de seguimiento y el abandono silencioso. La inmensa carga cognitiva de llevar hasta 10 materias sin un acompañamiento constante eleva drásticamente las tasas de deserción y el bajo rendimiento académico. Las plataformas actuales como el SVA o Moodle son estáticas; no detectan cuándo un alumno está a punto de tirar la toalla. Por eso creamos VILLANEXT."`,
+            `"Buenas tardes, jurado. Hablemos de la realidad del estudiante villarrealino. El mayor peligro en nuestra universidad es la falta de seguimiento y el abandono silencioso. La inmensa carga cognitiva de llevar hasta 10 materias sin un acompañamiento constante eleva drásticamente las tasas de deserción y el bajo rendimiento académico. Las plataformas actuales como el SVA o Moodle son estáticas; no detectan cuándo un alumno está a punto de tirar la toalla. Por eso creamos VillaNEXT."`,
 
-            `"La solución no es hacer otra página web pesada. Presentamos VILLANEXT: una aplicación diseñada tanto para PC como para móviles, optimizando tu tiempo y productividad en cualquier dispositivo. El corazón es Fede, nuestra IA socrática. Fede no te hace la tarea ni fomenta el copy-paste; te guía. Transforma un sílabo denso de la FIIS en 'micro-misiones' diarias para que el aprendizaje sea manejable y no te sature visualmente."`,
+            `"La solución no es hacer otra página web pesada. Presentamos VillaNEXT: una aplicación diseñada tanto para PC como para móviles, optimizando tu tiempo y productividad en cualquier dispositivo. El corazón es Fede, nuestra IA socrática. Fede no te hace la tarea ni fomenta el copy-paste; te guía. Transforma un sílabo denso de la FIIS en 'micro-misiones' diarias para que el aprendizaje sea manejable y no te sature visualmente."`,
 
-            `"¿Por qué no usar simplemente Moodle o ChatGPT? Esta tabla lo resume. Moodle es pasivo, y ChatGPT genérico distrae o permite hacer trampa. VILLANEXT es la única plataforma que integra manejo de estrés biopsicosocial. Si Fede detecta que llevas 2 horas estudiando frustrado, te bloquea la pantalla y te receta pausas activas. Además, usamos la Curva de Ebbinghaus para inyectarte micro-repasos días antes de tu examen parcial. Nosotros organizamos tu mente, tú solo estudias."`,
+            `"¿Por qué no usar simplemente Moodle o ChatGPT? Esta tabla lo resume. Moodle es pasivo, y ChatGPT genérico distrae o permite hacer trampa. VillaNEXT es la única plataforma que integra manejo de estrés biopsicosocial. Si Fede detecta que llevas 2 horas estudiando frustrado, te bloquea la pantalla y te receta pausas activas. Además, usamos la Curva de Ebbinghaus para inyectarte micro-repasos días antes de tu examen parcial. Nosotros organizamos tu mente, tú solo estudias."`,
 
             `"Pero sabemos que la IA no lo es todo; el villarrealino es solidario. Si la IA no basta, entra nuestra Comunidad Peer-to-Peer. En la app ganas puntos 'EXP' por estudiar. Si un cachimbo no entiende un tema de algoritmos, invierte sus EXP para pedir ayuda. El sistema hace un 'matchmaking' automático con un 'Mentor Verificado' (un alumno de ciclos superiores con buenas notas) y les abre un canal de chat privado para que puedan coordinar la asesoría. Aprendizaje colaborativo y real."`,
 
-            `"¿Cómo logramos que el estudiante realmente use VILLANEXT día a día? No con medallas de plástico virtuales, sino con tres pilares. Primero, Gamificación con Utilidad Real: mantener la racha activa multiplicadores de EXP, y esa EXP se convierte en una moneda de cambio social para canjear mentorías uno a uno con alumnos de ciclos superiores. Segundo, Alivio de Carga Cognitiva: en lugar de abrumarse con diez materias, la app ofrece tres misiones diarias de cinco minutos ideales para optimizar su tiempo entre clases o trabajos por presentar, junto a una calculadora de promedios para saber exactamente qué nota necesitan. Y tercero, Estatus y Pertenencia: validamos a los mentores con badges brillantes y centralizamos los grupos caóticos de WhatsApp en foros ordenados. Transformamos el estrés en progreso tangible."`,
+            `"¿Cómo logramos que el estudiante realmente use VillaNEXT día a día? No con medallas de plástico virtuales, sino con tres pilares. Primero, Gamificación con Utilidad Real: mantener la racha activa multiplicadores de EXP, y esa EXP se convierte en una moneda de cambio social para canjear mentorías uno a uno con alumnos de ciclos superiores. Segundo, Alivio de Carga Cognitiva: en lugar de abrumarse con diez materias, la app ofrece tres misiones diarias de cinco minutos ideales para optimizar su tiempo entre clases o trabajos por presentar, junto a una calculadora de promedios para saber exactamente qué nota necesitan. Y tercero, Estatus y Pertenencia: validamos a los mentores con badges brillantes y centralizamos los grupos caóticos de WhatsApp en foros ordenados. Transformamos el estrés en progreso tangible."`,
 
             `"A nivel de arquitectura técnica, nuestro diseño es serverless y desacoplado, reduciendo costos operativos. En lugar de entrenar modelos costosos, consumimos modelos fundacionales vía APIs con persistencia de contexto local. Nuestra base de datos unifica el modelo relacional del alumno con una extensión pgvector, indexando rúbricas e históricos mediante algoritmos HNSW para búsquedas semánticas de baja latencia. Además, modelamos la malla de cursos como un Grafo Acíclico Dirigido (DAG); así, la transición hacia otras facultades como Medicina o Derecho es inmediata, requiriendo únicamente la ingesta de un nuevo esquema curricular sin modificar una sola línea de código."`
         ];
@@ -1707,6 +1745,10 @@
             const progressVal = document.getElementById('route-progress-bar');
             const progressText = document.querySelector('#route-progress-bar + span');
             
+            const mapViewWrapper = document.getElementById('route-map-view-wrapper');
+            const iaGenerator = document.getElementById('route-nodes-ia-generator');
+            const iaLoading = document.getElementById('route-nodes-ia-loading');
+            
             // SVG Paths
             const svgBase = document.getElementById('svg-wave-base');
             const svgCompleted = document.getElementById('svg-wave-completed');
@@ -1715,6 +1757,11 @@
             if (type === 'oficial') {
                 btnOficial.className = "px-3 py-1.5 border-b-2 border-orange-500 text-white font-bold transition flex items-center gap-1";
                 btnIa.className = "px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1";
+                
+                // Show map view, hide generator & loading
+                if (mapViewWrapper) mapViewWrapper.classList.remove('hidden');
+                if (iaGenerator) iaGenerator.classList.add('hidden');
+                if (iaLoading) iaLoading.classList.add('hidden');
                 
                 listOficial.classList.remove('hidden');
                 listIa.classList.add('hidden');
@@ -1732,25 +1779,56 @@
                 svgProgress.style.display = 'block';
             } else {
                 btnOficial.className = "px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1";
-                btnIa.className = "px-3 py-1.5 border-b-2 border-orange-500 text-white font-bold transition flex items-center gap-1";
+                btnIa.className = "px-3 py-1.5 border-b-2 border-purple-500 text-white font-bold transition flex items-center gap-1";
                 
-                listOficial.classList.add('hidden');
-                listIa.classList.remove('hidden');
-                
-                headerTitle.innerText = "Ruta IA Personalizada";
-                headerDesc.innerText = "Optimizada por Fede en base a tu rendimiento";
-                progressVal.style.width = "25%";
-                progressText.innerText = "25%";
-                
-                // Configurar trazo SVG para 4 nodos
-                svgBase.setAttribute('d', 'M 50,15 C 20,70 80,105 50,160 C 20,215 80,250 50,305');
-                svgCompleted.style.display = 'none'; // No hay tramos completados completos en la ruta IA
-                svgProgress.setAttribute('d', 'M 50,15 C 20,70 80,105 50,160');
-                svgProgress.style.display = 'block';
+                if (!isIaRouteGenerated) {
+                    // Hide map, show generator
+                    if (mapViewWrapper) mapViewWrapper.classList.add('hidden');
+                    if (iaGenerator) iaGenerator.classList.remove('hidden');
+                    if (iaLoading) iaLoading.classList.add('hidden');
+                } else {
+                    // Show map, hide generator & loading
+                    if (mapViewWrapper) mapViewWrapper.classList.remove('hidden');
+                    if (iaGenerator) iaGenerator.classList.add('hidden');
+                    if (iaLoading) iaLoading.classList.add('hidden');
+                    
+                    listOficial.classList.add('hidden');
+                    listIa.classList.remove('hidden');
+                    
+                    headerTitle.innerText = "Ruta IA Personalizada";
+                    headerDesc.innerText = "Optimizada por Fede en base a tu rendimiento";
+                    progressVal.style.width = "25%";
+                    progressText.innerText = "25%";
+                    
+                    // Configurar trazo SVG para 4 nodos
+                    svgBase.setAttribute('d', 'M 50,15 C 20,70 80,105 50,160 C 20,215 80,250 50,305');
+                    svgCompleted.style.display = 'none'; // No hay tramos completados completos en la ruta IA
+                    svgProgress.setAttribute('d', 'M 50,15 C 20,70 80,105 50,160');
+                    svgProgress.style.display = 'block';
+                }
             }
             
             closeRouteModal();
             lucide.createIcons();
+        }
+
+        function cancelIaRoute() {
+            toggleRouteType('oficial');
+        }
+
+        function startIaRouteGeneration() {
+            const iaGenerator = document.getElementById('route-nodes-ia-generator');
+            const iaLoading = document.getElementById('route-nodes-ia-loading');
+            
+            if (iaGenerator) iaGenerator.classList.add('hidden');
+            if (iaLoading) iaLoading.classList.remove('hidden');
+            
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                isIaRouteGenerated = true;
+                toggleRouteType('ia');
+            }, 1500);
         }
 
         function selectRouteNode(nodeNum, title, status, description) {
