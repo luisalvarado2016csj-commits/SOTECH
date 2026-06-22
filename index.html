@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VillaNEXT - Pitch Deck</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Outfit:wght@300;400;600&display=swap"
         rel="stylesheet">
@@ -1424,22 +1425,22 @@
                     <div class="flex justify-between items-start mb-4">
                         <div class="p-3 bg-slate-800 rounded-xl border border-slate-600"><i data-lucide="server"
                                 class="text-blue-400 w-6 h-6"></i></div>
-                        <span class="text-2xl font-bold font-heading text-white">$15<span
+                        <span class="text-2xl font-bold font-heading text-white">~$60<span
                                 class="text-sm text-slate-500 font-normal">/mes</span></span>
                     </div>
                     <h4 class="font-bold text-lg mb-2">Persistencia Semántica</h4>
-                    <p class="text-sm text-slate-400">DigitalOcean Managed Database (PostgreSQL + pgvector). Almacenamiento unificado de datos relacionales y vectores, delegando el mantenimiento al proveedor.</p>
+                    <p class="text-sm text-slate-400">DigitalOcean Managed Database (PostgreSQL + pgvector). Almacenamiento unificado de datos relacionales y vectores para 4,000 alumnos.</p>
                 </div>
 
                 <div class="glass-panel p-6 rounded-2xl border-slate-700 relative overflow-hidden">
                     <div class="flex justify-between items-start mb-4">
                         <div class="p-3 bg-slate-800 rounded-xl border border-slate-600"><i data-lucide="cpu"
                                 class="text-emerald-400 w-6 h-6"></i></div>
-                        <span class="text-2xl font-bold font-heading text-white">~$8<span
+                        <span class="text-2xl font-bold font-heading text-white">~$65<span
                                 class="text-sm text-slate-500 font-normal">/mes</span></span>
                     </div>
                     <h4 class="font-bold text-lg mb-2">Optimización de Inferencia</h4>
-                    <p class="text-sm text-slate-400">Consumo eficiente de Gemini 1.5 Flash vía AI SDK. Aplicamos Chunking Dinámico y búsqueda HNSW para minimizar tokens (Costo base para 500 alumnos).</p>
+                    <p class="text-sm text-slate-400">Consumo eficiente de Gemini 1.5 Flash vía AI SDK. Aplicamos Chunking Dinámico y búsqueda HNSW para minimizar tokens (Costo base para 4,000 alumnos).</p>
                 </div>
 
                 <div
@@ -1452,6 +1453,13 @@
                     </div>
                     <h4 class="font-bold text-lg text-orange-400 mb-2">Escalabilidad (DAG)</h4>
                     <p class="text-sm text-slate-300">Arquitectura de Grafos Acíclicos Dirigidos (DAG). Escalar a facultades como Medicina requiere $0 en desarrollo; solo basta subir un JSON con la nueva malla.</p>
+                </div>
+            </div>
+
+            <div class="mt-8 glass-panel p-6 rounded-2xl border-slate-700 bg-slate-800/50 relative overflow-hidden w-full max-w-4xl mx-auto h-[280px]">
+                <h4 class="font-bold text-lg text-white mb-2 text-center">Proyección de Costos Mensuales vs. Alumnos (Escalabilidad)</h4>
+                <div class="w-full h-[200px] flex justify-center">
+                    <canvas id="scalabilityChart"></canvas>
                 </div>
             </div>
 
@@ -1485,7 +1493,7 @@
 
             `"¿Cómo logramos que el estudiante realmente use VillaNEXT día a día? No con medallas de plástico virtuales, sino con tres pilares. Primero, Gamificación con Utilidad Real: mantener la racha activa multiplicadores de EXP, y esa EXP se convierte en una moneda de cambio social para canjear mentorías uno a uno con alumnos de ciclos superiores. Segundo, Alivio de Carga Cognitiva: en lugar de abrumarse con diez materias, la app ofrece tres misiones diarias de cinco minutos ideales para optimizar su tiempo entre clases o trabajos por presentar, junto a una calculadora de promedios para saber exactamente qué nota necesitan. Y tercero, Estatus y Pertenencia: validamos a los mentores con badges brillantes y centralizamos los grupos caóticos de WhatsApp en foros ordenados. Transformamos el estrés en progreso tangible."`,
 
-            `"A nivel técnico y financiero, VillaNEXT es altamente viable. Operar un MVP para 500 alumnos de Ingeniería cuesta apenas 23 dólares al mes. ¿Cómo? Primero, 15 dólares en una base de datos gestionada en DigitalOcean con pgvector para nuestra memoria semántica. Segundo, optimizamos la inferencia usando Chunking Dinámico y consumiendo APIs rentables como Gemini 1.5 Flash, costando solo 8 dólares mensuales. Y lo más importante para la universidad: la escalabilidad. Modelamos los sílabos como un Grafo Acíclico Dirigido (DAG). Esto significa que llevar VillaNEXT a la facultad de Medicina cuesta cero dólares en desarrollo; el sistema recalcula rutas automáticamente con solo subir un JSON con la nueva malla curricular."`
+            `"A nivel técnico y financiero, VillaNEXT es altamente viable. Operar un piloto para 4,000 alumnos en una facultad cuesta apenas 125 dólares al mes. ¿Cómo? Unos 60 dólares en una base de datos gestionada en DigitalOcean con pgvector y 65 dólares optimizando inferencia con Chunking Dinámico y Gemini 1.5 Flash. Y como muestra el gráfico de proyección basado en los precios reales actuales, escalar a nivel masivo a 10 mil, 20 mil o 40 mil alumnos mantiene un costo operativo lineal y extremadamente bajo, de apenas 3 centavos de dólar por alumno al mes. Todo esto con cero dólares en costos de desarrollo gracias a nuestra arquitectura DAG que abstrae la malla curricular."`
         ];
 
         function updateSlide() {
@@ -1970,6 +1978,113 @@
         }
 
         updateSlide();
+
+        // INICIALIZACIÓN DEL GRÁFICO INTERACTIVO (Chart.js)
+        const ctx = document.getElementById('scalabilityChart').getContext('2d');
+        const scalabilityChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['4,000 Alumnos', '10,000 Alumnos', '20,000 Alumnos', '40,000 Alumnos'],
+                datasets: [
+                    {
+                        label: 'Costo Base de Datos (DigitalOcean)',
+                        data: [60, 120, 240, 480],
+                        borderColor: '#3b82f6', // blue-500
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Costo Inferencia IA (Gemini 1.5 Flash)',
+                        data: [65, 162, 324, 648],
+                        borderColor: '#10b981', // emerald-500
+                        backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Costo Total Operativo',
+                        data: [125, 282, 564, 1128],
+                        borderColor: '#f97316', // orange-500
+                        backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#f97316',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#f97316',
+                        pointRadius: 5,
+                        pointHoverRadius: 7,
+                        fill: false,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#94a3b8', // slate-400
+                            font: { family: "'Outfit', sans-serif", size: 12 }
+                        }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        titleColor: '#fff',
+                        bodyColor: '#cbd5e1',
+                        borderColor: '#334155',
+                        borderWidth: 1,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            color: 'rgba(51, 65, 85, 0.5)',
+                            borderColor: 'rgba(51, 65, 85, 0.5)'
+                        },
+                        ticks: {
+                            color: '#94a3b8',
+                            font: { family: "'Outfit', sans-serif" }
+                        }
+                    },
+                    y: {
+                        grid: {
+                            color: 'rgba(51, 65, 85, 0.5)',
+                            borderColor: 'rgba(51, 65, 85, 0.5)'
+                        },
+                        ticks: {
+                            color: '#94a3b8',
+                            font: { family: "'Outfit', sans-serif" },
+                            callback: function(value, index, values) {
+                                return '$' + value;
+                            }
+                        }
+                    }
+                },
+                interaction: {
+                    mode: 'nearest',
+                    axis: 'x',
+                    intersect: false
+                }
+            }
+        });
     </script>
 </body>
 
