@@ -116,7 +116,7 @@
 
     <!-- INDICADOR DE PÁGINA -->
     <div class="fixed top-6 right-6 z-50 text-slate-500 font-bold font-mono">
-        <span id="currentSlideNum">1</span> / 6
+        <span id="currentSlideNum">1</span> / 5
     </div>
 
     <!-- ==========================================
@@ -284,8 +284,8 @@
     <!-- ==========================================
          SLIDE 2: LA SOLUCIÓN (VISUAL)
          ========================================== -->
-    <div class="slide flex-col justify-center px-20 relative bg-slate-900">
-        <div class="max-w-6xl mx-auto w-full flex gap-16 items-center">
+    <div class="slide flex-col justify-start px-20 relative bg-slate-900 overflow-y-auto py-16">
+        <div class="max-w-6xl mx-auto w-full flex gap-16 items-center min-h-[85vh] shrink-0">
             <div class="flex-1 space-y-8">
                 <span class="text-emerald-500 font-bold tracking-wider text-sm uppercase">La Solución</span>
                 <h2 class="font-heading text-5xl font-bold leading-tight">Tu universidad en el bolsillo</h2>
@@ -375,7 +375,7 @@
 
             <!-- Mockup UI Desktop (Oculto por defecto) -->
             <div id="desktopMockup"
-                class="absolute inset-0 bg-[#0A0D18]/98 z-40 flex items-center justify-center p-8 opacity-0 pointer-events-none transition-all duration-500 scale-95 overflow-hidden">
+                class="fixed inset-0 bg-[#0A0D18]/98 z-40 flex items-center justify-center p-8 opacity-0 pointer-events-none transition-all duration-500 scale-95 overflow-hidden">
                 <!-- Botón de retorno -->
                 <button onclick="toggleDeviceMockup()"
                     class="absolute top-6 right-6 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-xl text-xs font-bold shadow-lg flex items-center gap-2 transition z-50">
@@ -1206,19 +1206,12 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
 
-    <!-- ==========================================
-         SLIDE 3: TABLA COMPARATIVA
-         ========================================== -->
-    <div class="slide flex-col justify-center px-20 relative bg-slate-900">
-        <div class="max-w-5xl mx-auto w-full">
-            <span class="text-orange-500 font-bold tracking-wider text-sm uppercase mb-2 block text-center">Análisis de
-                Mercado</span>
+        <!-- ==========================================
+             SECCIÓN: TABLA COMPARATIVA (SCROLL ABAJO)
+             ========================================== -->
+        <div class="max-w-5xl mx-auto w-full min-h-[85vh] flex flex-col justify-center shrink-0 mt-32 mb-16" id="tabla-comparativa">
+            <span class="text-orange-500 font-bold tracking-wider text-sm uppercase mb-2 block text-center">Análisis de Mercado</span>
             <h2 class="font-heading text-4xl font-bold text-center mb-10">¿Por qué somos la mejor alternativa?</h2>
 
             <div class="glass-panel rounded-3xl overflow-hidden border border-slate-700 shadow-2xl">
@@ -1636,9 +1629,7 @@
         const speeches = [
             `"Buenas tardes, jurado. Hablemos de la realidad del estudiante villarrealino. El mayor peligro en nuestra universidad es la falta de seguimiento y el abandono silencioso. La inmensa carga cognitiva de llevar hasta 10 materias sin un acompañamiento constante eleva drásticamente las tasas de deserción y el bajo rendimiento académico. Las plataformas actuales como el SVA o Moodle son estáticas; no detectan cuándo un alumno está a punto de tirar la toalla. Por eso creamos VillaNEXT."`,
 
-            `"La solución no es hacer otra página web pesada. Presentamos VillaNEXT: una aplicación diseñada tanto para PC como para móviles, optimizando tu tiempo y productividad en cualquier dispositivo. El corazón es Fede, nuestra IA socrática. Fede no te hace la tarea ni fomenta el copy-paste; te guía. Transforma un sílabo denso de la FIIS en 'micro-misiones' diarias para que el aprendizaje sea manejable y no te sature visualmente."`,
-
-            `"¿Por qué no usar simplemente Moodle o ChatGPT? Esta tabla lo resume. Moodle es pasivo, y ChatGPT genérico distrae o permite hacer trampa. VillaNEXT es la única plataforma que integra manejo de estrés biopsicosocial. Si Fede detecta que llevas 2 horas estudiando frustrado, te bloquea la pantalla y te receta pausas activas. Además, usamos la Curva de Ebbinghaus para inyectarte micro-repasos días antes de tu examen parcial. Nosotros organizamos tu mente, tú solo estudias."`,
+            `"La solución no es hacer otra página web pesada. Presentamos VillaNEXT: una aplicación diseñada tanto para PC como para móviles. El corazón es Fede, nuestra IA socrática que transforma un sílabo denso en 'micro-misiones' diarias. Haciendo scroll abajo verán por qué no usar simplemente Moodle o ChatGPT: Moodle es pasivo y ChatGPT permite hacer trampa. VillaNEXT integra manejo de estrés biopsicosocial. Nosotros organizamos tu mente, tú solo estudias."`,
 
             `"Pero sabemos que la IA no lo es todo; el villarrealino es solidario. Si la IA no basta, entra nuestra Comunidad Peer-to-Peer. En la app ganas puntos 'EXP' por estudiar. Si un cachimbo no entiende un tema de algoritmos, invierte sus EXP para pedir ayuda. El sistema hace un 'matchmaking' automático con un 'Mentor Verificado' (un alumno de ciclos superiores con buenas notas) y les abre un canal de chat privado para que puedan coordinar la asesoría. Aprendizaje colaborativo y real."`,
 
@@ -1680,7 +1671,7 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
             if (e.key === 'ArrowLeft') prevSlide();
-            if (e.key === 'ArrowDown' && currentSlide === 5) {
+            if (e.key === 'ArrowDown' && currentSlide === 4) {
                 const chart = document.getElementById('scalabilityChart');
                 if (chart) {
                     chart.scrollIntoView({ behavior: 'smooth', block: 'center' });
