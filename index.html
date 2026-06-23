@@ -66,10 +66,17 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(4px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(4px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         .animate-fade-in {
             animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
@@ -123,7 +130,8 @@
                         class="text-slate-400 font-normal text-lg">| UNFV</span></h2>
             </div>
 
-            <h1 class="font-heading font-bold text-5xl mb-2"><span class="text-white">Villa</span><span class="text-orange-500">NEXT</span></h1>
+            <h1 class="font-heading font-bold text-5xl mb-2"><span class="text-white">Villa</span><span
+                    class="text-orange-500">NEXT</span></h1>
             <p class="text-xl text-orange-400 font-medium tracking-wide mb-10">La realidad del estudiante no cabe en una
                 plataforma estática.</p>
 
@@ -387,7 +395,9 @@
                                     <i data-lucide="bot" class="w-4 h-4"></i>
                                 </div>
                                 <div class="overflow-hidden">
-                                    <h4 class="font-heading font-bold text-xs leading-none"><span class="text-white">Villa</span><span class="text-orange-500">NEXT</span></h4>
+                                    <h4 class="font-heading font-bold text-xs leading-none"><span
+                                            class="text-white">Villa</span><span class="text-orange-500">NEXT</span>
+                                    </h4>
                                     <span class="text-[8px] text-slate-500">UNFV Hub</span>
                                 </div>
                             </div>
@@ -471,61 +481,94 @@
                         </div>
 
                         <!-- VISTA 1: INICIO (FEDE SOCRÁTICO CHAT) - ACTIVO POR DEFECTO -->
-                        <div id="desktop-content-inicio" class="desktop-tab-content flex-1 p-4 flex flex-col justify-between overflow-hidden relative">
+                        <div id="desktop-content-inicio"
+                            class="desktop-tab-content flex-1 p-4 flex flex-col justify-between overflow-hidden relative">
                             <!-- Brain badge indicating Fede learns from you -->
                             <div class="absolute bottom-16 right-6 z-30 group">
-                                <div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center shadow-lg shadow-orange-500/30 hover:bg-orange-600 active:scale-95 transition-all duration-300 cursor-pointer animate-bounce" style="animation-duration: 3s">
+                                <div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center shadow-lg shadow-orange-500/30 hover:bg-orange-600 active:scale-95 transition-all duration-300 cursor-pointer animate-bounce"
+                                    style="animation-duration: 3s">
                                     <i data-lucide="brain" class="text-white w-5 h-5"></i>
                                 </div>
-                                <div class="absolute bottom-12 right-0 bg-[#0F1322] border border-orange-500/30 text-[9px] text-slate-200 p-2.5 rounded-xl w-48 shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 leading-normal z-50">
-                                    <strong class="text-orange-400 block mb-0.5"><i data-lucide="sparkles" class="inline w-3 h-3 mb-0.5"></i> El chat aprende de ti:</strong>
-                                    Fede recuerda tus dudas, estilo de estudio y nivel actual para adaptar su tono pedagógico y personalizar tu ruta de aprendizaje de manera predictiva.
+                                <div
+                                    class="absolute bottom-12 right-0 bg-[#0F1322] border border-orange-500/30 text-[9px] text-slate-200 p-2.5 rounded-xl w-48 shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 leading-normal z-50">
+                                    <strong class="text-orange-400 block mb-0.5"><i data-lucide="sparkles"
+                                            class="inline w-3 h-3 mb-0.5"></i> El chat aprende de ti:</strong>
+                                    Fede recuerda tus dudas, estilo de estudio y nivel actual para adaptar su tono
+                                    pedagógico y personalizar tu ruta de aprendizaje de manera predictiva.
                                 </div>
                             </div>
 
                             <!-- Chat Card Container -->
-                            <div class="flex-1 bg-[#111625]/60 border border-slate-800 rounded-2xl flex flex-col h-full justify-between overflow-hidden">
+                            <div
+                                class="flex-1 bg-[#111625]/60 border border-slate-800 rounded-2xl flex flex-col h-full justify-between overflow-hidden">
                                 <!-- Chat Header -->
-                                <div class="flex items-center justify-between border-b border-white/5 p-3 shrink-0 bg-[#0F1322]/80">
+                                <div
+                                    class="flex items-center justify-between border-b border-white/5 p-3 shrink-0 bg-[#0F1322]/80">
                                     <div class="flex items-center gap-2">
-                                        <div class="w-7 h-7 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
+                                        <div
+                                            class="w-7 h-7 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
                                             <i data-lucide="bot" class="text-slate-950 w-4 h-4"></i>
                                         </div>
                                         <div>
-                                            <span class="font-heading font-bold text-white text-[10px] flex items-center gap-1">
-                                                Fede <i data-lucide="sparkles" class="text-orange-400 w-3 h-3 animate-pulse"></i>
+                                            <span
+                                                class="font-heading font-bold text-white text-[10px] flex items-center gap-1">
+                                                Fede <i data-lucide="sparkles"
+                                                    class="text-orange-400 w-3 h-3 animate-pulse"></i>
                                             </span>
-                                            <span class="text-[7px] text-slate-400 font-medium">Tutor Socrático • IA Activada</span>
+                                            <span class="text-[7px] text-slate-400 font-medium">Tutor Socrático • IA
+                                                Activada</span>
                                         </div>
                                     </div>
                                     <div class="flex items-center gap-2 scale-90">
-                                        <span class="flex items-center gap-1 text-[8px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20 font-semibold uppercase">
-                                            <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span> Online
+                                        <span
+                                            class="flex items-center gap-1 text-[8px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20 font-semibold uppercase">
+                                            <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                                            Online
                                         </span>
-                                        <button class="px-2 py-1 bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white rounded-lg transition text-[8px] font-semibold flex items-center gap-0.5">
+                                        <button
+                                            class="px-2 py-1 bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white rounded-lg transition text-[8px] font-semibold flex items-center gap-0.5">
                                             <i data-lucide="plus" class="w-2.5 h-2.5"></i> Nuevo Chat
                                         </button>
-                                        <button class="p-1 bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-400 hover:text-white rounded-lg transition">
+                                        <button
+                                            class="p-1 bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-400 hover:text-white rounded-lg transition">
                                             <i data-lucide="eye-off" class="w-3 h-3"></i>
                                         </button>
                                     </div>
                                 </div>
 
                                 <!-- Messages Area -->
-                                <div id="desktop-fede-messages" class="flex-1 p-3.5 space-y-3 overflow-y-auto min-h-0 bg-slate-950/20">
+                                <div id="desktop-fede-messages"
+                                    class="flex-1 p-3.5 space-y-3 overflow-y-auto min-h-0 bg-slate-950/20">
                                     <!-- Fede Message -->
                                     <div class="flex items-start gap-2.5 max-w-[85%]">
-                                        <div class="w-7 h-7 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 mt-0.5">
+                                        <div
+                                            class="w-7 h-7 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 mt-0.5">
                                             <i data-lucide="bot" class="w-3.5 h-3.5"></i>
                                         </div>
-                                        <div class="bg-slate-900/90 border border-slate-800 text-slate-200 px-3 py-2.5 rounded-2xl rounded-tl-none leading-relaxed text-[10px] relative group">
-                                            <button class="absolute top-2 right-2 text-slate-500 hover:text-white transition opacity-0 group-hover:opacity-100">
+                                        <div
+                                            class="bg-slate-900/90 border border-slate-800 text-slate-200 px-3 py-2.5 rounded-2xl rounded-tl-none leading-relaxed text-[10px] relative group">
+                                            <button
+                                                class="absolute top-2 right-2 text-slate-500 hover:text-white transition opacity-0 group-hover:opacity-100">
                                                 <i data-lucide="volume-2" class="w-3 h-3"></i>
                                             </button>
-                                            <p class="mb-1.5">¡Hola! Vamos por partes, que el tiempo en la FIIS es oro. ⏳</p>
-                                            <p class="mb-1.5">Primero, sobre el cuestionario: ¿de qué periodo o tema específico de <strong class="text-orange-400 font-medium">Historia</strong> quieres que te ponga a prueba? (Recuerda que no te daré las respuestas, ¡tienes que razonarlas!).</p>
-                                            <p class="mb-1.5">Sobre <strong class="text-orange-400 font-medium">Matemáticas</strong>, si quieres un reto que realmente te sirva para la carrera, te recomiendo empezar por <strong class="text-white">Cálculo de Varias Variables</strong> o <strong class="text-white">Ecuaciones Diferenciales</strong>. Son la base de muchos cursos de ingeniería. ¿Cuál de esos te suena más o cuál te toca pronto?</p>
-                                            <p>Y claro, dime: <strong class="text-orange-300 font-medium">¿en qué necesitas ayuda exactamente?</strong> Suéltalo, ¿qué es lo que te tiene trabado? 🤪</p>
+                                            <p class="mb-1.5">¡Hola! Vamos por partes, que el tiempo en la FIIS es oro.
+                                                ⏳</p>
+                                            <p class="mb-1.5">Primero, sobre el cuestionario: ¿de qué periodo o tema
+                                                específico de <strong
+                                                    class="text-orange-400 font-medium">Historia</strong> quieres que te
+                                                ponga a prueba? (Recuerda que no te daré las respuestas, ¡tienes que
+                                                razonarlas!).</p>
+                                            <p class="mb-1.5">Sobre <strong
+                                                    class="text-orange-400 font-medium">Matemáticas</strong>, si quieres
+                                                un reto que realmente te sirva para la carrera, te recomiendo empezar
+                                                por <strong class="text-white">Cálculo de Varias Variables</strong> o
+                                                <strong class="text-white">Ecuaciones Diferenciales</strong>. Son la
+                                                base de muchos cursos de ingeniería. ¿Cuál de esos te suena más o cuál
+                                                te toca pronto?
+                                            </p>
+                                            <p>Y claro, dime: <strong class="text-orange-300 font-medium">¿en qué
+                                                    necesitas ayuda exactamente?</strong> Suéltalo, ¿qué es lo que te
+                                                tiene trabado? 🤪</p>
                                         </div>
                                     </div>
                                 </div>
@@ -533,11 +576,13 @@
                                 <!-- Input Bar Area -->
                                 <div class="p-2 border-t border-white/5 bg-[#0F1322]/80 shrink-0">
                                     <div class="flex gap-1.5">
-                                        <button class="p-1.5 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition flex items-center justify-center shrink-0">
+                                        <button
+                                            class="p-1.5 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition flex items-center justify-center shrink-0">
                                             <i data-lucide="mic" class="w-3.5 h-3.5"></i>
                                         </button>
                                         <div class="relative flex-1">
-                                            <input type="text" id="desktop-fede-input" onkeydown="handleFedeChatKey(event)" placeholder="Escríbele a Fede..."
+                                            <input type="text" id="desktop-fede-input"
+                                                onkeydown="handleFedeChatKey(event)" placeholder="Escríbele a Fede..."
                                                 class="w-full bg-slate-900 border border-slate-800 rounded-xl pl-3 pr-8 py-1.5 text-[9px] text-slate-200 placeholder-slate-500 focus:outline-none focus:border-slate-700 text-slate-300">
                                             <button onclick="sendFedeChatMessage()"
                                                 class="absolute right-1 top-1/2 -translate-y-1/2 w-6 h-6 bg-orange-500 hover:bg-orange-600 text-slate-950 rounded-lg transition flex items-center justify-center shadow-md">
@@ -550,7 +595,8 @@
                         </div>
 
                         <!-- VISTA 2: DASHBOARD ORIGINAL (HISTORIAL, MISIONES, ACCESOS) -->
-                        <div id="desktop-content-dashboard" class="desktop-tab-content flex-1 p-5 overflow-y-auto space-y-4 hidden">
+                        <div id="desktop-content-dashboard"
+                            class="desktop-tab-content flex-1 p-5 overflow-y-auto space-y-4 hidden">
                             <!-- Header welcome -->
                             <div class="flex justify-between items-end border-b border-white/5 pb-2">
                                 <div>
@@ -741,17 +787,23 @@
                         </div>
 
                         <!-- VISTA 3: RUTAS DE ESTUDIO (MAPA INTERACTIVO Y DETALLES DE CURSO) -->
-                        <div id="desktop-content-rutas" class="desktop-tab-content flex-1 p-4 overflow-y-auto space-y-3.5 hidden text-[10px]">
+                        <div id="desktop-content-rutas"
+                            class="desktop-tab-content flex-1 p-4 overflow-y-auto space-y-3.5 hidden text-[10px]">
                             <!-- Selector de curso activo -->
                             <div class="flex flex-col items-center justify-center shrink-0 mb-1">
-                                <span class="text-[8px] text-slate-500 font-bold uppercase tracking-wider mb-1">Seleccionar Curso Activo</span>
-                                <div class="w-64 bg-[#111625] border border-slate-800 rounded-xl px-3 py-1.5 flex items-center justify-between cursor-pointer hover:border-slate-700 transition">
+                                <span
+                                    class="text-[8px] text-slate-500 font-bold uppercase tracking-wider mb-1">Seleccionar
+                                    Curso Activo</span>
+                                <div
+                                    class="w-64 bg-[#111625] border border-slate-800 rounded-xl px-3 py-1.5 flex items-center justify-between cursor-pointer hover:border-slate-700 transition">
                                     <div class="flex items-center gap-2">
-                                        <div class="w-6 h-6 rounded-lg bg-orange-500/20 text-orange-400 flex items-center justify-center shrink-0">
+                                        <div
+                                            class="w-6 h-6 rounded-lg bg-orange-500/20 text-orange-400 flex items-center justify-center shrink-0">
                                             <i data-lucide="book" class="w-3.5 h-3.5"></i>
                                         </div>
                                         <div class="text-left">
-                                            <p class="font-heading font-bold text-white leading-none text-[9px]">LENGUAJE Y COMUNICACIÓN</p>
+                                            <p class="font-heading font-bold text-white leading-none text-[9px]">
+                                                LENGUAJE Y COMUNICACIÓN</p>
                                             <span class="text-[7px] text-slate-500 font-medium">02</span>
                                         </div>
                                     </div>
@@ -763,12 +815,17 @@
                             </div>
 
                             <!-- Progreso General Banner -->
-                            <div class="glass-panel p-3 rounded-xl border-slate-800 flex items-center justify-between shrink-0">
+                            <div
+                                class="glass-panel p-3 rounded-xl border-slate-800 flex items-center justify-between shrink-0">
                                 <div class="flex-1">
-                                    <h3 class="font-heading font-bold text-[11px] text-white uppercase tracking-wider">LENGUAJE Y COMUNICACIÓN</h3>
+                                    <h3 class="font-heading font-bold text-[11px] text-white uppercase tracking-wider">
+                                        LENGUAJE Y COMUNICACIÓN</h3>
                                     <div class="flex items-center gap-2 mt-1.5">
-                                        <div class="flex-1 bg-slate-950 h-2 rounded-full overflow-hidden border border-white/5 relative">
-                                            <div id="route-progress-bar" class="bg-emerald-500 h-full rounded-full transition-all duration-1000" style="width: 36%"></div>
+                                        <div
+                                            class="flex-1 bg-slate-950 h-2 rounded-full overflow-hidden border border-white/5 relative">
+                                            <div id="route-progress-bar"
+                                                class="bg-emerald-500 h-full rounded-full transition-all duration-1000"
+                                                style="width: 36%"></div>
                                         </div>
                                         <span class="font-bold text-emerald-400 shrink-0 text-[10px]">36%</span>
                                     </div>
@@ -784,278 +841,367 @@
                                 </button>
                                 <button onclick="toggleRouteType('ia')" id="btn-route-ia"
                                     class="px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1">
-                                    <i data-lucide="sparkles" class="text-purple-400 w-3 h-3 animate-pulse"></i> RUTA IA PERSONALIZADA
+                                    <i data-lucide="sparkles" class="text-purple-400 w-3 h-3 animate-pulse"></i> RUTA IA
+                                    PERSONALIZADA
                                 </button>
                             </div>
 
                             <!-- Contenido del Mapa de Ruta -->
-                            <div class="relative bg-[#111625]/30 border border-slate-800/80 rounded-xl p-4 min-h-[400px] overflow-hidden">
+                            <div
+                                class="relative bg-[#111625]/30 border border-slate-800/80 rounded-xl p-4 min-h-[400px] overflow-hidden">
                                 <!-- Wrapper para la vista del mapa de nodos (se oculta cuando se muestra el generador) -->
                                 <div id="route-map-view-wrapper" class="space-y-4">
                                     <!-- Legend (top right) -->
-                                    <div class="absolute top-3 right-3 flex items-center gap-2 bg-[#0F1322]/90 border border-slate-800 px-2 py-1 rounded-lg text-[7px] font-bold z-10">
-                                        <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Completado</span>
-                                        <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> Actual</span>
-                                        <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span> Bloqueado</span>
+                                    <div
+                                        class="absolute top-3 right-3 flex items-center gap-2 bg-[#0F1322]/90 border border-slate-800 px-2 py-1 rounded-lg text-[7px] font-bold z-10">
+                                        <span class="flex items-center gap-1"><span
+                                                class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                            Completado</span>
+                                        <span class="flex items-center gap-1"><span
+                                                class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> Actual</span>
+                                        <span class="flex items-center gap-1"><span
+                                                class="w-1.5 h-1.5 rounded-full bg-slate-600"></span> Bloqueado</span>
                                     </div>
 
                                     <!-- Título de Ruta -->
                                     <div id="route-title-header" class="flex items-center gap-1.5 mb-5 relative z-10">
                                         <i data-lucide="git-commit" class="text-orange-500 w-4 h-4"></i>
                                         <div>
-                                            <h4 class="font-heading font-bold text-white text-[10px]">Ruta de Habilidades</h4>
+                                            <h4 class="font-heading font-bold text-white text-[10px]">Ruta de
+                                                Habilidades</h4>
                                             <p class="text-[7px] text-slate-500">Completa el sílabo semana a semana</p>
                                         </div>
                                     </div>
 
                                     <!-- Winding Map Nodes -->
                                     <div id="route-nodes-container" class="relative max-w-sm mx-auto py-2">
-                                    <!-- Dynamic Wave Lines background -->
-                                    <div class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-44 pointer-events-none z-0">
-                                        <svg class="w-full h-full" viewBox="0 0 100 480" preserveAspectRatio="none">
-                                            <!-- Dotted connecting line -->
-                                            <path id="svg-wave-base" d="M 50,15 C 20,70 80,105 50,160 C 20,215 80,250 50,305 C 20,360 80,395 50,450" 
-                                                  fill="none" stroke="#334155" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 5" />
-                                            <!-- Completed connector line (green) -->
-                                            <path id="svg-wave-completed" d="M 50,15 C 20,70 80,105 50,160" 
-                                                  fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 5" />
-                                            <!-- In-progress connector line (orange) -->
-                                            <path id="svg-wave-progress" d="M 50,160 C 20,215 80,250 50,305" 
-                                                  fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 5" />
-                                        </svg>
+                                        <!-- Dynamic Wave Lines background -->
+                                        <div
+                                            class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-44 pointer-events-none z-0">
+                                            <svg class="w-full h-full" viewBox="0 0 100 480" preserveAspectRatio="none">
+                                                <!-- Dotted connecting line -->
+                                                <path id="svg-wave-base"
+                                                    d="M 50,15 C 20,70 80,105 50,160 C 20,215 80,250 50,305 C 20,360 80,395 50,450"
+                                                    fill="none" stroke="#334155" stroke-width="2.5"
+                                                    stroke-linecap="round" stroke-dasharray="4 5" />
+                                                <!-- Completed connector line (green) -->
+                                                <path id="svg-wave-completed" d="M 50,15 C 20,70 80,105 50,160"
+                                                    fill="none" stroke="#10B981" stroke-width="2.5"
+                                                    stroke-linecap="round" stroke-dasharray="4 5" />
+                                                <!-- In-progress connector line (orange) -->
+                                                <path id="svg-wave-progress" d="M 50,160 C 20,215 80,250 50,305"
+                                                    fill="none" stroke="#F97316" stroke-width="2.5"
+                                                    stroke-linecap="round" stroke-dasharray="4 5" />
+                                            </svg>
+                                        </div>
+
+                                        <!-- Node list (Official Route) -->
+                                        <div id="route-nodes-official-list" class="space-y-7 relative z-10">
+                                            <!-- Node 1 (Completado) -->
+                                            <div onclick="selectRouteNode(1, '1. Introducción general', 'Completado', 'Conceptos fundamentales del lenguaje, el proceso de comunicación y barreras básicas.')"
+                                                class="flex items-center justify-center translate-x-0 transition transform hover:scale-105 cursor-pointer">
+                                                <div
+                                                    class="flex items-center gap-2.5 bg-[#0F1322] border border-slate-800 p-2 rounded-xl w-60 shadow-md hover:border-slate-700 transition">
+                                                    <div
+                                                        class="w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500 text-emerald-500 flex items-center justify-center shrink-0 shadow-lg shadow-emerald-500/10">
+                                                        <i data-lucide="check" class="w-4 h-4"></i>
+                                                    </div>
+                                                    <div class="text-left flex-1 min-w-0">
+                                                        <h5 class="font-bold text-white text-[9px] truncate">1.
+                                                            Introducción general</h5>
+                                                        <span
+                                                            class="text-[7px] text-emerald-400 font-bold uppercase mt-0.5 block">Completado</span>
+                                                    </div>
+                                                    <i data-lucide="chevron-right"
+                                                        class="w-3.5 h-3.5 text-slate-650"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Node 2 (Completado) -->
+                                            <div onclick="selectRouteNode(2, '2. Principios y leyes básicas', 'Completado', 'Estructuras gramaticales, sintaxis básica y reglas de coherencia textual en informes universitarios.')"
+                                                class="flex items-center justify-center translate-x-[-24px] transition transform hover:scale-105 cursor-pointer">
+                                                <div
+                                                    class="flex items-center gap-2.5 bg-[#0F1322] border border-slate-800 p-2 rounded-xl w-60 shadow-md hover:border-slate-700 transition">
+                                                    <div
+                                                        class="w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500 text-emerald-500 flex items-center justify-center shrink-0 shadow-lg shadow-emerald-500/10">
+                                                        <i data-lucide="check" class="w-4 h-4"></i>
+                                                    </div>
+                                                    <div class="text-left flex-1 min-w-0">
+                                                        <h5 class="font-bold text-white text-[9px] truncate">2.
+                                                            Principios y leyes básicas</h5>
+                                                        <span
+                                                            class="text-[7px] text-emerald-400 font-bold uppercase mt-0.5 block">Completado</span>
+                                                    </div>
+                                                    <i data-lucide="chevron-right"
+                                                        class="w-3.5 h-3.5 text-slate-650"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Node 3 (Actual) -->
+                                            <div onclick="selectRouteNode(3, '3. Métodos avanzados y desarrollo', 'En progreso', 'Elaboración de textos científicos y argumentativos. Fede ha segmentado este módulo en 3 misiones de 5 minutos al notar dificultades en tu perfil.')"
+                                                class="flex items-center justify-center translate-x-[24px] transition transform hover:scale-105 cursor-pointer">
+                                                <div
+                                                    class="flex items-center gap-2.5 bg-[#0F1322] border-2 border-orange-500 p-2 rounded-xl w-60 shadow-lg shadow-orange-500/10 hover:border-orange-400 transition ring-4 ring-orange-500/5">
+                                                    <div
+                                                        class="w-8 h-8 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center shrink-0 shadow-inner">
+                                                        <i data-lucide="bar-chart-2" class="w-4 h-4 animate-pulse"></i>
+                                                    </div>
+                                                    <div class="text-left flex-1 min-w-0">
+                                                        <h5 class="font-bold text-white text-[9px] truncate">3. Métodos
+                                                            avanzados y desarrollo</h5>
+                                                        <span
+                                                            class="text-[7px] text-orange-400 font-bold uppercase mt-0.5 block">En
+                                                            progreso (18%)</span>
+                                                    </div>
+                                                    <i data-lucide="chevron-right"
+                                                        class="w-3.5 h-3.5 text-orange-500"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Node 4 (Bloqueado) -->
+                                            <div onclick="selectRouteNode(4, '4. Estudios de caso y diseño', 'Bloqueado', 'Comprensión lectora avanzada y análisis crítico de textos científicos de ingeniería.')"
+                                                class="flex items-center justify-center translate-x-[-24px] transition transform hover:scale-105 cursor-pointer">
+                                                <div
+                                                    class="flex items-center gap-2.5 bg-[#0F1322]/40 border border-slate-900 p-2 rounded-xl w-60 opacity-60 hover:opacity-80 transition">
+                                                    <div
+                                                        class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-500 flex items-center justify-center shrink-0">
+                                                        <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                                                    </div>
+                                                    <div class="text-left flex-1 min-w-0">
+                                                        <h5 class="font-bold text-slate-400 text-[9px] truncate">4.
+                                                            Estudios de caso y diseño</h5>
+                                                        <span
+                                                            class="text-[7px] text-slate-500 font-bold uppercase mt-0.5 block">Bloqueado</span>
+                                                    </div>
+                                                    <i data-lucide="chevron-right"
+                                                        class="w-3.5 h-3.5 text-slate-800"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Node 5 (Bloqueado) -->
+                                            <div onclick="selectRouteNode(5, '5. Simulaciones y testing', 'Bloqueado', 'Técnicas de redacción formal aplicadas a documentación técnica y solicitudes administrativas.')"
+                                                class="flex items-center justify-center translate-x-[24px] transition transform hover:scale-105 cursor-pointer">
+                                                <div
+                                                    class="flex items-center gap-2.5 bg-[#0F1322]/40 border border-slate-900 p-2 rounded-xl w-60 opacity-60 hover:opacity-80 transition">
+                                                    <div
+                                                        class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-500 flex items-center justify-center shrink-0">
+                                                        <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                                                    </div>
+                                                    <div class="text-left flex-1 min-w-0">
+                                                        <h5 class="font-bold text-slate-400 text-[9px] truncate">5.
+                                                            Simulaciones y testing</h5>
+                                                        <span
+                                                            class="text-[7px] text-slate-500 font-bold uppercase mt-0.5 block">Bloqueado</span>
+                                                    </div>
+                                                    <i data-lucide="chevron-right"
+                                                        class="w-3.5 h-3.5 text-slate-800"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Node 6 (Bloqueado) -->
+                                            <div onclick="selectRouteNode(6, '6. Evaluación final de competencias', 'Bloqueado', 'Examen final integrador de redacción técnica y comprensión de textos en sistemas.')"
+                                                class="flex items-center justify-center translate-x-0 transition transform hover:scale-105 cursor-pointer">
+                                                <div
+                                                    class="flex items-center gap-2.5 bg-[#0F1322]/40 border border-slate-900 p-2 rounded-xl w-60 opacity-60 hover:opacity-80 transition">
+                                                    <div
+                                                        class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-500 flex items-center justify-center shrink-0">
+                                                        <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                                                    </div>
+                                                    <div class="text-left flex-1 min-w-0">
+                                                        <h5 class="font-bold text-slate-400 text-[9px] truncate">6.
+                                                            Evaluación final de competencias</h5>
+                                                        <span
+                                                            class="text-[7px] text-slate-500 font-bold uppercase mt-0.5 block">Bloqueado</span>
+                                                    </div>
+                                                    <i data-lucide="chevron-right"
+                                                        class="w-3.5 h-3.5 text-slate-800"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Node list (AI Personalized Route) -->
+                                        <div id="route-nodes-ia-list" class="space-y-7 relative z-10 hidden">
+                                            <!-- Node 1 (Completado) -->
+                                            <div onclick="selectRouteNode(1, '1. Comprensión lectora básica', 'Completado', 'Lectura comprensiva, análisis sintáctico y extracción de ideas clave.')"
+                                                class="flex items-center justify-center translate-x-0 transition transform hover:scale-105 cursor-pointer">
+                                                <div
+                                                    class="flex items-center gap-2.5 bg-[#0F1322] border border-slate-800 p-2 rounded-xl w-60 shadow-md hover:border-slate-700 transition">
+                                                    <div
+                                                        class="w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500 text-emerald-500 flex items-center justify-center shrink-0 shadow-lg shadow-emerald-500/10">
+                                                        <i data-lucide="check" class="w-4 h-4"></i>
+                                                    </div>
+                                                    <div class="text-left flex-1 min-w-0">
+                                                        <h5 class="font-bold text-white text-[9px] truncate">1.
+                                                            Comprensión lectora básica</h5>
+                                                        <span
+                                                            class="text-[7px] text-emerald-400 font-bold uppercase mt-0.5 block">Completado</span>
+                                                    </div>
+                                                    <i data-lucide="chevron-right"
+                                                        class="w-3.5 h-3.5 text-slate-650"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Node 2 (AI REFORZAMIENTO - Actual) -->
+                                            <div onclick="selectRouteNode(2, '2. Reforzamiento: Redacción y Puntuación', 'Módulo IA • En progreso', 'Fede detectó dudas frecuentes en el uso del punto y coma y la coma enumerativa en tus tareas. Este módulo adaptativo te reforzará antes de avanzar.')"
+                                                class="flex items-center justify-center translate-x-[-24px] transition transform hover:scale-105 cursor-pointer">
+                                                <div
+                                                    class="flex items-center gap-2.5 bg-[#0F1322] border-2 border-orange-500 p-2 rounded-xl w-60 shadow-lg shadow-orange-500/10 hover:border-orange-400 transition ring-4 ring-orange-500/5">
+                                                    <div
+                                                        class="w-8 h-8 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center shrink-0 shadow-inner">
+                                                        <i data-lucide="sparkles"
+                                                            class="w-4 h-4 text-orange-400 animate-pulse"></i>
+                                                    </div>
+                                                    <div class="text-left flex-1 min-w-0">
+                                                        <h5 class="font-bold text-white text-[9px] truncate">2.
+                                                            Reforzamiento: Redacción</h5>
+                                                        <span
+                                                            class="text-[7px] text-orange-400 font-bold uppercase mt-0.5 block">Módulo
+                                                            IA • En progreso</span>
+                                                    </div>
+                                                    <i data-lucide="chevron-right"
+                                                        class="w-3.5 h-3.5 text-orange-500"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Node 3 (Bloqueado) -->
+                                            <div onclick="selectRouteNode(3, '3. Estructura del Informe Científico', 'Bloqueado', 'Rúbricas del profesor Magallanes para informes de laboratorio y redacción científica en sistemas.')"
+                                                class="flex items-center justify-center translate-x-[24px] transition transform hover:scale-105 cursor-pointer">
+                                                <div
+                                                    class="flex items-center gap-2.5 bg-[#0F1322]/40 border border-slate-900 p-2 rounded-xl w-60 opacity-60 hover:opacity-80 transition">
+                                                    <div
+                                                        class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-500 flex items-center justify-center shrink-0">
+                                                        <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                                                    </div>
+                                                    <div class="text-left flex-1 min-w-0">
+                                                        <h5 class="font-bold text-slate-400 text-[9px] truncate">3.
+                                                            Estructura de Informe</h5>
+                                                        <span
+                                                            class="text-[7px] text-slate-500 font-bold uppercase mt-0.5 block">Bloqueado</span>
+                                                    </div>
+                                                    <i data-lucide="chevron-right"
+                                                        class="w-3.5 h-3.5 text-slate-800"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Node 4 (Bloqueado) -->
+                                            <div onclick="selectRouteNode(4, '4. Sustentación de Proyectos', 'Bloqueado', 'Oratoria técnica, diseño de diapositivas académicas y presentación formal ante el jurado.')"
+                                                class="flex items-center justify-center translate-x-[-24px] transition transform hover:scale-105 cursor-pointer">
+                                                <div
+                                                    class="flex items-center gap-2.5 bg-[#0F1322]/40 border border-slate-900 p-2 rounded-xl w-60 opacity-60 hover:opacity-80 transition">
+                                                    <div
+                                                        class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-500 flex items-center justify-center shrink-0">
+                                                        <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                                                    </div>
+                                                    <div class="text-left flex-1 min-w-0">
+                                                        <h5 class="font-bold text-slate-400 text-[9px] truncate">4.
+                                                            Sustentación de Proy...</h5>
+                                                        <span
+                                                            class="text-[7px] text-slate-500 font-bold uppercase mt-0.5 block">Bloqueado</span>
+                                                    </div>
+                                                    <i data-lucide="chevron-right"
+                                                        class="w-3.5 h-3.5 text-slate-800"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- Cierre de #route-map-view-wrapper -->
+
+                                    <!-- Vista Generador de Ruta IA (Oculta por defecto) -->
+                                    <div id="route-nodes-ia-generator"
+                                        class="space-y-4 py-6 px-4 max-w-2xl mx-auto animate-fade-in hidden text-left">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <i data-lucide="sparkles" class="text-purple-400 w-5 h-5 animate-pulse"></i>
+                                            <h4 class="font-heading font-bold text-white text-sm">Generar Ruta
+                                                Personalizada con FedeAI</h4>
+                                        </div>
+                                        <p class="text-[9px] text-slate-400 leading-normal mb-4">
+                                            Dile a FedeAI exactamente qué tema deseas dominar en <span
+                                                class="text-white font-semibold">LENGUAJE Y COMUNICACIÓN</span>. Creará
+                                            una ruta interactiva con etapas secuenciales de estudio y evaluación.
+                                        </p>
+                                        <div class="relative mb-4">
+                                            <textarea id="ia-route-prompt" rows="5"
+                                                placeholder="Ej: Quiero aprender límites laterales e indeterminaciones desde cero con ejemplos sencillos y de la vida real..."
+                                                class="w-full bg-[#0A0D18]/90 border border-slate-850 rounded-xl p-3 text-[10px] text-slate-200 placeholder-slate-600 focus:outline-none focus:border-purple-500/50 resize-none"></textarea>
+                                        </div>
+                                        <div class="flex justify-end gap-3">
+                                            <button
+                                                class="px-5 py-2 bg-slate-800 hover:bg-slate-750 text-white rounded-xl text-[10px] font-semibold transition border border-slate-700/50">
+                                                Cancelar
+                                            </button>
+                                            <button
+                                                class="px-5 py-2 bg-purple-700 hover:bg-purple-600 text-white rounded-xl text-[10px] font-semibold transition flex items-center gap-1.5 shadow-lg shadow-purple-600/20 cursor-default">
+                                                Continuar →
+                                            </button>
+                                        </div>
                                     </div>
 
-                                    <!-- Node list (Official Route) -->
-                                    <div id="route-nodes-official-list" class="space-y-7 relative z-10">
-                                        <!-- Node 1 (Completado) -->
-                                        <div onclick="selectRouteNode(1, '1. Introducción general', 'Completado', 'Conceptos fundamentales del lenguaje, el proceso de comunicación y barreras básicas.')"
-                                             class="flex items-center justify-center translate-x-0 transition transform hover:scale-105 cursor-pointer">
-                                            <div class="flex items-center gap-2.5 bg-[#0F1322] border border-slate-800 p-2 rounded-xl w-60 shadow-md hover:border-slate-700 transition">
-                                                <div class="w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500 text-emerald-500 flex items-center justify-center shrink-0 shadow-lg shadow-emerald-500/10">
-                                                    <i data-lucide="check" class="w-4 h-4"></i>
-                                                </div>
-                                                <div class="text-left flex-1 min-w-0">
-                                                    <h5 class="font-bold text-white text-[9px] truncate">1. Introducción general</h5>
-                                                    <span class="text-[7px] text-emerald-400 font-bold uppercase mt-0.5 block">Completado</span>
-                                                </div>
-                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-650"></i>
-                                            </div>
+                                    <!-- Vista de Carga Generador IA (Oculta por defecto) -->
+                                    <div id="route-nodes-ia-loading"
+                                        class="space-y-4 py-16 max-w-sm mx-auto text-center animate-fade-in hidden">
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-purple-500/10 text-purple-400 flex items-center justify-center mx-auto mb-3 animate-spin">
+                                            <i data-lucide="loader-2" class="w-6 h-6"></i>
                                         </div>
-
-                                        <!-- Node 2 (Completado) -->
-                                        <div onclick="selectRouteNode(2, '2. Principios y leyes básicas', 'Completado', 'Estructuras gramaticales, sintaxis básica y reglas de coherencia textual en informes universitarios.')"
-                                             class="flex items-center justify-center translate-x-[-24px] transition transform hover:scale-105 cursor-pointer">
-                                            <div class="flex items-center gap-2.5 bg-[#0F1322] border border-slate-800 p-2 rounded-xl w-60 shadow-md hover:border-slate-700 transition">
-                                                <div class="w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500 text-emerald-500 flex items-center justify-center shrink-0 shadow-lg shadow-emerald-500/10">
-                                                    <i data-lucide="check" class="w-4 h-4"></i>
-                                                </div>
-                                                <div class="text-left flex-1 min-w-0">
-                                                    <h5 class="font-bold text-white text-[9px] truncate">2. Principios y leyes básicas</h5>
-                                                    <span class="text-[7px] text-emerald-400 font-bold uppercase mt-0.5 block">Completado</span>
-                                                </div>
-                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-650"></i>
-                                            </div>
-                                        </div>
-
-                                        <!-- Node 3 (Actual) -->
-                                        <div onclick="selectRouteNode(3, '3. Métodos avanzados y desarrollo', 'En progreso', 'Elaboración de textos científicos y argumentativos. Fede ha segmentado este módulo en 3 misiones de 5 minutos al notar dificultades en tu perfil.')"
-                                             class="flex items-center justify-center translate-x-[24px] transition transform hover:scale-105 cursor-pointer">
-                                            <div class="flex items-center gap-2.5 bg-[#0F1322] border-2 border-orange-500 p-2 rounded-xl w-60 shadow-lg shadow-orange-500/10 hover:border-orange-400 transition ring-4 ring-orange-500/5">
-                                                <div class="w-8 h-8 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center shrink-0 shadow-inner">
-                                                    <i data-lucide="bar-chart-2" class="w-4 h-4 animate-pulse"></i>
-                                                </div>
-                                                <div class="text-left flex-1 min-w-0">
-                                                    <h5 class="font-bold text-white text-[9px] truncate">3. Métodos avanzados y desarrollo</h5>
-                                                    <span class="text-[7px] text-orange-400 font-bold uppercase mt-0.5 block">En progreso (18%)</span>
-                                                </div>
-                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-orange-500"></i>
-                                            </div>
-                                        </div>
-
-                                        <!-- Node 4 (Bloqueado) -->
-                                        <div onclick="selectRouteNode(4, '4. Estudios de caso y diseño', 'Bloqueado', 'Comprensión lectora avanzada y análisis crítico de textos científicos de ingeniería.')"
-                                             class="flex items-center justify-center translate-x-[-24px] transition transform hover:scale-105 cursor-pointer">
-                                            <div class="flex items-center gap-2.5 bg-[#0F1322]/40 border border-slate-900 p-2 rounded-xl w-60 opacity-60 hover:opacity-80 transition">
-                                                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-500 flex items-center justify-center shrink-0">
-                                                    <i data-lucide="lock" class="w-3.5 h-3.5"></i>
-                                                </div>
-                                                <div class="text-left flex-1 min-w-0">
-                                                    <h5 class="font-bold text-slate-400 text-[9px] truncate">4. Estudios de caso y diseño</h5>
-                                                    <span class="text-[7px] text-slate-500 font-bold uppercase mt-0.5 block">Bloqueado</span>
-                                                </div>
-                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-800"></i>
-                                            </div>
-                                        </div>
-
-                                        <!-- Node 5 (Bloqueado) -->
-                                        <div onclick="selectRouteNode(5, '5. Simulaciones y testing', 'Bloqueado', 'Técnicas de redacción formal aplicadas a documentación técnica y solicitudes administrativas.')"
-                                             class="flex items-center justify-center translate-x-[24px] transition transform hover:scale-105 cursor-pointer">
-                                            <div class="flex items-center gap-2.5 bg-[#0F1322]/40 border border-slate-900 p-2 rounded-xl w-60 opacity-60 hover:opacity-80 transition">
-                                                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-500 flex items-center justify-center shrink-0">
-                                                    <i data-lucide="lock" class="w-3.5 h-3.5"></i>
-                                                </div>
-                                                <div class="text-left flex-1 min-w-0">
-                                                    <h5 class="font-bold text-slate-400 text-[9px] truncate">5. Simulaciones y testing</h5>
-                                                    <span class="text-[7px] text-slate-500 font-bold uppercase mt-0.5 block">Bloqueado</span>
-                                                </div>
-                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-800"></i>
-                                            </div>
-                                        </div>
-
-                                        <!-- Node 6 (Bloqueado) -->
-                                        <div onclick="selectRouteNode(6, '6. Evaluación final de competencias', 'Bloqueado', 'Examen final integrador de redacción técnica y comprensión de textos en sistemas.')"
-                                             class="flex items-center justify-center translate-x-0 transition transform hover:scale-105 cursor-pointer">
-                                            <div class="flex items-center gap-2.5 bg-[#0F1322]/40 border border-slate-900 p-2 rounded-xl w-60 opacity-60 hover:opacity-80 transition">
-                                                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-500 flex items-center justify-center shrink-0">
-                                                    <i data-lucide="lock" class="w-3.5 h-3.5"></i>
-                                                </div>
-                                                <div class="text-left flex-1 min-w-0">
-                                                    <h5 class="font-bold text-slate-400 text-[9px] truncate">6. Evaluación final de competencias</h5>
-                                                    <span class="text-[7px] text-slate-500 font-bold uppercase mt-0.5 block">Bloqueado</span>
-                                                </div>
-                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-800"></i>
-                                            </div>
-                                        </div>
+                                        <h4 class="font-heading font-bold text-white text-xs">Generando tu ruta con
+                                            FedeAI...</h4>
+                                        <p class="text-[8px] text-slate-500 max-w-xs mx-auto">Analizando tu historial de
+                                            aprendizaje, racha y nivel de estudio para crear módulos adaptativos
+                                            personalizados.</p>
                                     </div>
 
-                                    <!-- Node list (AI Personalized Route) -->
-                                    <div id="route-nodes-ia-list" class="space-y-7 relative z-10 hidden">
-                                        <!-- Node 1 (Completado) -->
-                                        <div onclick="selectRouteNode(1, '1. Comprensión lectora básica', 'Completado', 'Lectura comprensiva, análisis sintáctico y extracción de ideas clave.')"
-                                             class="flex items-center justify-center translate-x-0 transition transform hover:scale-105 cursor-pointer">
-                                            <div class="flex items-center gap-2.5 bg-[#0F1322] border border-slate-800 p-2 rounded-xl w-60 shadow-md hover:border-slate-700 transition">
-                                                <div class="w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500 text-emerald-500 flex items-center justify-center shrink-0 shadow-lg shadow-emerald-500/10">
-                                                    <i data-lucide="check" class="w-4 h-4"></i>
-                                                </div>
-                                                <div class="text-left flex-1 min-w-0">
-                                                    <h5 class="font-bold text-white text-[9px] truncate">1. Comprensión lectora básica</h5>
-                                                    <span class="text-[7px] text-emerald-400 font-bold uppercase mt-0.5 block">Completado</span>
-                                                </div>
-                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-650"></i>
+                                    <!-- Node Detail Modal/Drawer inside Route -->
+                                    <div id="route-node-detail-panel"
+                                        class="absolute bottom-3 left-3 right-3 bg-[#0F1322]/98 border border-orange-500/30 p-3 rounded-xl shadow-2xl z-20 translate-y-12 opacity-0 pointer-events-none transition-all duration-300">
+                                        <div
+                                            class="flex justify-between items-start border-b border-white/5 pb-1.5 mb-1.5">
+                                            <div>
+                                                <span id="route-detail-status"
+                                                    class="text-[6.5px] px-1.5 py-0.5 rounded font-bold uppercase bg-orange-500/10 text-orange-400">Actual</span>
+                                                <h4 id="route-detail-title"
+                                                    class="font-heading font-bold text-white text-[10px] mt-1">Nombre
+                                                    del Módulo</h4>
                                             </div>
+                                            <button onclick="closeRouteModal()"
+                                                class="text-slate-500 hover:text-white transition">
+                                                <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                                            </button>
                                         </div>
+                                        <p id="route-detail-desc"
+                                            class="text-[8px] text-slate-400 leading-normal mb-2.5">Descripción...</p>
 
-                                        <!-- Node 2 (AI REFORZAMIENTO - Actual) -->
-                                        <div onclick="selectRouteNode(2, '2. Reforzamiento: Redacción y Puntuación', 'Módulo IA • En progreso', 'Fede detectó dudas frecuentes en el uso del punto y coma y la coma enumerativa en tus tareas. Este módulo adaptativo te reforzará antes de avanzar.')"
-                                             class="flex items-center justify-center translate-x-[-24px] transition transform hover:scale-105 cursor-pointer">
-                                            <div class="flex items-center gap-2.5 bg-[#0F1322] border-2 border-orange-500 p-2 rounded-xl w-60 shadow-lg shadow-orange-500/10 hover:border-orange-400 transition ring-4 ring-orange-500/5">
-                                                <div class="w-8 h-8 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center shrink-0 shadow-inner">
-                                                    <i data-lucide="sparkles" class="w-4 h-4 text-orange-400 animate-pulse"></i>
-                                                </div>
-                                                <div class="text-left flex-1 min-w-0">
-                                                    <h5 class="font-bold text-white text-[9px] truncate">2. Reforzamiento: Redacción</h5>
-                                                    <span class="text-[7px] text-orange-400 font-bold uppercase mt-0.5 block">Módulo IA • En progreso</span>
-                                                </div>
-                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-orange-500"></i>
-                                            </div>
-                                        </div>
-
-                                        <!-- Node 3 (Bloqueado) -->
-                                        <div onclick="selectRouteNode(3, '3. Estructura del Informe Científico', 'Bloqueado', 'Rúbricas del profesor Magallanes para informes de laboratorio y redacción científica en sistemas.')"
-                                             class="flex items-center justify-center translate-x-[24px] transition transform hover:scale-105 cursor-pointer">
-                                            <div class="flex items-center gap-2.5 bg-[#0F1322]/40 border border-slate-900 p-2 rounded-xl w-60 opacity-60 hover:opacity-80 transition">
-                                                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-500 flex items-center justify-center shrink-0">
-                                                    <i data-lucide="lock" class="w-3.5 h-3.5"></i>
-                                                </div>
-                                                <div class="text-left flex-1 min-w-0">
-                                                    <h5 class="font-bold text-slate-400 text-[9px] truncate">3. Estructura de Informe</h5>
-                                                    <span class="text-[7px] text-slate-500 font-bold uppercase mt-0.5 block">Bloqueado</span>
-                                                </div>
-                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-800"></i>
-                                            </div>
-                                        </div>
-
-                                        <!-- Node 4 (Bloqueado) -->
-                                        <div onclick="selectRouteNode(4, '4. Sustentación de Proyectos', 'Bloqueado', 'Oratoria técnica, diseño de diapositivas académicas y presentación formal ante el jurado.')"
-                                             class="flex items-center justify-center translate-x-[-24px] transition transform hover:scale-105 cursor-pointer">
-                                            <div class="flex items-center gap-2.5 bg-[#0F1322]/40 border border-slate-900 p-2 rounded-xl w-60 opacity-60 hover:opacity-80 transition">
-                                                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-slate-500 flex items-center justify-center shrink-0">
-                                                    <i data-lucide="lock" class="w-3.5 h-3.5"></i>
-                                                </div>
-                                                <div class="text-left flex-1 min-w-0">
-                                                    <h5 class="font-bold text-slate-400 text-[9px] truncate">4. Sustentación de Proy...</h5>
-                                                    <span class="text-[7px] text-slate-500 font-bold uppercase mt-0.5 block">Bloqueado</span>
-                                                </div>
-                                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-800"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> <!-- Cierre de #route-map-view-wrapper -->
-
-                                <!-- Vista Generador de Ruta IA (Oculta por defecto) -->
-                                <div id="route-nodes-ia-generator" class="space-y-4 py-6 px-4 max-w-2xl mx-auto animate-fade-in hidden text-left">
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <i data-lucide="sparkles" class="text-purple-400 w-5 h-5 animate-pulse"></i>
-                                        <h4 class="font-heading font-bold text-white text-sm">Generar Ruta Personalizada con FedeAI</h4>
-                                    </div>
-                                    <p class="text-[9px] text-slate-400 leading-normal mb-4">
-                                        Dile a FedeAI exactamente qué tema deseas dominar en <span class="text-white font-semibold">LENGUAJE Y COMUNICACIÓN</span>. Creará una ruta interactiva con etapas secuenciales de estudio y evaluación.
-                                    </p>
-                                    <div class="relative mb-4">
-                                        <textarea id="ia-route-prompt" rows="5" 
-                                            placeholder="Ej: Quiero aprender límites laterales e indeterminaciones desde cero con ejemplos sencillos y de la vida real..."
-                                            class="w-full bg-[#0A0D18]/90 border border-slate-850 rounded-xl p-3 text-[10px] text-slate-200 placeholder-slate-600 focus:outline-none focus:border-purple-500/50 resize-none"></textarea>
-                                    </div>
-                                    <div class="flex justify-end gap-3">
-                                        <button class="px-5 py-2 bg-slate-800 hover:bg-slate-750 text-white rounded-xl text-[10px] font-semibold transition border border-slate-700/50">
-                                            Cancelar
-                                        </button>
-                                        <button class="px-5 py-2 bg-purple-700 hover:bg-purple-600 text-white rounded-xl text-[10px] font-semibold transition flex items-center gap-1.5 shadow-lg shadow-purple-600/20 cursor-default">
-                                            Continuar →
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <!-- Vista de Carga Generador IA (Oculta por defecto) -->
-                                <div id="route-nodes-ia-loading" class="space-y-4 py-16 max-w-sm mx-auto text-center animate-fade-in hidden">
-                                    <div class="w-12 h-12 rounded-full bg-purple-500/10 text-purple-400 flex items-center justify-center mx-auto mb-3 animate-spin">
-                                        <i data-lucide="loader-2" class="w-6 h-6"></i>
-                                    </div>
-                                    <h4 class="font-heading font-bold text-white text-xs">Generando tu ruta con FedeAI...</h4>
-                                    <p class="text-[8px] text-slate-500 max-w-xs mx-auto">Analizando tu historial de aprendizaje, racha y nivel de estudio para crear módulos adaptativos personalizados.</p>
-                                </div>
-
-                                <!-- Node Detail Modal/Drawer inside Route -->
-                                <div id="route-node-detail-panel" 
-                                     class="absolute bottom-3 left-3 right-3 bg-[#0F1322]/98 border border-orange-500/30 p-3 rounded-xl shadow-2xl z-20 translate-y-12 opacity-0 pointer-events-none transition-all duration-300">
-                                    <div class="flex justify-between items-start border-b border-white/5 pb-1.5 mb-1.5">
-                                        <div>
-                                            <span id="route-detail-status" class="text-[6.5px] px-1.5 py-0.5 rounded font-bold uppercase bg-orange-500/10 text-orange-400">Actual</span>
-                                            <h4 id="route-detail-title" class="font-heading font-bold text-white text-[10px] mt-1">Nombre del Módulo</h4>
-                                        </div>
-                                        <button onclick="closeRouteModal()" class="text-slate-500 hover:text-white transition">
-                                            <i data-lucide="x" class="w-3.5 h-3.5"></i>
-                                        </button>
-                                    </div>
-                                    <p id="route-detail-desc" class="text-[8px] text-slate-400 leading-normal mb-2.5">Descripción...</p>
-                                    
-                                    <!-- Dynamic Action Button depending on status -->
-                                    <div id="route-detail-action-container">
-                                        <button onclick="closeRouteModal()" 
+                                        <!-- Dynamic Action Button depending on status -->
+                                        <div id="route-detail-action-container">
+                                            <button onclick="closeRouteModal()"
                                                 class="w-full py-1.5 bg-orange-500 hover:bg-orange-600 text-slate-950 font-bold rounded-lg transition text-[9px] flex items-center justify-center gap-1 shadow-md shadow-orange-500/15">
-                                            <i data-lucide="play" class="w-3 h-3"></i> Empezar Misión (5 min)
-                                        </button>
+                                                <i data-lucide="play" class="w-3 h-3"></i> Empezar Misión (5 min)
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- VISTA 4: MENSAJES (SOPORTE DE MATCH/CHAT PEER TO PEER) -->
-                        <div id="desktop-content-mensajes" class="desktop-tab-content flex-1 p-5 overflow-y-auto space-y-4 hidden">
-                            <div class="glass-panel p-6 rounded-2xl border-slate-800 text-center max-w-md mx-auto space-y-3 mt-10">
-                                <div class="w-12 h-12 rounded-full bg-orange-500/10 text-orange-500 flex items-center justify-center mx-auto ring-8 ring-orange-500/5 animate-pulse">
-                                    <i data-lucide="mail-question" class="w-6 h-6"></i>
+                            <!-- VISTA 4: MENSAJES (SOPORTE DE MATCH/CHAT PEER TO PEER) -->
+                            <div id="desktop-content-mensajes"
+                                class="desktop-tab-content flex-1 p-5 overflow-y-auto space-y-4 hidden">
+                                <div
+                                    class="glass-panel p-6 rounded-2xl border-slate-800 text-center max-w-md mx-auto space-y-3 mt-10">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-orange-500/10 text-orange-500 flex items-center justify-center mx-auto ring-8 ring-orange-500/5 animate-pulse">
+                                        <i data-lucide="mail-question" class="w-6 h-6"></i>
+                                    </div>
+                                    <h3 class="font-heading font-bold text-base text-white">Mensajería y Tutoría</h3>
+                                    <p class="text-slate-400 text-xs leading-relaxed">
+                                        Esta sección centraliza tus chats de mentorías Peer-to-Peer. Puedes solicitar
+                                        una tutoría en la diapositiva 4 (sección de Comunidad) para simular el chat
+                                        interactivo de coordinación con un mentor real.
+                                    </p>
+                                    <button onclick="switchDesktopTab('inicio')"
+                                        class="px-4 py-2 bg-[#0F1322] border border-slate-800 hover:bg-slate-850 text-slate-300 rounded-xl transition text-xs font-semibold">
+                                        Ir al Chat con Fede
+                                    </button>
                                 </div>
-                                <h3 class="font-heading font-bold text-base text-white">Mensajería y Tutoría</h3>
-                                <p class="text-slate-400 text-xs leading-relaxed">
-                                    Esta sección centraliza tus chats de mentorías Peer-to-Peer. Puedes solicitar una tutoría en la diapositiva 4 (sección de Comunidad) para simular el chat interactivo de coordinación con un mentor real.
-                                </p>
-                                <button onclick="switchDesktopTab('inicio')" class="px-4 py-2 bg-[#0F1322] border border-slate-800 hover:bg-slate-850 text-slate-300 rounded-xl transition text-xs font-semibold">
-                                    Ir al Chat con Fede
-                                </button>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
@@ -1082,7 +1228,8 @@
                             <th class="p-6 font-heading text-lg text-slate-300 font-normal">Características</th>
                             <th
                                 class="p-6 font-heading text-xl font-bold text-orange-500 bg-orange-500/10 text-center w-1/4">
-                                <span class="text-white">Villa</span><span class="text-orange-500">NEXT</span></th>
+                                <span class="text-white">Villa</span><span class="text-orange-500">NEXT</span>
+                            </th>
                             <th class="p-6 font-heading text-lg font-bold text-slate-400 text-center w-1/4">Plataformas
                                 Clásicas<br><span class="text-xs font-normal">(Moodle / SVA)</span></th>
                             <th class="p-6 font-heading text-lg font-bold text-blue-400 text-center w-1/4">IAs
@@ -1418,8 +1565,10 @@
                     el presupuesto de la universidad.</p>
             </div>
 
-            <div class="mt-8 mb-10 glass-panel p-6 rounded-2xl border-slate-700 bg-slate-800/50 relative overflow-hidden w-full max-w-4xl mx-auto h-[320px]">
-                <h4 class="font-bold text-lg text-white mb-2 text-center">Proyección de Costos Mensuales vs. Alumnos (Escalabilidad)</h4>
+            <div
+                class="mt-8 mb-10 glass-panel p-6 rounded-2xl border-slate-700 bg-slate-800/50 relative overflow-hidden w-full max-w-4xl mx-auto h-[320px]">
+                <h4 class="font-bold text-lg text-white mb-2 text-center">Proyección de Costos Mensuales vs. Alumnos
+                    (Escalabilidad)</h4>
                 <div class="w-full h-[240px] flex justify-center">
                     <canvas id="scalabilityChart"></canvas>
                 </div>
@@ -1434,7 +1583,8 @@
                                 class="text-sm text-slate-500 font-normal">/mes</span></span>
                     </div>
                     <h4 class="font-bold text-lg mb-2">Persistencia Semántica</h4>
-                    <p class="text-sm text-slate-400">DigitalOcean Managed Database (PostgreSQL + pgvector). Almacenamiento unificado de datos relacionales y vectores para 4,000 alumnos.</p>
+                    <p class="text-sm text-slate-400">DigitalOcean Managed Database (PostgreSQL + pgvector).
+                        Almacenamiento unificado de datos relacionales y vectores para 4,000 alumnos.</p>
                 </div>
 
                 <div class="glass-panel p-6 rounded-2xl border-slate-700 relative overflow-hidden">
@@ -1445,7 +1595,8 @@
                                 class="text-sm text-slate-500 font-normal">/mes</span></span>
                     </div>
                     <h4 class="font-bold text-lg mb-2">Optimización de Inferencia</h4>
-                    <p class="text-sm text-slate-400">Consumo eficiente de Gemini 1.5 Flash vía AI SDK. Aplicamos Chunking Dinámico y búsqueda HNSW para minimizar tokens (Costo base para 4,000 alumnos).</p>
+                    <p class="text-sm text-slate-400">Consumo eficiente de Gemini 1.5 Flash vía AI SDK. Aplicamos
+                        Chunking Dinámico y búsqueda HNSW para minimizar tokens (Costo base para 4,000 alumnos).</p>
                 </div>
 
                 <div
@@ -1453,17 +1604,19 @@
                     <div class="flex justify-between items-start mb-4">
                         <div class="p-3 bg-orange-500 rounded-xl shadow-lg shadow-orange-500/30"><i
                                 data-lucide="git-fork" class="text-white w-6 h-6"></i></div>
-                        <span class="text-2xl font-bold font-heading text-orange-400">+$100<span
-                                class="text-sm text-orange-500/80 font-normal"> fijo</span></span>
+                        <span class="text-2xl font-bold font-heading text-orange-400">~$100<span
+                                class="text-sm text-orange-500/80 font-normal"> /mes</span></span>
                     </div>
                     <h4 class="font-bold text-lg text-orange-400 mb-2">Mantenimiento de Software</h4>
-                    <p class="text-sm text-slate-300">Costo fijo mensual estimado para mantenimiento del sistema. Arquitectura DAG permite $0 en desarrollo para escalar a nuevas facultades.</p>
+                    <p class="text-sm text-slate-300">Costo mensual estimado para mantenimiento del sistema.
+                        Arquitectura DAG permite $0 en desarrollo para escalar a nuevas facultades.</p>
                 </div>
             </div>
 
             <div class="pt-8 border-t border-slate-800 mt-8">
-                <h3 class="text-3xl font-bold font-heading"><span class="text-white">Villa</span><span class="text-orange-500">NEXT</span> <span
-                        class="text-slate-500 font-light">| Vida Universitaria</span></h3>
+                <h3 class="text-3xl font-bold font-heading"><span class="text-white">Villa</span><span
+                        class="text-orange-500">NEXT</span> <span class="text-slate-500 font-light">| Vida
+                        Universitaria</span></h3>
             </div>
         </div>
     </div>
@@ -1633,15 +1786,15 @@
         // CONTROL DE NAVEGACIÓN DENTRO DEL DASHBOARD PC
         function switchDesktopTab(tabName, event) {
             if (event) event.preventDefault();
-            
+
             // Hide all tabs
             const tabContents = document.querySelectorAll('.desktop-tab-content');
             tabContents.forEach(content => content.classList.add('hidden'));
-            
+
             // Show requested tab
             const targetContent = document.getElementById(`desktop-content-${tabName}`);
             if (targetContent) targetContent.classList.remove('hidden');
-            
+
             // Deactivate all nav links
             const navLinks = [
                 { id: 'desktop-nav-inicio', tab: 'inicio' },
@@ -1649,7 +1802,7 @@
                 { id: 'desktop-nav-mensajes', tab: 'mensajes' },
                 { id: 'desktop-nav-rutas', tab: 'rutas' }
             ];
-            
+
             navLinks.forEach(link => {
                 const element = document.getElementById(link.id);
                 if (element) {
@@ -1660,7 +1813,7 @@
                     }
                 }
             });
-            
+
             lucide.createIcons();
         }
 
@@ -1675,10 +1828,10 @@
             const input = document.getElementById('desktop-fede-input');
             const query = input.value.trim();
             if (!query) return;
-            
+
             // Limpiar input
             input.value = '';
-            
+
             // Agregar mensaje de usuario
             const container = document.getElementById('desktop-fede-messages');
             const userMsgHtml = `
@@ -1691,7 +1844,7 @@
             `;
             container.insertAdjacentHTML('beforeend', userMsgHtml);
             container.scrollTop = container.scrollHeight;
-            
+
             // Agregar indicador de escritura
             const typingId = 'fede-typing-' + Date.now();
             const typingHtml = `
@@ -1709,15 +1862,15 @@
             container.insertAdjacentHTML('beforeend', typingHtml);
             container.scrollTop = container.scrollHeight;
             lucide.createIcons();
-            
+
             // Simular respuesta de Fede
             setTimeout(() => {
                 const typingElem = document.getElementById(typingId);
                 if (typingElem) typingElem.remove();
-                
+
                 let answer = "";
                 const normalizedQuery = query.toLowerCase();
-                
+
                 if (normalizedQuery.includes('calculo') || normalizedQuery.includes('matematica') || normalizedQuery.includes('diferencial') || normalizedQuery.includes('integral')) {
                     answer = `¡Excelente! Cálculo Diferencial es clave en la FIIS. 🧮 En lugar de darte la derivada o integral directamente, cuéntame: ¿estás intentando optimizar una función o hallar un área bajo la curva? ¿Qué variables o fórmulas tienes anotadas en tu cuaderno ahora mismo? Cuéntame y lo estructuramos juntos.`;
                 } else if (normalizedQuery.includes('historia') || normalizedQuery.includes('villarreal')) {
@@ -1727,7 +1880,7 @@
                 } else {
                     answer = `Me gusta tu pregunta, demuestra curiosidad villarrealina. 💡 Para guiarte mejor sin darte la respuesta de forma directa: ¿qué es lo primero que se te viene a la mente al analizar este concepto? ¿Hay alguna regla o fórmula del sílabo que crees que se aplique aquí? Explícame tu razonamiento inicial y construimos desde ahí.`;
                 }
-                
+
                 const fedeMsgHtml = `
                     <div class="flex items-start gap-2.5 max-w-[85%] animate-fade-in mb-2">
                         <div class="w-7 h-7 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 mt-0.5">
@@ -1741,7 +1894,7 @@
                         </div>
                     </div>
                 `;
-                
+
                 container.insertAdjacentHTML('beforeend', fedeMsgHtml);
                 container.scrollTop = container.scrollHeight;
                 lucide.createIcons();
@@ -1758,33 +1911,33 @@
             const headerDesc = document.querySelector('#route-title-header p');
             const progressVal = document.getElementById('route-progress-bar');
             const progressText = document.querySelector('#route-progress-bar + span');
-            
+
             const mapViewWrapper = document.getElementById('route-map-view-wrapper');
             const iaGenerator = document.getElementById('route-nodes-ia-generator');
             const iaLoading = document.getElementById('route-nodes-ia-loading');
-            
+
             // SVG Paths
             const svgBase = document.getElementById('svg-wave-base');
             const svgCompleted = document.getElementById('svg-wave-completed');
             const svgProgress = document.getElementById('svg-wave-progress');
-            
+
             if (type === 'oficial') {
                 btnOficial.className = "px-3 py-1.5 border-b-2 border-orange-500 text-white font-bold transition flex items-center gap-1";
                 btnIa.className = "px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1";
-                
+
                 // Show map view, hide generator & loading
                 if (mapViewWrapper) mapViewWrapper.classList.remove('hidden');
                 if (iaGenerator) iaGenerator.classList.add('hidden');
                 if (iaLoading) iaLoading.classList.add('hidden');
-                
+
                 listOficial.classList.remove('hidden');
                 listIa.classList.add('hidden');
-                
+
                 headerTitle.innerText = "Ruta de Habilidades";
                 headerDesc.innerText = "Completa el sílabo semana a semana";
                 progressVal.style.width = "36%";
                 progressText.innerText = "36%";
-                
+
                 // Configurar trazo SVG para 6 nodos
                 svgBase.setAttribute('d', 'M 50,15 C 20,70 80,105 50,160 C 20,215 80,250 50,305 C 20,360 80,395 50,450');
                 svgCompleted.setAttribute('d', 'M 50,15 C 20,70 80,105 50,160');
@@ -1794,7 +1947,7 @@
             } else {
                 btnOficial.className = "px-3 py-1.5 border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1";
                 btnIa.className = "px-3 py-1.5 border-b-2 border-purple-500 text-white font-bold transition flex items-center gap-1";
-                
+
                 if (!isIaRouteGenerated) {
                     // Hide map, show generator
                     if (mapViewWrapper) mapViewWrapper.classList.add('hidden');
@@ -1805,15 +1958,15 @@
                     if (mapViewWrapper) mapViewWrapper.classList.remove('hidden');
                     if (iaGenerator) iaGenerator.classList.add('hidden');
                     if (iaLoading) iaLoading.classList.add('hidden');
-                    
+
                     listOficial.classList.add('hidden');
                     listIa.classList.remove('hidden');
-                    
+
                     headerTitle.innerText = "Ruta IA Personalizada";
                     headerDesc.innerText = "Optimizada por Fede en base a tu rendimiento";
                     progressVal.style.width = "25%";
                     progressText.innerText = "25%";
-                    
+
                     // Configurar trazo SVG para 4 nodos
                     svgBase.setAttribute('d', 'M 50,15 C 20,70 80,105 50,160 C 20,215 80,250 50,305');
                     svgCompleted.style.display = 'none'; // No hay tramos completados completos en la ruta IA
@@ -1821,7 +1974,7 @@
                     svgProgress.style.display = 'block';
                 }
             }
-            
+
             closeRouteModal();
             lucide.createIcons();
         }
@@ -1834,11 +1987,11 @@
             const titleLabel = document.getElementById('route-detail-title');
             const descLabel = document.getElementById('route-detail-desc');
             const actionContainer = document.getElementById('route-detail-action-container');
-            
+
             titleLabel.innerText = title;
             descLabel.innerText = description;
             statusLabel.innerText = status;
-            
+
             // Estilizar la etiqueta según el estado
             if (status === 'Completado') {
                 statusLabel.className = "text-[6.5px] px-1.5 py-0.5 rounded font-bold uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
@@ -1865,7 +2018,7 @@
                     </button>
                 `;
             }
-            
+
             panel.classList.remove('opacity-0', 'translate-y-12', 'pointer-events-none');
             panel.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
             lucide.createIcons();
@@ -1881,7 +2034,7 @@
             closeRouteModal();
             // Ir al chat de Fede
             switchDesktopTab('inicio');
-            
+
             // Agregar mensaje de misión de Fede
             setTimeout(() => {
                 const container = document.getElementById('desktop-fede-messages');
@@ -1914,7 +2067,7 @@
                 b.disabled = true;
                 b.className = "w-full text-left p-2 rounded-lg bg-slate-900/40 border border-slate-900 text-slate-500 text-[9px] cursor-not-allowed";
             });
-            
+
             if (isCorrect) {
                 btn.className = "w-full text-left p-2 rounded-lg bg-emerald-500/10 border-2 border-emerald-500 text-emerald-400 text-[9px] font-semibold";
                 setTimeout(() => {
@@ -1933,7 +2086,7 @@
                     container.insertAdjacentHTML('beforeend', correctHtml);
                     container.scrollTop = container.scrollHeight;
                     lucide.createIcons();
-                    
+
                     // Aumentar el progreso de la ruta
                     const progressVal = document.getElementById('route-progress-bar');
                     const progressText = document.querySelector('#route-progress-bar + span');
@@ -1992,7 +2145,7 @@
                         tension: 0.4
                     },
                     {
-                        label: 'Mantenimiento de Software (Fijo)',
+                        label: 'Mantenimiento de Software (/mes)',
                         data: [100, 100, 100, 100],
                         borderColor: '#a855f7', // purple-500
                         backgroundColor: 'rgba(168, 85, 247, 0.2)',
@@ -2036,7 +2189,7 @@
                         borderColor: '#334155',
                         borderWidth: 1,
                         callbacks: {
-                            label: function(context) {
+                            label: function (context) {
                                 let label = context.dataset.label || '';
                                 if (label) {
                                     label += ': ';
@@ -2068,7 +2221,7 @@
                         ticks: {
                             color: '#94a3b8',
                             font: { family: "'Outfit', sans-serif" },
-                            callback: function(value, index, values) {
+                            callback: function (value, index, values) {
                                 return '$' + value;
                             }
                         }
